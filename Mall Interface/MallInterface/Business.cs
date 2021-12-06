@@ -33,6 +33,14 @@ namespace TransightInterface
             return ExportAuto(StartDate, EndDate, FrmMain);
         }
 
+        public static string ExportE(DateTime StartDate, DateTime EndDate)
+        {
+            FormMain FrmMain = new FormMain(false);
+
+            return ExportEOD(StartDate, EndDate, FrmMain);
+        }
+
+
         #region Export ori
         //public static string Export(DateTime StartDate, DateTime EndDate, FormMain FrmMain)
         //{
@@ -1093,7 +1101,7 @@ namespace TransightInterface
                     //    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
                     //    Func.Log(s);
                     //}
-                    Data.InsertBatchLogs(fileName, businessDate);
+                   
                     if (FinalStoreListNew.Count > 0)
                     {
                         #region write file
@@ -1106,6 +1114,7 @@ namespace TransightInterface
                         //fileName = "H" + Program.StoreNo.ToString() + "_" + businessDate.ToString("yyyyMMdd") + "_" + SequenceAlpha + ".txt";
                         //fileName = "H" + Program.StoreNo.ToString() + "_" + businessDate.ToString("yyyyMMdd") + ".txt";
                         fileName = Program.StoreNo.Substring(Program.StoreNo.Length-4) + businessDate.ToString("MMdd") + "." + terminalno + BatchNumber.ToString();
+                        Data.InsertBatchLogs(fileName, businessDate);
                         //exportedFile = filename;
                         //delete file
                         try { File.Delete(Program.ExportFolder + @"\" + fileName); }
@@ -1611,10 +1620,10 @@ namespace TransightInterface
                         String SequenceAlpha = Data.GetSequenceSwitch(serialnumber);
                         int BatchNumber = Data.GetBatchNumber(businessDate) + 1;
 
-                            //if (BatchNumber > 1)
-                            //{
-                            //    break;
-                            //}
+                        if (BatchNumber > 1)
+                        {
+                            break;
+                        }
 
                         //set file name
                         //fileName = "H" + Program.StoreNo.ToString() + "_" + businessDate.ToString("yyyyMMdd") + "_" + SequenceAlpha + ".txt";
@@ -2097,6 +2106,514 @@ namespace TransightInterface
         //    }
         //}
         #endregion
+
+        public static string ExportEOD(DateTime StartDate, DateTime EndDate, FormMain FrmMain)
+        {
+            try
+            {
+                if (!System.IO.Directory.Exists(AppConfig.Sent_Logs))
+                {
+                    System.IO.Directory.CreateDirectory(AppConfig.Sent_Logs);
+                }
+
+
+
+
+                string s = string.Empty;
+                string us = string.Empty; //unsent tag
+                Boolean SalesTXTFail = false;
+                #region check export folder
+                if (Program.ExportFolder == string.Empty || !Directory.Exists(Program.ExportFolder))
+                {
+                    if (Program.ExportFolder == string.Empty)
+                        s = "Export folder not set.";
+                    else
+                        s = "Export folder not found.";
+
+                    if (!Program.IsAutoMode)
+                        FrmMain.SetStatus(s);
+                    else
+                        Func.Log(s);
+
+                    return s;
+                }
+                #endregion check export folder
+
+                //-- get export folder info
+                string salefilepath = Program.ExportFolder;
+                string subfolder = @"\";
+                string outputpath = salefilepath + subfolder;
+                string mfilepath = Program.SentFolder;
+                string outputMpath = mfilepath + subfolder;
+                string filename = string.Empty;
+
+
+                string path = string.Empty;
+                string sentfolder = string.Empty;
+
+                string sftpip = ConfigurationManager.AppSettings["06"];
+                string sftpusername = ConfigurationManager.AppSettings["07"];
+                string sftppwd = ConfigurationManager.AppSettings["08"];
+                string sftpkey = ConfigurationManager.AppSettings["09"];
+                string sftpport = ConfigurationManager.AppSettings["10"];
+
+
+
+                //checking for unsent files
+                #region check unsent files
+                DirectoryInfo d = new DirectoryInfo(Program.ExportFolder);
+                foreach (FileInfo file in d.GetFiles())
+                {
+                    SalesTXTFail = false;
+                    try
+                    {
+                        //string fileName = file.Name.ToString();
+                        string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                        string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+
+                        if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                        {
+                            FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
+
+                            path = @"" + outputpath + file.Name.ToString();
+
+                            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(@"ftp://" + sftpip + @"/" + file.Name.ToString());
+                            //request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheIfAvailable);
+                            request.Method = WebRequestMethods.Ftp.UploadFile;
+                            request.UseBinary = true;
+                            request.KeepAlive = false;
+                            request.UsePassive = true;   // adapt to FTP server who only handle PASSIVE mode
+
+                            request.Credentials = new NetworkCredential(sftpusername, sftppwd);
+                            // Copy the contents of the file to the request stream.  
+                            StreamReader sourceStream = new StreamReader(path);
+                            byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+                            sourceStream.Close();
+                            sourceStream.Dispose();
+
+                            request.ContentLength = fileContents.Length;
+                            Stream requestStream = request.GetRequestStream();
+                            requestStream.Write(fileContents, 0, fileContents.Length);
+                            requestStream.Close();
+                            requestStream.Dispose();
+
+                            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                            //Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
+                            //System.Windows.Forms.MessageBox.Show("Sales file successfully sent to RLC server.", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                            //Sales file successfully sent to RLC server”
+                            Func.Log(path + "Upload succeeded. - " + response.StatusDescription);
+                            string line = "";
+                            string busidate = "";
+                            DateTime unsentBusidate;
+                            using (StreamReader sr = new StreamReader(path))
+                            {
+                                while (!sr.EndOfStream)
+                                {
+                                    line = sr.ReadLine();
+                                    if (line.Contains("1800000"))
+                                    {
+                                        //business date inside file
+                                        busidate = line.Substring(line.Length - 10);
+                                    }
+
+                                }
+                                sr.Dispose();
+                            }
+                            unsentBusidate = DateTime.ParseExact(busidate, "MM/dd/yyyy",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+
+                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            response.Close();
+                            us = "Send successfully.";
+                            if (!SalesTXTFail)
+                            {
+                                File.Copy(path, outputMpath + file.Name.ToString(), true);
+                                Func.Log("Copied file to " + Program.SentFolder);
+                                File.Delete(path);
+                                Func.Log("Deleting file " + path);
+                            }
+
+                        }
+
+
+                    }
+                    catch (WebException e)
+                    {
+                        Console.WriteLine(e.Message.ToString());
+                        String status = ((FtpWebResponse)e.Response).StatusDescription;
+                        //Console.WriteLine(status);
+                        //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface WebException", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                        //Sales file is not sent to RLC server. Please contact your POS vendor
+                        Func.Log(path + " failed to upload to FTP again. - " + status);
+                        SalesTXTFail = true;
+                        ErrorTracking.Log("[Business/Export] WebException Error during export to FTP.");
+                        ErrorTracking.Log(status);
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //Console.WriteLine(ex.Message.ToString());
+                        Func.Log(path + " failed to upload to FTP. - " + ex.Message.ToString());
+                        //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                        SalesTXTFail = true;
+                        ErrorTracking.Log("[Business/Export] Error during export to FTP.");
+                        ErrorTracking.Log(ex.Message.ToString());
+                    }
+                   
+                }
+                #endregion check unsent files
+
+
+                //get export data
+                int exportCount = 0;
+                string storeNum;
+                //string machineId;
+                DateTime businessDate = StartDate;
+                string fileName;
+                List<posmasterSHNew> posmasterSHNew;
+
+                Data.PrepareTempTable();
+
+
+
+
+                //string exportedFile = "";
+                //--
+
+
+                //get storenum
+                //SessionOptions sessionOptions;
+                storeNum = Program.StoreNo;
+                //machineId = Program.StoreNo;
+
+
+                //process each business date
+                while (businessDate <= EndDate)
+                {
+                    int serialnumber = Data.GetSequenceNumber(businessDate);
+
+                    List<posmasterSHNew> FinalStoreListNew = new List<posmasterSHNew>();
+
+                    //get gch
+                    if (!Program.IsAutoMode) FrmMain.SetStatus("Getting check list for [" + businessDate.ToString(Const.DateFormat) + "]...");
+
+
+                    //New added
+                    posmasterSHNew = Data.GetPosmasterSHNewList(businessDate);
+                    serialnumber = serialnumber + 1;
+
+                    foreach (posmasterSHNew SL in posmasterSHNew)
+                    {
+                        string TenantID = Program.StoreNo.PadLeft(16, '0');
+                        string TerminalNo = SL.getTerminalNo.PadLeft(16, '0');
+                        terminalno = SL.getTerminalNo.PadLeft(2, '0');
+                        string GrossSales = SL.getGrossSales.PadLeft(16, '0');
+                        string TTax = SL.getTTax.PadLeft(16, '0');
+                        string TVoid = SL.getTVoid.PadLeft(16, '0');
+                        string CVoid = SL.getCVoid.PadLeft(16, '0');
+                        string TDisc = SL.getTDisc.PadLeft(16, '0');
+                        string CDisc = SL.getCDisc.PadLeft(16, '0');
+                        string TRefund = SL.getTRefund.PadLeft(16, '0');
+                        string CRefund = SL.getCRefund.PadLeft(16, '0');
+                        string TNegAdj = SL.getTNegAdj.PadLeft(16, '0');
+                        string CNegAdj = SL.getCNegAdj.PadLeft(16, '0');
+                        string TServChg = SL.getTServChg.PadLeft(16, '0');
+                        string PrevZCnt = SL.getPrevZCnt.PadLeft(16, '0');
+                        string PrevGT = SL.getPrevGT.PadLeft(16, '0');
+                        string NewZCnt = SL.getNewZCnt.PadLeft(16, '0');
+                        string NewGT = SL.getNewGT.PadLeft(16, '0');
+                        string BizDate = SL.getBizDate.PadLeft(16, '0');
+                        string Novelty = SL.getNovelty.PadLeft(16, '0');
+                        string Misc = SL.getMisc.PadLeft(16, '0');
+                        string LocalTax = SL.getLocalTax.PadLeft(16, '0');
+                        string TCreditSales = SL.getTCreditSales.PadLeft(16, '0');
+                        string TCreditTax = SL.getTCreditTax.PadLeft(16, '0');
+                        string TNVatSales = SL.getTNVatSales.PadLeft(16, '0');
+                        string Pharma = SL.getPharma.PadLeft(16, '0');
+                        string NPharma = SL.getNPharma.PadLeft(16, '0');
+                        string TPWDDisc = SL.getTPWDDisc.PadLeft(16, '0');
+                        string GrossNotSub = SL.getGrossNotSub.PadLeft(16, '0');
+                        string TReprint = SL.getTReprint.PadLeft(16, '0');
+                        string CReprint = SL.getCReprint.PadLeft(16, '0');
+
+
+                        FinalStoreListNew.Add(new posmasterSHNew(TenantID,
+        TerminalNo,
+        GrossSales,
+        TTax,
+        TVoid,
+        CVoid,
+        TDisc,
+        CDisc,
+        TRefund,
+        CRefund,
+        TNegAdj,
+        CNegAdj,
+        TServChg,
+        PrevZCnt,
+        PrevGT,
+        NewZCnt,
+        NewGT,
+        BizDate,
+        Novelty,
+        Misc,
+        LocalTax,
+        TCreditSales,
+        TCreditTax,
+        TNVatSales,
+        Pharma,
+        NPharma,
+        TPWDDisc,
+        GrossNotSub,
+        TReprint,
+        CReprint));
+                    }
+
+
+                    //if (FinalStoreListNew.Count == 0)
+                    //{
+                    //    FinalStoreListNew.Add(new posmasterSHNew(businessDate.ToString("MM/dd/yyyy HH:mm"), businessDate.ToString("yyyyMMdd"),  0, 0, 0, 0, 0, 0, 0, 0));
+
+                    //    s = "No record(s) to export on [" + businessDate.ToString(Const.DateFormat) + "].";
+                    //    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    //    Func.Log(s);
+                    //}
+
+                    if (FinalStoreListNew.Count > 0)
+                    {
+                        #region write file
+                        //Get Sequence Number
+                        String SequenceAlpha = Data.GetSequenceSwitch(serialnumber);
+                        int BatchNumber = Data.GetBatchNumber(businessDate) + 1;
+
+                       
+                        //set file name
+                        //fileName = "H" + Program.StoreNo.ToString() + "_" + businessDate.ToString("yyyyMMdd") + "_" + SequenceAlpha + ".txt";
+                        //fileName = "H" + Program.StoreNo.ToString() + "_" + businessDate.ToString("yyyyMMdd") + ".txt";
+                        fileName = Program.StoreNo.Substring(Program.StoreNo.Length - 4) + businessDate.ToString("MMdd") + "." + terminalno + BatchNumber.ToString();
+                        //exportedFile = filename;
+                        //delete file
+                        try { File.Delete(Program.ExportFolder + @"\" + fileName); }
+                        catch { }
+
+                        //check if stil exist
+                        // if (!File.Exists(Program.ExportFolder + @"\" + fileName))
+                        Data.InsertBatchLogs(fileName, businessDate);
+                        //exportCount++;
+                        //writing file
+                        if (!Program.IsAutoMode) FrmMain.SetStatus("Writing text file [" + fileName + "]...");
+
+                        if (WriteTextNew(Program.ExportFolder + @"\" + fileName, FinalStoreListNew))
+                        {
+                            s = "File [" + fileName + "] export successful.";
+
+                            if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                            Func.Log(s);
+                            exportCount++;
+
+                            Data.GetSequenceNumberUpdate(serialnumber, businessDate);
+
+                        }
+                        else
+                        {
+                            s = "Error writing [" + fileName + "].";
+
+                            if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                            Func.Log(s);
+                        }
+
+                        //else
+                        //{
+                        //    //file exist. will not overwrite
+                        //    s = "File [" + fileName + "] already exist.";
+                        //    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                        //    Func.Log(s);
+                        // }
+                        #endregion write file
+                        // Data.InsertBatchLogs(fileName, businessDate);
+                        //#TCS 2019-10-01
+                        #region upload file to FTP
+
+
+                        SalesTXTFail = false;
+                        try
+                        {
+                            string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                            string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                            string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                            string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+
+                            if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                            {
+                                FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
+
+                                path = @"" + outputpath + fileName;
+
+                                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(@"ftp://" + sftpip + @"/" + fileName);
+                                //request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheIfAvailable);
+                                request.Method = WebRequestMethods.Ftp.UploadFile;
+                                request.UseBinary = true;
+                                request.KeepAlive = false;
+                                request.UsePassive = true;   // adapt to FTP server who only handle PASSIVE mode
+
+                                request.Credentials = new NetworkCredential(sftpusername, sftppwd);
+                                // Copy the contents of the file to the request stream.  
+                                StreamReader sourceStream = new StreamReader(path);
+                                byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+                                sourceStream.Close();
+                                sourceStream.Dispose();
+
+                                request.ContentLength = fileContents.Length;
+                                Stream requestStream = request.GetRequestStream();
+                                requestStream.Write(fileContents, 0, fileContents.Length);
+                                requestStream.Close();
+                                requestStream.Dispose();
+
+                                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                                //Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
+                                //System.Windows.Forms.MessageBox.Show("Sales file successfully sent to RLC server.", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                                //Sales file successfully sent to RLC server”
+                                Func.Log(path + "Upload succeeded. - " + response.StatusDescription);
+                                //Data.InsertBatchLogs(fileName, businessDate);
+                                response.Close();
+                                s = "Send successfully.";
+                                if (!SalesTXTFail)
+                                {
+                                    File.Copy(path, outputMpath + fileName, true);
+                                    Func.Log("Copied file to " + Program.SentFolder);
+                                    File.Delete(path);
+                                    Func.Log("Deleting file " + path);
+                                }
+
+                            }
+                            else if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                            {
+
+                                path = @"" + outputpath + fileName;
+
+                                SessionOptions sessionOptions = new SessionOptions();
+                                sessionOptions.Protocol = Protocol.Sftp;
+                                sessionOptions.HostName = sftpip;
+                                sessionOptions.UserName = sftpusername;
+                                sessionOptions.Password = sftppwd;
+                                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
+                                sessionOptions.SshHostKeyFingerprint = sftpkey;
+                                //sessionOptions.TimeoutInMilliseconds = 7000;
+                                Session session = new Session();
+                                session.Open(sessionOptions);
+                                TransferOptions transferOptions = new TransferOptions();
+                                transferOptions.TransferMode = TransferMode.Binary;
+                                TransferOperationResult transferResult;
+                                //This is for Getting/Downloading files from SFTP  
+                                //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
+
+                                //This is for Putting/Uploading file on SFTP  
+                                transferResult = session.PutFiles(path, SFTPDestination, false, transferOptions);
+                                transferResult.Check();
+
+
+
+                                Func.Log(path + "Upload succeeded. - ");
+                                //Data.InsertBatchLogs(fileName, businessDate);
+
+                                us = "Send successfully.";
+                                if (!SalesTXTFail)
+                                {
+                                    File.Copy(path, outputMpath + fileName, true);
+                                    Func.Log("Copied file to " + Program.SentFolder);
+                                    File.Delete(path);
+                                    Func.Log("Deleting file " + path);
+                                }
+
+
+                            }
+                        }
+                        catch (WebException e)
+                        {
+                            Console.WriteLine(e.Message.ToString());
+                            String status = ((FtpWebResponse)e.Response).StatusDescription;
+                            //Console.WriteLine(status);
+                            //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface WebException", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                            //Sales file is not sent to RLC server. Please contact your POS vendor
+                            Func.Log(path + " failed to upload to FTP. - " + status);
+                            SalesTXTFail = true;
+                            ErrorTracking.Log("[Business/Export] WebException Error during export to FTP.");
+                            ErrorTracking.Log(status);
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            //Console.WriteLine(ex.Message.ToString());
+                            Func.Log(path + " failed to upload to FTP. - " + ex.Message.ToString());
+                            //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                            SalesTXTFail = true;
+                            ErrorTracking.Log("[Business/Export] Error during export to FTP.");
+                            ErrorTracking.Log(ex.Message.ToString());
+                        }
+
+                        #endregion
+
+                    }
+
+                    //set next day
+                    businessDate = businessDate.AddDays(1);
+                }
+
+                #region set message
+                if (exportCount == 0)
+                {
+                    s = "No record(s) to export.";
+                    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    Func.Log(s);
+                    //s = string.Empty;
+                }
+                else if (SalesTXTFail == true)
+                {
+                    s = "FTP server Error";
+                    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    Func.Log(s);
+                }
+                else if (s.Contains("export successful."))
+                {
+                    s = "Export completed.";
+                    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    Func.Log(s);
+
+                }
+                else if (us == "Send successfully.")
+                {
+                    s = "Pending sent successfully.";
+                    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    Func.Log(s);
+                }
+                else
+                {
+                    s = "Sending completed.";
+                    if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    Func.Log(s);
+                    s = string.Empty;
+                }
+
+                return s;
+                #endregion set message
+            }
+            catch (Exception ex)
+            {
+                ErrorTracking.Log("[Business/Export] Error during export.");
+                ErrorTracking.Log(ex);
+                Func.Log("Error during export.");
+                return "ERR";
+            }
+        }
+
+
 
 
         private static bool WriteText(string FullName, List<posmasterSH> StoreList)
