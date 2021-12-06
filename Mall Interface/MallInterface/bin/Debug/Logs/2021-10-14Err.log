@@ -1,0 +1,6 @@
+2021-10-14 21:27:25 [AppConfig/Load] Error loading configs.
+2021-10-14 21:27:25 System.ApplicationException: Invalid setting string for [C05]
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 258
+2021-10-14 21:27:58 [AppConfig/Load] Error loading configs.
+2021-10-14 21:27:58 System.ApplicationException: Invalid setting string for [C05]
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 258

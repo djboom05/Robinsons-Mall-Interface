@@ -1,0 +1,18 @@
+2021-04-07 17:58:52 [Business/Export] Error during export.
+2021-04-07 17:58:52 System.ArgumentException: Column 'Discount' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at TransightInterface.Data.GetPosmasterSHNewList(DateTime GenerateDate) in C:\Users\Administrator\Documents\ANW FILES\MI Chilis-Sunway-Putra - H(D) -v1.2\Mall Interface 01\MallInterface\Data.cs:line 690
+   at TransightInterface.Business.ExportNew(DateTime StartDate, DateTime EndDate, FormMain FrmMain) in C:\Users\Administrator\Documents\ANW FILES\MI Chilis-Sunway-Putra - H(D) -v1.2\Mall Interface 01\MallInterface\Business.cs:line 592
+2021-04-07 17:59:26 [Business/Export] Error during export.
+2021-04-07 17:59:26 System.ArgumentException: Column 'Discount' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at TransightInterface.Data.GetPosmasterSHNewList(DateTime GenerateDate) in C:\Users\Administrator\Documents\ANW FILES\MI Chilis-Sunway-Putra - H(D) -v1.2\Mall Interface 01\MallInterface\Data.cs:line 690
+   at TransightInterface.Business.ExportNew(DateTime StartDate, DateTime EndDate, FormMain FrmMain) in C:\Users\Administrator\Documents\ANW FILES\MI Chilis-Sunway-Putra - H(D) -v1.2\Mall Interface 01\MallInterface\Business.cs:line 592
+2021-04-07 18:00:50 [Business/Export] Error during export.
+2021-04-07 18:00:50 System.ArgumentException: Column 'Discount' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at TransightInterface.Data.GetPosmasterSHNewList(DateTime GenerateDate) in C:\Users\Administrator\Documents\ANW FILES\MI Chilis-Sunway-Putra - H(D) -v1.2\Mall Interface 01\MallInterface\Data.cs:line 690
+   at TransightInterface.Business.ExportNew(DateTime StartDate, DateTime EndDate, FormMain FrmMain) in C:\Users\Administrator\Documents\ANW FILES\MI Chilis-Sunway-Putra - H(D) -v1.2\Mall Interface 01\MallInterface\Business.cs:line 592

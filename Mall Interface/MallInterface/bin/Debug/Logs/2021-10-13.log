@@ -1,0 +1,232 @@
+2021-10-13 13:02:40 Running manual mode.
+2021-10-13 13:05:20 Running manual mode.
+2021-10-13 13:09:28 Running manual mode.
+2021-10-13 13:11:59 Running manual mode.
+2021-10-13 13:12:20 Running manual mode.
+2021-10-13 13:19:49 Running manual mode.
+2021-10-13 13:20:18 Running manual mode.
+2021-10-13 13:25:40 Running auto mode.
+2021-10-13 13:28:25 Running auto mode.
+2021-10-13 13:31:11 Running auto mode.
+2021-10-13 13:34:35 Error during export.
+2021-10-13 13:34:35 No unsend file
+2021-10-13 13:35:59 Error during export.
+2021-10-13 13:35:59 No unsend file
+2021-10-13 13:39:25 Running auto mode.
+2021-10-13 13:41:03 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 13:41:03 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 13:44:18 Running auto mode.
+2021-10-13 13:49:04 Running auto mode.
+2021-10-13 13:51:17 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 13:51:17 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 13:52:25 Running auto mode.
+2021-10-13 13:53:58 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 13:53:58 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 13:53:59 File [45670523.011] export successful.
+2021-10-13 13:53:59 Export completed.
+2021-10-13 13:53:59 FTP not activated
+2021-10-13 13:54:43 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 13:54:43 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 13:54:51 File [45670523.011] export successful.
+2021-10-13 13:54:51 Export completed.
+2021-10-13 13:54:51 FTP not activated
+2021-10-13 13:56:00 Running auto mode.
+2021-10-13 13:57:09 FTP not activated
+2021-10-13 13:58:55 Running auto mode.
+2021-10-13 13:59:59 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 13:59:59 Copied file to C:\Interface\Sent
+2021-10-13 13:59:59 Deleting file C:\Interface\45670523.011
+2021-10-13 13:59:59 Sending completed.
+2021-10-13 14:01:14 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:01:14 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:02:44 Running auto mode.
+2021-10-13 14:03:45 No unsend file
+2021-10-13 14:07:04 Running auto mode.
+2021-10-13 14:08:04 No unsend file
+2021-10-13 14:11:03 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:11:03 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:16:22 Running auto mode.
+2021-10-13 14:17:22 No unsend file
+2021-10-13 14:18:39 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:18:39 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:19:05 No record(s) to export.
+2021-10-13 14:19:33 No unsend file
+2021-10-13 14:20:22 Running auto mode.
+2021-10-13 14:21:22 No unsend file
+2021-10-13 14:21:31 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:21:31 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:21:32 No record(s) to export.
+2021-10-13 14:22:22 No unsend file
+2021-10-13 14:22:22 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:22:22 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:22:22 No record(s) to export.
+2021-10-13 14:23:22 No unsend file
+2021-10-13 14:23:22 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:23:22 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:23:22 No record(s) to export.
+2021-10-13 14:38:25 Running auto mode.
+2021-10-13 14:38:37 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:38:37 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:38:37 No record(s) to export.
+2021-10-13 14:39:08 Running auto mode.
+2021-10-13 14:40:01 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:40:01 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:40:05 No record(s) to export.
+2021-10-13 14:40:09 No unsend file
+2021-10-13 14:40:09 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:40:09 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:40:09 No record(s) to export.
+2021-10-13 14:43:03 Running auto mode.
+2021-10-13 14:45:36 Running manual mode.
+2021-10-13 14:45:46 Running manual mode.
+2021-10-13 14:46:08 Running manual mode.
+2021-10-13 14:46:35 Running manual mode.
+2021-10-13 14:47:03 Running manual mode.
+2021-10-13 14:48:44 Running manual mode.
+2021-10-13 14:49:53 Running manual mode.
+2021-10-13 14:51:09 Running manual mode.
+2021-10-13 14:51:24 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 14:51:24 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 14:51:24 File [45670523.012] export successful.
+2021-10-13 14:51:24 C:\Interface\45670523.012Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 14:51:24 Copied file to C:\Interface\Sent
+2021-10-13 14:51:24 Deleting file C:\Interface\45670523.012
+2021-10-13 14:51:24 Sending completed.
+2021-10-13 14:53:27 Running manual mode.
+2021-10-13 14:53:41 Running auto mode.
+2021-10-13 14:54:22 Running auto mode.
+2021-10-13 14:55:25 Running auto mode.
+2021-10-13 15:02:56 Running auto mode.
+2021-10-13 15:03:06 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:03:06 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:03:36 File [45670523.013] export successful.
+2021-10-13 15:03:36 C:\Interface\45670523.013Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 15:03:36 Copied file to C:\Interface\Sent
+2021-10-13 15:03:36 Deleting file C:\Interface\45670523.013
+2021-10-13 15:03:36 Sending completed.
+2021-10-13 15:04:58 Running auto mode.
+2021-10-13 15:07:00 Running auto mode.
+2021-10-13 15:14:32 Running auto mode.
+2021-10-13 15:17:32 No unsend file
+2021-10-13 15:18:06 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:18:06 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:18:10 File [45670523.011] export successful.
+2021-10-13 15:18:10 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 15:18:10 Copied file to C:\Interface\Sent
+2021-10-13 15:18:10 Deleting file C:\Interface\45670523.011
+2021-10-13 15:18:10 Sending completed.
+2021-10-13 15:20:32 No unsend file
+2021-10-13 15:21:03 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:21:03 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:21:03 No record(s) to export.
+2021-10-13 15:23:32 No unsend file
+2021-10-13 15:23:32 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:23:32 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:23:32 No record(s) to export.
+2021-10-13 15:26:32 No unsend file
+2021-10-13 15:26:32 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:26:32 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:26:32 No record(s) to export.
+2021-10-13 15:29:32 No unsend file
+2021-10-13 15:29:32 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:29:32 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:29:32 No record(s) to export.
+2021-10-13 15:32:32 No unsend file
+2021-10-13 15:32:32 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:32:32 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:32:32 No record(s) to export.
+2021-10-13 15:35:32 No unsend file
+2021-10-13 15:35:32 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:35:32 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:35:32 No record(s) to export.
+2021-10-13 15:38:32 No unsend file
+2021-10-13 15:38:32 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:38:32 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:38:32 No record(s) to export.
+2021-10-13 15:40:29 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 15:40:29 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 15:40:29 File [45670523.012] export successful.
+2021-10-13 15:40:30 C:\Interface\45670523.012Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 15:40:30 Copied file to C:\Interface\Sent
+2021-10-13 15:40:30 Deleting file C:\Interface\45670523.012
+2021-10-13 15:40:30 Sending completed.
+2021-10-13 15:50:25 Running auto mode.
+2021-10-13 15:50:58 Running auto mode.
+2021-10-13 15:54:00 Running auto mode.
+2021-10-13 16:08:14 Running auto mode.
+2021-10-13 16:10:04 An error has occured during export. Export aborted.
+2021-10-13 16:29:26 Running auto mode.
+2021-10-13 16:37:25 Running auto mode.
+2021-10-13 16:37:31 Execute sp_SalesDailyRobMallTxtfile.StartDate:10/12/2021 12:00:00 AM
+2021-10-13 16:37:31 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 16:37:31 File [45671012.011] export successful.
+2021-10-13 16:37:31 C:\Interface\45671012.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 16:37:31 Copied file to C:\Interface\Sent
+2021-10-13 16:37:31 Deleting file C:\Interface\45671012.011
+2021-10-13 16:37:31 Sending completed.
+2021-10-13 16:38:50 Running auto mode.
+2021-10-13 16:41:51 No unsend file
+2021-10-13 16:41:51 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 16:41:51 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 16:41:51 File [45670523.011] export successful.
+2021-10-13 16:41:51 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 16:41:51 Copied file to C:\Interface\Sent
+2021-10-13 16:41:51 Deleting file C:\Interface\45670523.011
+2021-10-13 16:41:51 Sending completed.
+2021-10-13 16:44:51 No unsend file
+2021-10-13 16:44:51 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 16:44:51 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 16:44:51 No record(s) to export.
+2021-10-13 16:58:25 Running auto mode.
+2021-10-13 17:01:25 No unsend file
+2021-10-13 17:01:25 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 17:01:25 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 17:01:25 File [45670523.011] export successful.
+2021-10-13 17:01:25 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 17:01:25 Copied file to C:\Interface\Sent
+2021-10-13 17:01:25 Deleting file C:\Interface\45670523.011
+2021-10-13 17:01:25 Sending completed.
+2021-10-13 17:04:25 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 17:04:25 Copied file to C:\Interface\Sent
+2021-10-13 17:04:25 Deleting file C:\Interface\45670523.011
+2021-10-13 17:04:25 Sending completed.
+2021-10-13 17:04:35 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 17:04:35 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 17:04:35 No record(s) to export.
+2021-10-13 17:05:52 Running auto mode.
+2021-10-13 17:06:07 Running auto mode.
+2021-10-13 17:07:07 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 17:07:08 Copied file to C:\Interface\Sent
+2021-10-13 17:07:08 Deleting file C:\Interface\45670523.011
+2021-10-13 17:07:08 Sending completed.
+2021-10-13 17:07:10 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 17:07:10 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 17:07:10 No record(s) to export.
+2021-10-13 17:09:20 Running auto mode.
+2021-10-13 17:10:21 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 17:10:21 Copied file to C:\Interface\Sent
+2021-10-13 17:10:21 Deleting file C:\Interface\45670523.011
+2021-10-13 17:10:21 Sending completed.
+2021-10-13 17:10:24 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 17:10:24 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 17:10:24 No record(s) to export.
+2021-10-13 17:13:21 Running auto mode.
+2021-10-13 17:14:22 C:\Interface\45670523.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-13 17:14:22 Copied file to C:\Interface\Sent
+2021-10-13 17:14:22 Deleting file C:\Interface\45670523.011
+2021-10-13 17:14:22 Sending completed.
+2021-10-13 17:16:47 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-13 17:16:47 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-13 17:16:47 No record(s) to export.
