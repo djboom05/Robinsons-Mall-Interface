@@ -21,8 +21,7 @@ namespace TransightInterface
         public bool isAutoMode;
         public decimal _SchedTime;
 
-        public string DtLibConfig = "DtLibConfig";
-        public string EODDate = Data.GetLastEODDate();
+        string DtLibConfig = "DtLibConfig";
         DataView DtView = new DataView();
         public FormMain(bool Initialize)
         {
@@ -51,21 +50,13 @@ namespace TransightInterface
                 //set version
                 lblVersion.Text = "V " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-            //set controls
-            if (EODDate == "")
-                {
+                //set controls
                 dtpStartDate.Value = DateTime.Today;
                 dtpStartDate.MaxDate = DateTime.Today;
                 dtpEndDate.Value = DateTime.Today;
                 dtpEndDate.MaxDate = DateTime.Today;
-            }
-            else {
+            
 
-                dtpStartDate.Value = Convert.ToDateTime(EODDate);
-                dtpStartDate.MaxDate = Convert.ToDateTime(EODDate);
-                dtpEndDate.Value = Convert.ToDateTime(EODDate);
-                dtpEndDate.MaxDate = Convert.ToDateTime(EODDate);
-            }
             isAutoMode = Initialize;
         }
         
@@ -149,7 +140,7 @@ namespace TransightInterface
             try
             {
                 DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                
+
             }
             catch (Exception ex)
             {
@@ -330,7 +321,7 @@ namespace TransightInterface
             Application.DoEvents();
         }
 
-        public void EnableControls(bool Enable)
+        private void EnableControls(bool Enable)
         {
             btnConfig.Enabled = Enable;
             dtpStartDate.Enabled = Enable;
@@ -482,7 +473,7 @@ namespace TransightInterface
                     {
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
-                        this.Refresh();
+                        
                     }
                 }
                 else if (AppConfig._schedType == "HOURLY")
@@ -493,8 +484,7 @@ namespace TransightInterface
                     {
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
-                        this.Refresh();
-
+                        
                     }
                 }
                 else
@@ -503,8 +493,7 @@ namespace TransightInterface
                     {
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
-                        this.Refresh();
-                        dgvPOS.Refresh();
+                        
                     }
                 }
             }
@@ -514,8 +503,6 @@ namespace TransightInterface
                 {
                     Program.RunAutoMode();
                     Program.RunUnsendMode();
-                    this.Refresh();
-                    dgvPOS.Refresh();
                 }
             }
 

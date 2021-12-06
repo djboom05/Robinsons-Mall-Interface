@@ -340,45 +340,6 @@ namespace TransightInterface
             }
         }
 
-        public static string GetLastEODDate()
-        {
-            try
-            {
-                String lasteod = null;
-
-                conn = new SqlConnection(Program.ConnString);
-                conn.Open();
-
-                query = "SELECT lastreset FROM system";
-                cmd = new SqlCommand(query, conn);
-                //prmtr = new SqlParameter("@BusinessDate", SqlDbType.DateTime);
-                //prmtr.Value = BusinessDate;
-                cmd.Parameters.Add(prmtr);
-
-                lasteod = Convert.ToString(cmd.ExecuteScalar());
-
-                conn.Close();
-
-                return lasteod;
-            }
-
-            catch (SqlException sex)
-            {
-                ErrorTracking.Log("[Data/GetBatchNumber] Error getting GetBatchNumber [" + query + "].");
-                ErrorTracking.Log(sex);
-                throw new ApplicationException("Error getting GetBatchNumber");
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open) conn.Close();
-                conn.Dispose();
-                conn = null;
-
-                cmd.Dispose();
-                cmd = null;
-            }
-        }
-
         public static DateTime GetPrevDate()
         {
             try

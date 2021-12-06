@@ -2263,7 +2263,6 @@ namespace TransightInterface
                         ErrorTracking.Log("[Business/Export] Error during export to FTP.");
                         ErrorTracking.Log(ex.Message.ToString());
                     }
-                   
                 }
                 #endregion check unsent files
 
@@ -2612,8 +2611,7 @@ namespace TransightInterface
                 return "ERR";
             }
         }
-
-
+    
 
 
         private static bool WriteText(string FullName, List<posmasterSH> StoreList)
