@@ -1,0 +1,13 @@
+2021-10-13 13:34:35 [Business/Export] Error during export.
+2021-10-13 13:34:35 System.NullReferenceException: Object reference not set to an instance of an object.
+   at TransightInterface.FormMain.SetStatus(String s) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\MallInterface\FormMain.cs:line 211
+   at TransightInterface.Business.ExportNew(DateTime StartDate, DateTime EndDate, FormMain FrmMain) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\MallInterface\Business.cs:line 941
+2021-10-13 13:35:59 [Business/Export] Error during export.
+2021-10-13 13:35:59 System.NullReferenceException: Object reference not set to an instance of an object.
+   at TransightInterface.FormMain.SetStatus(String s) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\MallInterface\FormMain.cs:line 211
+   at TransightInterface.Business.ExportNew(DateTime StartDate, DateTime EndDate, FormMain FrmMain) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\MallInterface\Business.cs:line 941
+2021-10-13 16:10:04 [FormMain/btnExport_Click] Error during export.
+2021-10-13 16:10:04 System.InvalidOperationException: Cross-thread operation not valid: Control 'dtpEndDate' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.DateTimePicker.get_Checked()
+   at TransightInterface.FormMain.bgWorker_DoWork(Object sender, DoWorkEventArgs e) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\MallInterface\FormMain.cs:line 313

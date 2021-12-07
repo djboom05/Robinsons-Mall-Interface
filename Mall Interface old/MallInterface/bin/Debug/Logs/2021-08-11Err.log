@@ -1,0 +1,58 @@
+2021-08-11 15:14:11 [Business/Export] WebException Error during export to FTP.
+2021-08-11 15:14:11 
+2021-08-11 15:14:32 [Business/Export] WebException Error during export to FTP.
+2021-08-11 15:14:32 
+2021-08-11 15:17:41 [Business/Export] WebException Error during export to FTP.
+2021-08-11 15:17:41 
+2021-08-11 15:20:22 [Business/Export] WebException Error during export to FTP.
+2021-08-11 15:20:22 
+2021-08-11 15:20:50 [Business/Export] WebException Error during export to FTP.
+2021-08-11 15:20:50 
+2021-08-11 15:22:21 [Business/Export] WebException Error during export to FTP.
+2021-08-11 15:22:21 
+2021-08-11 15:34:08 [AppConfig/Load] Error loading configs.
+2021-08-11 15:34:08 System.Data.SqlClient.SqlException: Login failed for user ''.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnection owningObject, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(String host, String newPassword, Boolean redirectedUserInstance, SqlConnection owningObject, SqlConnectionString connectionOptions, Int64 timerStart)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(SqlConnection owningObject, SqlConnectionString connectionOptions, String newPassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, String newPassword, SqlConnection owningObject, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnection owningConnection, DbConnectionPool pool, DbConnectionOptions options)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Transight.Interface.Config.DataFunctions.Connect() in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\DataFunctions.cs:line 35
+2021-08-11 15:34:08 [AppConfig/Load] Error loading configs.
+2021-08-11 15:34:08 System.Data.SqlClient.SqlException: Login failed for user ''.
+   at Transight.Interface.Config.DataFunctions.Connect() in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\DataFunctions.cs:line 52
+   at Transight.Interface.Config.DataFunctions.FillDataTable(String SQLCommandTxt, String DataTableName) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\DataFunctions.cs:line 169
+   at Transight.Interface.Config.DataFunctions.LoadDataToGrid(String xDataTableName, DataGridView xDataGridView, DataView xDataView, String xQry) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\DataFunctions.cs:line 201
+2021-08-11 15:34:23 [AppConfig/Load] Error loading configs.
+2021-08-11 15:34:23 System.Data.SqlClient.SqlException: Login failed for user ''.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnection owningObject, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(String host, String newPassword, Boolean redirectedUserInstance, SqlConnection owningObject, SqlConnectionString connectionOptions, Int64 timerStart)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(SqlConnection owningObject, SqlConnectionString connectionOptions, String newPassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, String newPassword, SqlConnection owningObject, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnection owningConnection, DbConnectionPool pool, DbConnectionOptions options)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Transight.Interface.Config.DataFunctions.Connect() in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\DataFunctions.cs:line 35
+2021-08-11 15:47:15 [AppConfig/Load] Error loading configs.
+2021-08-11 15:47:15 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 163

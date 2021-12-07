@@ -1,0 +1,235 @@
+2021-10-20 10:16:07 Running auto mode.
+2021-10-20 10:16:29 Running auto mode.
+2021-10-20 10:17:17 Running auto mode.
+2021-10-20 10:19:42 Running auto mode.
+2021-10-20 10:21:25 Running auto mode.
+2021-10-20 10:22:38 Running auto mode.
+2021-10-20 10:22:56 Execute sp_SalesDailyRobMallTxtfile.StartDate:10/19/2021 12:00:00 AM
+2021-10-20 10:22:56 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 10:22:56 File [45671019.011] export successful.
+2021-10-20 10:22:56 Export completed.
+2021-10-20 10:24:37 Running manual mode.
+2021-10-20 10:24:50 Running manual mode.
+2021-10-20 10:25:07 Running auto mode.
+2021-10-20 10:25:29  failed to upload to FTP. - SSH host key fingerprint "" does not match pattern /((ssh-rsa|ssh-dss|ssh-ed25519|ecdsa-sha2-nistp(256|384|521))( |-))?(\d+ )?([0-9a-f]{2}(:|-)){15}[0-9a-f]{2}(;((ssh-rsa|ssh-dss|ssh-ed25519|ecdsa-sha2-nistp(256|384|521))( |-))?(\d+ )?([0-9a-f]{2}(:|-)){15}[0-9a-f]{2})*/
+2021-10-20 10:25:29 Execute sp_SalesDailyRobMallTxtfile.StartDate:10/19/2021 12:00:00 AM
+2021-10-20 10:25:29 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 10:25:29 File [45671019.011] export successful.
+2021-10-20 10:25:29 Export completed.
+2021-10-20 10:25:35 Running auto mode.
+2021-10-20 10:32:19 Running manual mode.
+2021-10-20 10:32:47 C:\Interface\45671019.011Upload succeeded. - 226 Transfer complete.
+
+2021-10-20 10:32:47 Copied file to C:\Interface\Sent
+2021-10-20 10:32:47 Deleting file C:\Interface\45671019.011
+2021-10-20 10:32:47 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-20 10:32:47 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 10:32:47 File [45670523.012] export successful.
+2021-10-20 10:32:47 C:\Interface\45670523.012Upload succeeded. - 226 Transfer complete.
+
+2021-10-20 10:32:47 Copied file to C:\Interface\Sent
+2021-10-20 10:32:47 Deleting file C:\Interface\45670523.012
+2021-10-20 10:32:47 Pending sent successfully.
+2021-10-20 10:35:50 Running manual mode.
+2021-10-20 10:44:42 Running manual mode.
+2021-10-20 10:44:50 Running auto mode.
+2021-10-20 10:44:50 Daily Scheduler is running..Sched:00:00
+2021-10-20 10:55:12 Running auto mode.
+2021-10-20 10:55:12 Daily Scheduler is running..Sched:00:00
+2021-10-20 10:56:14 Running auto mode.
+2021-10-20 10:56:15 Daily Scheduler is running..Sched:00:00
+2021-10-20 10:56:59 Running auto mode.
+2021-10-20 10:56:59 Daily Scheduler is running..Sched:00:00
+2021-10-20 11:03:49 Running auto mode.
+2021-10-20 11:03:49 Daily Scheduler is running..Sched:00:00
+2021-10-20 13:43:22 Running auto mode.
+2021-10-20 13:43:22 Daily Scheduler is running..Sched:00:00
+2021-10-20 13:44:57 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/22/2021 12:00:00 AM
+2021-10-20 13:44:57 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 13:44:57 File [45670522.012] export successful.
+2021-10-20 13:44:57 Export completed.
+2021-10-20 13:46:58 Running auto mode.
+2021-10-20 13:46:58 Daily Scheduler is running..Sched:00:00
+2021-10-20 13:47:15  failed to upload to FTP. - Host key does not match configured key "ssh-ed25519 256 48:55:d5:ff:1b:5a:bb:e0:69:0f:f3:bd:88:cd:53:c5"!
+Host key fingerprint is ssh-rsa 1040 b1:95:48:15:85:ff:a8:45:87:a7:4e:e0:ec:19:46:82.
+Authentication failed.
+2021-10-20 13:47:15 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/22/2021 12:00:00 AM
+2021-10-20 13:47:15 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 13:47:15 File [45670522.012] export successful.
+2021-10-20 13:47:15 Export completed.
+2021-10-20 13:48:52 Running auto mode.
+2021-10-20 13:48:52 Daily Scheduler is running..Sched:00:00
+2021-10-20 13:56:20 Running auto mode.
+2021-10-20 13:56:20 Daily Scheduler is running..Sched:00:00
+2021-10-20 13:57:20 Running auto mode.
+2021-10-20 13:57:20 Daily Scheduler is running..Sched:00:00
+2021-10-20 13:58:54  failed to upload to FTP. - Empty path name is not legal.
+2021-10-20 13:58:54 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/22/2021 12:00:00 AM
+2021-10-20 13:58:54 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 13:58:54 File [45670522.012] export successful.
+2021-10-20 13:58:54 Export completed.
+2021-10-20 14:01:07 Running auto mode.
+2021-10-20 14:01:07 Daily Scheduler is running..Sched:00:00
+2021-10-20 14:03:38 Running auto mode.
+2021-10-20 14:03:38 Daily Scheduler is running..Sched:00:00
+2021-10-20 14:04:34 Copied file to C:\Interface\Sent
+2021-10-20 14:04:34 Deleting file C:\Interface\45670522.012
+2021-10-20 14:04:35 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/22/2021 12:00:00 AM
+2021-10-20 14:04:35 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:04:35 File [45670522.013] export successful.
+2021-10-20 14:04:35 Export completed.
+2021-10-20 14:06:59 Running auto mode.
+2021-10-20 14:06:59 Daily Scheduler is running..Sched:00:00
+2021-10-20 14:07:36 Copied file to C:\Interface\Sent
+2021-10-20 14:07:36 Deleting file C:\Interface\45670522.013
+2021-10-20 14:07:36 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-20 14:07:36 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:07:36 File [45670523.013] export successful.
+2021-10-20 14:07:36 Export completed.
+2021-10-20 14:08:40 Copied file to C:\Interface\Sent
+2021-10-20 14:08:40 Deleting file C:\Interface\45670523.013
+2021-10-20 14:08:41 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-20 14:08:41 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:08:41 File [45670523.014] export successful.
+2021-10-20 14:08:41 Export completed.
+2021-10-20 14:09:15 Copied file to C:\Interface\Sent
+2021-10-20 14:09:15 Deleting file C:\Interface\45670523.014
+2021-10-20 14:09:15 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/20/2021 12:00:00 AM
+2021-10-20 14:09:15 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:09:15 File [45670520.012] export successful.
+2021-10-20 14:09:15 Export completed.
+2021-10-20 14:09:55 Copied file to C:\Interface\Sent
+2021-10-20 14:09:55 Deleting file C:\Interface\45670520.012
+2021-10-20 14:09:55 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/19/2021 12:00:00 AM
+2021-10-20 14:09:55 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:09:55 File [45670519.012] export successful.
+2021-10-20 14:09:55 Export completed.
+2021-10-20 14:10:37 Copied file to C:\Interface\Sent
+2021-10-20 14:10:37 Deleting file C:\Interface\45670519.012
+2021-10-20 14:10:38 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/18/2021 12:00:00 AM
+2021-10-20 14:10:38 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:10:38 File [45670518.012] export successful.
+2021-10-20 14:10:38 Export completed.
+2021-10-20 14:11:44 Copied file to C:\Interface\Sent
+2021-10-20 14:11:44 Deleting file C:\Interface\45670518.012
+2021-10-20 14:11:44 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/17/2021 12:00:00 AM
+2021-10-20 14:11:44 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:11:44 File [45670517.012] export successful.
+2021-10-20 14:11:44 Export completed.
+2021-10-20 14:15:03 Running auto mode.
+2021-10-20 14:15:03 Daily Scheduler is running..Sched:00:00
+2021-10-20 14:17:34 Copied file to C:\Interface\Sent
+2021-10-20 14:17:45 Deleting file C:\Interface\45670517.012
+2021-10-20 14:25:38 Running auto mode.
+2021-10-20 14:25:38 Daily Scheduler is running..Sched:00:00
+2021-10-20 14:25:52 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/22/2021 12:00:00 AM
+2021-10-20 14:25:52 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:25:52 File [45670522.014] export successful.
+2021-10-20 14:25:55 C:\Interface\45670522.014Upload succeeded. - 
+2021-10-20 14:25:55 Copied file to C:\Interface\Sent
+2021-10-20 14:25:55 Deleting file C:\Interface\45670522.014
+2021-10-20 14:25:55 Export completed.
+2021-10-20 14:27:18 Running auto mode.
+2021-10-20 14:27:18 Daily Scheduler is running..Sched:00:00
+2021-10-20 14:27:35 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/18/2021 12:00:00 AM
+2021-10-20 14:27:35 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:27:35 File [45670518.013] export successful.
+2021-10-20 14:27:41 C:\Interface\45670518.013Upload succeeded. - 
+2021-10-20 14:27:41 Copied file to C:\Interface\Sent
+2021-10-20 14:27:41 Deleting file C:\Interface\45670518.013
+2021-10-20 14:27:41 Export completed.
+2021-10-20 14:55:43 Running auto mode.
+2021-10-20 14:55:44 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-20 14:55:44 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 14:55:44 No record(s) to export.
+2021-10-20 15:01:45 Running auto mode.
+2021-10-20 15:01:57 Running auto mode.
+2021-10-20 15:02:12 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-20 15:02:12 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 15:02:12 No record(s) to export.
+2021-10-20 15:04:50 Running auto mode.
+2021-10-20 15:05:25 Running auto mode.
+2021-10-20 15:06:01 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-20 15:06:01 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 15:06:51 No record(s) to export.
+2021-10-20 15:08:25 Running auto mode.
+2021-10-20 15:08:30 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/23/2021 12:00:00 AM
+2021-10-20 15:08:30 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 15:08:30 No record(s) to export.
+2021-10-20 15:09:25 Running auto mode.
+2021-10-20 15:09:45 Running auto mode.
+2021-10-20 15:09:50 Running auto mode.
+2021-10-20 15:10:33 Running auto mode.
+2021-10-20 15:10:35 Daily Scheduler is running..Sched:00:00
+2021-10-20 15:11:51 Running auto mode.
+2021-10-20 15:11:53 Daily Scheduler is running..Sched:00:00
+2021-10-20 15:17:40 Running auto mode.
+2021-10-20 15:17:41 Daily Scheduler is running..Sched:00:00
+2021-10-20 15:18:11 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/22/2021 12:00:00 AM
+2021-10-20 15:18:11 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 15:18:11 File [45670522.015] export successful.
+2021-10-20 15:18:16 C:\Interface\45670522.015Upload succeeded. - 
+2021-10-20 15:18:16 Copied file to C:\Interface\Sent
+2021-10-20 15:18:16 Deleting file C:\Interface\45670522.015
+2021-10-20 15:18:16 Export completed.
+2021-10-20 15:19:01 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/22/2021 12:00:00 AM
+2021-10-20 15:19:01 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 15:19:23 File [45670522.016] export successful.
+2021-10-20 15:19:50 C:\Interface\45670522.016Upload succeeded. - 
+2021-10-20 15:20:03 Copied file to C:\Interface\Sent
+2021-10-20 15:20:05 Deleting file C:\Interface\45670522.016
+2021-10-20 15:20:19 Export completed.
+2021-10-20 15:21:49 Running auto mode.
+2021-10-20 15:21:51 Daily Scheduler is running..Sched:00:00
+2021-10-20 15:22:04 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/20/2021 12:00:00 AM
+2021-10-20 15:22:04 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 15:22:04 File [45670520.013] export successful.
+2021-10-20 15:22:07 C:\Interface\45670520.013Upload succeeded. - 
+2021-10-20 15:22:07 Copied file to C:\Interface\Sent
+2021-10-20 15:22:07 Deleting file C:\Interface\45670520.013
+2021-10-20 15:22:07 Export completed.
+2021-10-20 16:15:15 Running auto mode.
+2021-10-20 16:15:18 Daily Scheduler is running..Sched:00:00
+2021-10-20 16:15:49 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/3/2021 12:00:00 AM
+2021-10-20 16:15:49 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 16:15:49 File [45670503.012] export successful.
+2021-10-20 16:16:00 C:\Interface\45670503.012 failed to upload to SFTP. - Connection has been unexpectedly closed. Server sent command exit status 0.
+Authentication log (see session log for details):
+Using username "accredit3".
+Access denied.
+
+Authentication failed.
+2021-10-20 16:16:00 FTP server Error
+2021-10-20 16:16:17 C:\Interface\45670503.012 failed to upload to FTP. - Network error: Software caused connection abort
+2021-10-20 16:16:17 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/3/2021 12:00:00 AM
+2021-10-20 16:16:17 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 16:16:17 File [45670503.012] export successful.
+2021-10-20 16:16:26 C:\Interface\45670503.012 failed to upload to SFTP. - Network error: Software caused connection abort
+2021-10-20 16:16:26 FTP server Error
+2021-10-20 16:17:01 C:\Interface\45670503.012 failed to upload to FTP. - Network error: Software caused connection abort
+2021-10-20 16:17:02 Execute sp_SalesDailyRobMallTxtfile.StartDate:4/1/2021 12:00:00 AM
+2021-10-20 16:17:02 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 16:17:02 File [45670401.011] export successful.
+2021-10-20 16:17:25 C:\Interface\45670401.011 failed to upload to SFTP. - Network error: Connection to "112.199.91.14" timed out.
+2021-10-20 16:17:25 FTP server Error
+2021-10-20 16:18:14 Running auto mode.
+2021-10-20 16:18:14 Daily Scheduler is running..Sched:00:00
+2021-10-20 16:18:45 C:\Interface\45670401.011 failed to upload to FTP. - Network error: Connection to "112.199.91.14" timed out.
+2021-10-20 16:19:38 Running auto mode.
+2021-10-20 16:19:38 Daily Scheduler is running..Sched:00:00
+2021-10-20 16:20:09 C:\Interface\45670401.011 failed to upload to FTP. - Network error: Connection to "112.199.91.14" timed out.
+2021-10-20 16:21:45 Running auto mode.
+2021-10-20 16:21:45 Daily Scheduler is running..Sched:00:00
+2021-10-20 16:22:14 C:\Interface\45670401.011 failed to upload to FTP. - Network error: Connection to "112.199.91.14" timed out.
+2021-10-20 16:22:38 C:\Interface\45670503.012 failed to upload to FTP. - Network error: Connection to "112.199.91.14" timed out.
+2021-10-20 16:22:38 Execute sp_SalesDailyRobMallTxtfile.StartDate:5/2/2021 12:00:00 AM
+2021-10-20 16:22:38 Return sp_SalesDailyRobMallTxtfile. RowCount=1
+2021-10-20 16:22:38 File [45670502.012] export successful.
+2021-10-20 16:23:02 C:\Interface\45670502.012 failed to upload to SFTP. - Network error: Connection to "112.199.91.14" timed out.
+2021-10-20 16:23:02 FTP server Error
+2021-10-20 16:26:09 Running auto mode.
+2021-10-20 16:26:09 Daily Scheduler is running..Sched:00:00
+2021-10-20 16:26:42 C:\Interface\45670401.011 failed to upload to FTP. - Network error: Connection to "112.199.91.14" timed out.
+2021-10-20 16:27:27 Running auto mode.
+2021-10-20 16:27:28 Daily Scheduler is running..Sched:00:00
+2021-10-20 16:27:59 C:\Interface\45670401.011 failed to upload to FTP. - Network error: Connection to "112.199.91.14" timed out.

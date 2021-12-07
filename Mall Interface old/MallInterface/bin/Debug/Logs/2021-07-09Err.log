@@ -1,0 +1,41 @@
+2021-07-09 14:11:06 [AppConfig/Load] Error loading configs.
+2021-07-09 14:11:06 System.ApplicationException: Error getting POS Config Option
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 160
+2021-07-09 18:26:09 [Business/Export] WebException Error during export to FTP.
+2021-07-09 18:26:09 
+2021-07-09 18:28:51 [Business/Export] WebException Error during export to FTP.
+2021-07-09 18:28:51 
+2021-07-09 18:29:30 [Data/INSERTBatchLogs] Error inserting batch logs Insert[INSERT INTO MALLINTERFACE_BATCHLOGS(FileName, BusinessDate,date_sent) VALUES (@FileName, @BusinessDate,getdate())].
+2021-07-09 18:29:30 System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'id', table 'POS.dbo.mallinterface_batchlogs'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at TransightInterface.Data.InsertBatchLogs(String FileName, DateTime BusinessDate) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\MallInterface\Data.cs:line 277
+2021-07-09 18:29:37 [Business/Export] Error during export to FTP.
+2021-07-09 18:29:37 Error getting InsertBatchLogs
+2021-07-09 18:45:27 [Data/INSERTBatchLogs] Error inserting batch logs Insert[INSERT INTO MALLINTERFACE_BATCHLOGS(FileName, BusinessDate,date_sent) VALUES (@FileName, @BusinessDate,getdate())].
+2021-07-09 18:45:27 System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'id', table 'POS.dbo.mallinterface_batchlogs'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at TransightInterface.Data.InsertBatchLogs(String FileName, DateTime BusinessDate) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\MallInterface\Data.cs:line 277
+2021-07-09 18:45:27 [Business/Export] Error during export to FTP.
+2021-07-09 18:45:27 Error getting InsertBatchLogs
+2021-07-09 19:12:06 [AppConfig/Load] Error loading configs.
+2021-07-09 19:12:06 System.ApplicationException: Error getting Start Date
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 168
+2021-07-09 19:18:13 [Business/Export] WebException Error during export to FTP.
+2021-07-09 19:18:13 530 Login or password incorrect!
+
