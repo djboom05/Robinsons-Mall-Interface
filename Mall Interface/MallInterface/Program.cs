@@ -283,8 +283,8 @@ namespace TransightInterface
             try
             {
                 //set process date
-                Program.BusinessDateStart = Data.GetBusinessDate().AddDays(AppConfig.BusinessDateOffset);
-                Program.BusinessDateEnd = Program.BusinessDateStart;
+                Program.BusinessDateStart = Data.GetLastResetDate().AddDays(1);
+                Program.BusinessDateEnd = Data.GetBusinessDate().AddDays(AppConfig.BusinessDateOffset);
 
 
                 string sResult = Business.ExportE(Program.BusinessDateStart, Program.BusinessDateEnd);

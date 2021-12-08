@@ -340,6 +340,81 @@ namespace TransightInterface
             }
         }
 
+        //public static string GetLastResetDate
+        //{
+
+        //    get
+        //    {
+        //        try
+        //        {
+        //            string lastreset = "";
+
+        //            conn = new SqlConnection(Program.ConnString);
+        //            conn.Open();
+
+        //            query = "SELECT lastreset FROM system";
+        //            cmd = new SqlCommand(query, conn);
+        //            //prmtr = new SqlParameter("@BusinessDate", SqlDbType.DateTime);
+        //            //prmtr.Value = BusinessDate;
+        //            //cmd.Parameters.Add(prmtr);
+
+        //            lastreset = Convert.ToString(cmd.ExecuteScalar());
+
+        //            conn.Close();
+
+        //            return lastreset;
+        //        }
+
+        //        catch (SqlException sex)
+        //        {
+        //            ErrorTracking.Log("[Data/GetBatchNumber] Error getting GetBatchNumber [" + query + "].");
+        //            ErrorTracking.Log(sex);
+        //            throw new ApplicationException("Error getting GetBatchNumber");
+        //        }
+        //        finally
+        //        {
+        //            if (conn.State == ConnectionState.Open) conn.Close();
+        //            conn.Dispose();
+        //            conn = null;
+
+        //            cmd.Dispose();
+        //            cmd = null;
+        //        }
+        //    }
+        //}
+
+        public static DateTime GetLastResetDate()
+        {
+            try
+            {
+                conn = new SqlConnection(Program.ConnString);
+                conn.Open();
+
+                query = "SELECT lastreset FROM system";
+                cmd = new SqlCommand(query, conn);
+                DateTime dtLastReset = Convert.ToDateTime(cmd.ExecuteScalar());
+
+                conn.Close();
+
+                return dtLastReset;
+            }
+            catch (SqlException sex)
+            {
+                ErrorTracking.Log("[Data/GetLastResetDate] Error getting last reset date [" + query + "].");
+                ErrorTracking.Log(sex);
+                throw new ApplicationException("Error getting last reset date.");
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open) conn.Close();
+                conn.Dispose();
+                conn = null;
+
+                cmd.Dispose();
+                cmd = null;
+            }
+        }
+
         public static DateTime GetPrevDate()
         {
             try
