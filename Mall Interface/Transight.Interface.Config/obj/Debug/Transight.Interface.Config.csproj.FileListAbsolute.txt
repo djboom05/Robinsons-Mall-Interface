@@ -146,3 +146,15 @@ D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interfac
 D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CopyComplete
 D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
 D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.dll
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.dll
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csprojAssemblyReference.cache
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.FormConfig.resources
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.UserControlConfig.resources
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.GenerateResource.cache
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CoreCompileInputs.cache
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CopyComplete
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="ErrorTracking" value="ON" />
+    <add key="DBOption" value="S" />
+    <add key="DBServer" value="192.168.70.40" />
+    <add key="DBName" value="NandosPOSG2" />
+    <add key="LogPath" value="C:\Logs" />
+    <add key="LogCleanUp" value="30" />
+    <add key="BusinessDateOffset" value="-1" />
+    <add key="ConfigCount" value="3" />
+    <add key="C01" value="L##Interface Settings########" />
+    <add key="C02" value="P#ExportFolder#Export Folder#######Select export folder#" />
+    <add key="C03" value="T#StoreNo#Store No.######6#[a-zA-Z0-9]#" />
+    <add key="01" value="" />
+    <add key="02" value="C:\Export" />
+    <add key="03" value="Lot63" />
+  </appSettings>
+</configuration>

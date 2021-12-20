@@ -1,0 +1,68 @@
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\bin\Debug\MallInterface.exe.config
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\bin\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\bin\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\obj\Debug\PHMallInterface.csprojResolveAssemblyReference.cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\obj\Debug\PHMallInterface.csproj.GenerateResource.Cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\obj\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 02 (PH)\OT\MallInterface\obj\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\bin\Debug\MallInterface.exe.config
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\obj\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\obj\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\obj\Debug\PHMallInterface.csproj.GenerateResource.Cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\bin\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\bin\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 03 (Bugis)\OT\MallInterface\obj\Debug\PHMallInterface.csprojResolveAssemblyReference.cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\bin\Debug\MallInterface.exe.config
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\obj\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\obj\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\obj\Debug\PHMallInterface.csprojResolveAssemblyReference.cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\obj\Debug\PHMallInterface.csproj.GenerateResource.Cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\bin\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\bin\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 04 (Serangoon)\OT\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\MallInterface.exe.config
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\PHMallInterface.csprojResolveAssemblyReference.cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\Test\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\PHMallInterface.csproj.GenerateResource.Cache
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\MallInterface.exe.config
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\PHMallInterface.csprojResolveAssemblyReference.cache
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 (Serangoon) - H(D)\OT\MallInterface\obj\Debug\PHMallInterface.csproj.GenerateResource.Cache
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 - H(D)\OT\MallInterface\bin\Debug\MallInterface.exe.config
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 - H(D)\OT\MallInterface\obj\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT-Resort hotel\MI Version 01\MI Version 01 - H(D)\OT\MallInterface\obj\Debug\MallInterface.pdb

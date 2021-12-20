@@ -136,3 +136,18 @@ D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\
 D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.CopyComplete
 D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.exe
 D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csprojAssemblyReference.cache
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.GenerateResource.cache
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.CoreCompileInputs.cache
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.exe
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\MallInterface.exe.config
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\MallInterface.exe
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\MallInterface.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Common.dll
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Config.dll
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.CopyComplete

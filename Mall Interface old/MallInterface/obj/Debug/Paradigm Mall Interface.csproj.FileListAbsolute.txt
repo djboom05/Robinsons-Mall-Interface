@@ -1,0 +1,106 @@
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.pdb
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csprojResolveAssemblyReference.cache
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\Cuscapi\Transight\Projects\Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csprojResolveAssemblyReference.cache
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-4731-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csprojResolveAssemblyReference.cache
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\_Project\Mall Interface\Chilis Paradigm Mall\TSSS-10584-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.pdb
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csprojResolveAssemblyReference.cache
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul\OT-ParadigmPJ\OT-ChilisParadigmMall\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.pdb
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csprojResolveAssemblyReference.cache
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.pdb
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul\Code\OT-Senai\OT-Senai\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.pdb
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csprojResolveAssemblyReference.cache
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul (CC & Mall Interface)\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\bin\Debug\ParadigmMallInterface.exe.config
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.exe
+C:\Nurul_CC_Mall Interface\Mall Interface Code\OT---Latest call from SP\OT\ParadigmMallInterface\obj\Debug\ParadigmMallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\bin\Debug\MallInterface.exe.config
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\bin\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\bin\Debug\MallInterface.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\bin\Debug\Transight.Interface.Common.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\bin\Debug\Transight.Interface.Config.dll
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\obj\Debug\Paradigm Mall Interface.csprojResolveAssemblyReference.cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\obj\Debug\Paradigm Mall Interface.csproj.GenerateResource.Cache
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\obj\Debug\MallInterface.exe
+C:\Nurul_CC_Mall Interface\SG\Source Code\MI Version 01\OT\MallInterface\obj\Debug\MallInterface.pdb
