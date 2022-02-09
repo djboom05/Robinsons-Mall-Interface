@@ -477,6 +477,11 @@ namespace TransightInterface
                                 }
 
                             }
+                            else
+                            {
+                                //us = "FTP not activated.";
+                                s = "FTP not activated.";
+                            }
                         }
                         catch (WebException e)
                         {
@@ -957,6 +962,11 @@ namespace TransightInterface
 
 
                         }
+                        else
+                        {
+                            us = "FTP not activated.";
+                            s = "FTP not activated.";
+                        }
                     }
                     catch (WebException e)
                     {
@@ -1250,6 +1260,11 @@ namespace TransightInterface
 
 
                             }
+                            else
+                            {
+                                us = "FTP not activated.";
+                                s = "FTP not activated.";
+                            }
                         }
                         catch (WebException e)
                         {
@@ -1465,6 +1480,11 @@ namespace TransightInterface
                                 Func.Log("Deleting file " + path);
                             }
 
+                        }
+                        else
+                        {
+                            us = "FTP not activated.";
+                            s = "FTP not activated.";
                         }
 
 
@@ -1764,6 +1784,11 @@ namespace TransightInterface
                                 }
 
 
+                            }
+                            else
+                            {
+                                us = "FTP not activated.";
+                                s = "FTP not activated.";
                             }
                         }
                         catch (WebException e)
@@ -2236,7 +2261,11 @@ namespace TransightInterface
                             }
 
                         }
-
+                        else
+                        {
+                            us = "FTP not activated.";
+                            s = "FTP not activated.";
+                        }
 
                     }
                     catch (WebException e)
@@ -2530,6 +2559,11 @@ namespace TransightInterface
                                 }
 
 
+                            }
+                            else
+                            {
+                                us = "FTP not activated.";
+                                s = "FTP not activated.";
                             }
                         }
                         catch (WebException e)

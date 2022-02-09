@@ -72,10 +72,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(587, 26);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(391, 17);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(112, 35);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 100;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -83,10 +82,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(466, 26);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Location = new System.Drawing.Point(311, 17);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 35);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 99;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -95,57 +93,51 @@
             // pnlConfigs
             // 
             this.pnlConfigs.AutoScroll = true;
-            this.pnlConfigs.Location = new System.Drawing.Point(14, 358);
-            this.pnlConfigs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlConfigs.Location = new System.Drawing.Point(9, 233);
             this.pnlConfigs.Name = "pnlConfigs";
-            this.pnlConfigs.Size = new System.Drawing.Size(684, 15);
+            this.pnlConfigs.Size = new System.Drawing.Size(456, 10);
             this.pnlConfigs.TabIndex = 40;
             // 
             // txtTransightDBName
             // 
-            this.txtTransightDBName.Location = new System.Drawing.Point(195, 129);
-            this.txtTransightDBName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTransightDBName.Location = new System.Drawing.Point(130, 84);
             this.txtTransightDBName.MaxLength = 20;
             this.txtTransightDBName.Name = "txtTransightDBName";
-            this.txtTransightDBName.Size = new System.Drawing.Size(148, 26);
+            this.txtTransightDBName.Size = new System.Drawing.Size(100, 20);
             this.txtTransightDBName.TabIndex = 3;
             // 
             // lblTDBN
             // 
             this.lblTDBN.AutoSize = true;
-            this.lblTDBN.Location = new System.Drawing.Point(18, 134);
-            this.lblTDBN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTDBN.Location = new System.Drawing.Point(12, 87);
             this.lblTDBN.Name = "lblTDBN";
-            this.lblTDBN.Size = new System.Drawing.Size(152, 20);
+            this.lblTDBN.Size = new System.Drawing.Size(103, 13);
             this.lblTDBN.TabIndex = 46;
             this.lblTDBN.Text = "Transight DB Name:";
             // 
             // txtTransightDBServer
             // 
-            this.txtTransightDBServer.Location = new System.Drawing.Point(195, 89);
-            this.txtTransightDBServer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTransightDBServer.Location = new System.Drawing.Point(130, 58);
             this.txtTransightDBServer.MaxLength = 20;
             this.txtTransightDBServer.Name = "txtTransightDBServer";
-            this.txtTransightDBServer.Size = new System.Drawing.Size(148, 26);
+            this.txtTransightDBServer.Size = new System.Drawing.Size(100, 20);
             this.txtTransightDBServer.TabIndex = 2;
             // 
             // lblTDBS
             // 
             this.lblTDBS.AutoSize = true;
-            this.lblTDBS.Location = new System.Drawing.Point(18, 94);
-            this.lblTDBS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTDBS.Location = new System.Drawing.Point(12, 61);
             this.lblTDBS.Name = "lblTDBS";
-            this.lblTDBS.Size = new System.Drawing.Size(156, 20);
+            this.lblTDBS.Size = new System.Drawing.Size(106, 13);
             this.lblTDBS.TabIndex = 44;
             this.lblTDBS.Text = "Transight DB Server:";
             // 
             // rdBtnConnectionString
             // 
             this.rdBtnConnectionString.AutoSize = true;
-            this.rdBtnConnectionString.Location = new System.Drawing.Point(126, 51);
-            this.rdBtnConnectionString.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rdBtnConnectionString.Location = new System.Drawing.Point(84, 33);
             this.rdBtnConnectionString.Name = "rdBtnConnectionString";
-            this.rdBtnConnectionString.Size = new System.Drawing.Size(161, 24);
+            this.rdBtnConnectionString.Size = new System.Drawing.Size(109, 17);
             this.rdBtnConnectionString.TabIndex = 1;
             this.rdBtnConnectionString.TabStop = true;
             this.rdBtnConnectionString.Text = "Connection String";
@@ -156,20 +148,18 @@
             // 
             this.lblTIS.AutoSize = true;
             this.lblTIS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTIS.Location = new System.Drawing.Point(18, 14);
-            this.lblTIS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTIS.Location = new System.Drawing.Point(12, 9);
             this.lblTIS.Name = "lblTIS";
-            this.lblTIS.Size = new System.Drawing.Size(243, 20);
+            this.lblTIS.Size = new System.Drawing.Size(165, 13);
             this.lblTIS.TabIndex = 42;
             this.lblTIS.Text = "Transight Interface Settings";
             // 
             // rdBtnRegistry
             // 
             this.rdBtnRegistry.AutoSize = true;
-            this.rdBtnRegistry.Location = new System.Drawing.Point(22, 51);
-            this.rdBtnRegistry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rdBtnRegistry.Location = new System.Drawing.Point(15, 33);
             this.rdBtnRegistry.Name = "rdBtnRegistry";
-            this.rdBtnRegistry.Size = new System.Drawing.Size(92, 24);
+            this.rdBtnRegistry.Size = new System.Drawing.Size(63, 17);
             this.rdBtnRegistry.TabIndex = 0;
             this.rdBtnRegistry.TabStop = true;
             this.rdBtnRegistry.Text = "Registry";
@@ -178,10 +168,9 @@
             // 
             // btnBrowseLogFolder
             // 
-            this.btnBrowseLogFolder.Location = new System.Drawing.Point(504, 166);
-            this.btnBrowseLogFolder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBrowseLogFolder.Location = new System.Drawing.Point(336, 108);
             this.btnBrowseLogFolder.Name = "btnBrowseLogFolder";
-            this.btnBrowseLogFolder.Size = new System.Drawing.Size(38, 35);
+            this.btnBrowseLogFolder.Size = new System.Drawing.Size(25, 23);
             this.btnBrowseLogFolder.TabIndex = 5;
             this.btnBrowseLogFolder.TabStop = false;
             this.btnBrowseLogFolder.Text = "...";
@@ -191,17 +180,15 @@
             // lblD1
             // 
             this.lblD1.AutoSize = true;
-            this.lblD1.Location = new System.Drawing.Point(279, 214);
-            this.lblD1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblD1.Location = new System.Drawing.Point(186, 139);
             this.lblD1.Name = "lblD1";
-            this.lblD1.Size = new System.Drawing.Size(42, 20);
+            this.lblD1.Size = new System.Drawing.Size(29, 13);
             this.lblD1.TabIndex = 52;
             this.lblD1.Text = "days";
             // 
             // nudLogCleanUp
             // 
-            this.nudLogCleanUp.Location = new System.Drawing.Point(196, 211);
-            this.nudLogCleanUp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nudLogCleanUp.Location = new System.Drawing.Point(131, 137);
             this.nudLogCleanUp.Maximum = new decimal(new int[] {
             120,
             0,
@@ -213,7 +200,7 @@
             0,
             0});
             this.nudLogCleanUp.Name = "nudLogCleanUp";
-            this.nudLogCleanUp.Size = new System.Drawing.Size(75, 26);
+            this.nudLogCleanUp.Size = new System.Drawing.Size(50, 20);
             this.nudLogCleanUp.TabIndex = 6;
             this.nudLogCleanUp.Value = new decimal(new int[] {
             30,
@@ -224,30 +211,27 @@
             // lblLCU
             // 
             this.lblLCU.AutoSize = true;
-            this.lblLCU.Location = new System.Drawing.Point(18, 214);
-            this.lblLCU.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLCU.Location = new System.Drawing.Point(12, 139);
             this.lblLCU.Name = "lblLCU";
-            this.lblLCU.Size = new System.Drawing.Size(110, 20);
+            this.lblLCU.Size = new System.Drawing.Size(75, 13);
             this.lblLCU.TabIndex = 50;
             this.lblLCU.Text = "Log Clean Up:";
             // 
             // txtLogPath
             // 
-            this.txtLogPath.Location = new System.Drawing.Point(195, 169);
-            this.txtLogPath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLogPath.Location = new System.Drawing.Point(130, 110);
             this.txtLogPath.MaxLength = 1000;
             this.txtLogPath.Name = "txtLogPath";
             this.txtLogPath.ReadOnly = true;
-            this.txtLogPath.Size = new System.Drawing.Size(298, 26);
+            this.txtLogPath.Size = new System.Drawing.Size(200, 20);
             this.txtLogPath.TabIndex = 4;
             // 
             // lblLP
             // 
             this.lblLP.AutoSize = true;
-            this.lblLP.Location = new System.Drawing.Point(18, 174);
-            this.lblLP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLP.Location = new System.Drawing.Point(12, 113);
             this.lblLP.Name = "lblLP";
-            this.lblLP.Size = new System.Drawing.Size(77, 20);
+            this.lblLP.Size = new System.Drawing.Size(53, 13);
             this.lblLP.TabIndex = 48;
             this.lblLP.Text = "Log Path:";
             // 
@@ -259,17 +243,15 @@
             // lblD2
             // 
             this.lblD2.AutoSize = true;
-            this.lblD2.Location = new System.Drawing.Point(278, 255);
-            this.lblD2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblD2.Location = new System.Drawing.Point(185, 166);
             this.lblD2.Name = "lblD2";
-            this.lblD2.Size = new System.Drawing.Size(42, 20);
+            this.lblD2.Size = new System.Drawing.Size(29, 13);
             this.lblD2.TabIndex = 55;
             this.lblD2.Text = "days";
             // 
             // nudBusinessDateOffset
             // 
-            this.nudBusinessDateOffset.Location = new System.Drawing.Point(195, 251);
-            this.nudBusinessDateOffset.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nudBusinessDateOffset.Location = new System.Drawing.Point(130, 163);
             this.nudBusinessDateOffset.Maximum = new decimal(new int[] {
             0,
             0,
@@ -281,101 +263,93 @@
             0,
             -2147483648});
             this.nudBusinessDateOffset.Name = "nudBusinessDateOffset";
-            this.nudBusinessDateOffset.Size = new System.Drawing.Size(75, 26);
+            this.nudBusinessDateOffset.Size = new System.Drawing.Size(50, 20);
             this.nudBusinessDateOffset.TabIndex = 7;
             // 
             // lblBDO
             // 
             this.lblBDO.AutoSize = true;
-            this.lblBDO.Location = new System.Drawing.Point(16, 255);
-            this.lblBDO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBDO.Location = new System.Drawing.Point(11, 166);
             this.lblBDO.Name = "lblBDO";
-            this.lblBDO.Size = new System.Drawing.Size(165, 20);
+            this.lblBDO.Size = new System.Drawing.Size(109, 13);
             this.lblBDO.TabIndex = 56;
             this.lblBDO.Text = "Business Date Offset:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(351, 217);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(234, 141);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 20);
+            this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 101;
             this.label1.Text = "Reading start date:";
             // 
             // dtpStartDate
             // 
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(503, 214);
+            this.dtpStartDate.Location = new System.Drawing.Point(335, 139);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(142, 26);
+            this.dtpStartDate.Size = new System.Drawing.Size(96, 20);
             this.dtpStartDate.TabIndex = 102;
             // 
             // txtPC
             // 
-            this.txtPC.Location = new System.Drawing.Point(503, 247);
-            this.txtPC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPC.Location = new System.Drawing.Point(335, 161);
             this.txtPC.MaxLength = 20;
             this.txtPC.Name = "txtPC";
-            this.txtPC.Size = new System.Drawing.Size(148, 26);
+            this.txtPC.Size = new System.Drawing.Size(100, 20);
             this.txtPC.TabIndex = 103;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(426, 250);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(284, 162);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 20);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 104;
             this.label2.Text = "PC Seq:";
             // 
             // txtDBPassword
             // 
-            this.txtDBPassword.Location = new System.Drawing.Point(548, 128);
-            this.txtDBPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDBPassword.Location = new System.Drawing.Point(365, 83);
             this.txtDBPassword.MaxLength = 20;
             this.txtDBPassword.Name = "txtDBPassword";
             this.txtDBPassword.PasswordChar = '*';
-            this.txtDBPassword.Size = new System.Drawing.Size(150, 26);
+            this.txtDBPassword.Size = new System.Drawing.Size(101, 20);
             this.txtDBPassword.TabIndex = 106;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(374, 135);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(249, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 20);
+            this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 108;
             this.label3.Text = "Transight DB Password:";
             // 
             // txtDBUserName
             // 
-            this.txtDBUserName.Location = new System.Drawing.Point(548, 88);
-            this.txtDBUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDBUserName.Location = new System.Drawing.Point(365, 57);
             this.txtDBUserName.MaxLength = 20;
             this.txtDBUserName.Name = "txtDBUserName";
-            this.txtDBUserName.Size = new System.Drawing.Size(150, 26);
+            this.txtDBUserName.Size = new System.Drawing.Size(101, 20);
             this.txtDBUserName.TabIndex = 105;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(367, 94);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(245, 61);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(186, 20);
+            this.label4.Size = new System.Drawing.Size(125, 13);
             this.label4.TabIndex = 107;
             this.label4.Text = "Transight DB UserName:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(465, 25);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(310, 16);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 35);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 99;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
@@ -383,10 +357,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(586, 25);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Location = new System.Drawing.Point(391, 16);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 35);
+            this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 100;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -395,10 +368,9 @@
             // chkTimerEnabled
             // 
             this.chkTimerEnabled.AutoSize = true;
-            this.chkTimerEnabled.Location = new System.Drawing.Point(36, 287);
-            this.chkTimerEnabled.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkTimerEnabled.Location = new System.Drawing.Point(24, 187);
             this.chkTimerEnabled.Name = "chkTimerEnabled";
-            this.chkTimerEnabled.Size = new System.Drawing.Size(213, 24);
+            this.chkTimerEnabled.Size = new System.Drawing.Size(144, 17);
             this.chkTimerEnabled.TabIndex = 124;
             this.chkTimerEnabled.Text = "Automatic Timer Enabled";
             this.chkTimerEnabled.UseVisualStyleBackColor = true;
@@ -410,41 +382,36 @@
             this.grpSchedule.Controls.Add(this.lblSchedule);
             this.grpSchedule.Controls.Add(this.label5);
             this.grpSchedule.Controls.Add(this.cmbSchedule);
-            this.grpSchedule.Location = new System.Drawing.Point(22, 295);
-            this.grpSchedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpSchedule.Location = new System.Drawing.Point(15, 192);
             this.grpSchedule.Name = "grpSchedule";
-            this.grpSchedule.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpSchedule.Size = new System.Drawing.Size(669, 71);
+            this.grpSchedule.Size = new System.Drawing.Size(446, 46);
             this.grpSchedule.TabIndex = 125;
             this.grpSchedule.TabStop = false;
             this.grpSchedule.Visible = false;
             // 
             // txtSchedule
             // 
-            this.txtSchedule.Location = new System.Drawing.Point(481, 28);
-            this.txtSchedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSchedule.Location = new System.Drawing.Point(321, 18);
             this.txtSchedule.MaxLength = 20;
             this.txtSchedule.Name = "txtSchedule";
-            this.txtSchedule.Size = new System.Drawing.Size(115, 26);
+            this.txtSchedule.Size = new System.Drawing.Size(78, 20);
             this.txtSchedule.TabIndex = 122;
             // 
             // lblSchedule
             // 
             this.lblSchedule.AutoSize = true;
-            this.lblSchedule.Location = new System.Drawing.Point(353, 33);
-            this.lblSchedule.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSchedule.Location = new System.Drawing.Point(235, 21);
             this.lblSchedule.Name = "lblSchedule";
-            this.lblSchedule.Size = new System.Drawing.Size(118, 20);
+            this.lblSchedule.Size = new System.Drawing.Size(81, 13);
             this.lblSchedule.TabIndex = 118;
             this.lblSchedule.Text = "Time Schedule:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 34);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(7, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 20);
+            this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 121;
             this.label5.Text = "Schedule Type:";
             // 
@@ -456,18 +423,17 @@
             "DAILY",
             "HOURLY",
             "INTERVAL"});
-            this.cmbSchedule.Location = new System.Drawing.Point(138, 28);
-            this.cmbSchedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbSchedule.Location = new System.Drawing.Point(92, 18);
             this.cmbSchedule.Name = "cmbSchedule";
-            this.cmbSchedule.Size = new System.Drawing.Size(115, 28);
+            this.cmbSchedule.Size = new System.Drawing.Size(78, 21);
             this.cmbSchedule.TabIndex = 120;
             this.cmbSchedule.SelectedIndexChanged += new System.EventHandler(this.cmbSchedule_SelectedIndexChanged);
             // 
             // FormConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 376);
+            this.ClientSize = new System.Drawing.Size(474, 244);
             this.ControlBox = false;
             this.Controls.Add(this.chkTimerEnabled);
             this.Controls.Add(this.grpSchedule);
@@ -502,7 +468,6 @@
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormConfig";

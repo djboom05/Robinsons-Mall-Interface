@@ -340,6 +340,45 @@ namespace TransightInterface
             }
         }
 
+        public static int GetBatchCount()
+        {
+            try
+            {
+                int batchcnt = 0;
+
+                conn = new SqlConnection(Program.ConnString);
+                conn.Open();
+
+                query = "SELECT count(*) FROM mallinterface_batchlogs";
+                cmd = new SqlCommand(query, conn);
+                //prmtr = new SqlParameter("@BusinessDate", SqlDbType.DateTime);
+                //prmtr.Value = BusinessDate;
+                //cmd.Parameters.Add(prmtr);
+
+                batchcnt = Convert.ToInt32(cmd.ExecuteScalar());
+
+                conn.Close();
+
+                return batchcnt;
+            }
+
+            catch (SqlException sex)
+            {
+                ErrorTracking.Log("[Data/GetBatchCount] Error getting GetBatchNumber [" + query + "].");
+                ErrorTracking.Log(sex);
+                throw new ApplicationException("Error getting GetBatchCount");
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open) conn.Close();
+                conn.Dispose();
+                conn = null;
+
+                cmd.Dispose();
+                cmd = null;
+            }
+        }
+
         //public static string GetLastResetDate
         //{
 

@@ -235,34 +235,39 @@ namespace TransightInterface
 
             try
             {
-                //set process date
-                Program.BusinessDateStart = Data.GetBusinessDate().AddDays(AppConfig.BusinessDateOffset);
-                Program.BusinessDateEnd = Program.BusinessDateStart;
-
-
-
-                string sResult = Business.ExportX(Program.BusinessDateStart, Program.BusinessDateEnd);
-
-                if (sResult == string.Empty)
-                    MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                else if (sResult == "Export completed.")
-                    MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                else if (sResult == "Pending sent successfully.")
+                if (Data.GetBatchCount() == 0)
                 {
-                    MessageBox.Show("Trying to send unsent files…successful", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                }
-                else if (sResult == "Export folder not found.")
-                    //custom error
-                    MessageBox.Show("Export folder not found. Please update config Export folder. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                else if (sResult == "No record(s) to export.") { }
-                //no message
-                else if (sResult.Substring(0, 3) != "ERR")
-                    MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                else //"ERR" == exception
-                    MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
 
-                
+                }
+                else
+                {
+                    //set process date
+                    Program.BusinessDateStart = Data.GetBusinessDate().AddDays(AppConfig.BusinessDateOffset);
+                    Program.BusinessDateEnd = Program.BusinessDateStart;
+                    string sResult = Business.ExportX(Program.BusinessDateStart, Program.BusinessDateEnd);
+
+                    if (sResult == string.Empty)
+                        MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    else if (sResult == "Export completed.")
+                        MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    else if (sResult == "Pending sent successfully.")
+                    {
+                        MessageBox.Show("Trying to send unsent files…successful", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                        MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    }
+                    else if (sResult == "Export folder not found.")
+                        //custom error
+                        MessageBox.Show("Export folder not found. Please update config Export folder. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    else if (sResult == "No record(s) to export.") { }
+
+                    else if (sResult == "FTP not activated")
+                    { }
+                    //no message
+                    else if (sResult.Substring(0, 3) != "ERR")
+                        MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    else //"ERR" == exception
+                        MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
 
 
             }
@@ -306,6 +311,8 @@ namespace TransightInterface
                     //custom error
                     MessageBox.Show("Export folder not found. Please update config Export folder. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 else if (sResult == "No record(s) to export.") { }
+                //no message
+                else if (sResult == "FTP not activated") { }
                 //no message
                 else if (sResult.Substring(0, 3) != "ERR")
                     MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
