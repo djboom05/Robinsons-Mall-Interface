@@ -519,7 +519,12 @@ namespace TransightInterface
                     if (!Program.IsAutoMode) FrmMain.SetStatus(s);
                     Func.Log(s);
                 }
+                else if (s == "FTP not activated.")
+                {
+                    s = "FTP not activated";
 
+                    Func.Log(s);
+                }
                 else
                 {
                     s = "Export completed.";
@@ -1320,6 +1325,12 @@ namespace TransightInterface
                     Func.Log(s);
                     
                 }
+                else if (s == "FTP not activated.")
+                {
+                    s = "FTP not activated";
+
+                    Func.Log(s);
+                }
                 else if (us == "Send successfully.")
                 {
                     s = "Pending sent successfully.";
@@ -1850,6 +1861,12 @@ namespace TransightInterface
                 {
                     s = "Pending sent successfully.";
                     if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    Func.Log(s);
+                }
+                else if (s == "FTP not activated.")
+                {
+                    s = "FTP not activated";
+
                     Func.Log(s);
                 }
                 else
@@ -2625,6 +2642,12 @@ namespace TransightInterface
                 {
                     s = "Pending sent successfully.";
                     if (!Program.IsAutoMode) FrmMain.SetStatus(s);
+                    Func.Log(s);
+                }
+                else if (s == "FTP not activated.")
+                {
+                    s = "FTP not activated";
+
                     Func.Log(s);
                 }
                 else

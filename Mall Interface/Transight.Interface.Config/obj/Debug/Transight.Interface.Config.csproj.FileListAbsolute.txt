@@ -158,3 +158,15 @@ H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\o
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CopyComplete
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.dll
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.pdb
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.dll
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.pdb
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csprojAssemblyReference.cache
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.FormConfig.resources
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.UserControlConfig.resources
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.GenerateResource.cache
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CoreCompileInputs.cache
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CopyComplete
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb

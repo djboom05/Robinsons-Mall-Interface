@@ -151,3 +151,18 @@ H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\Tran
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Common.pdb
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Config.pdb
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.CopyComplete
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\MallInterface.exe.config
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\MallInterface.exe
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\MallInterface.pdb
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Common.dll
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Config.dll
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Common.pdb
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Transight.Interface.Config.pdb
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csprojAssemblyReference.cache
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\TransightInterface.FormMain.resources
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\TransightInterface.Properties.Resources.resources
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.GenerateResource.cache
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.CoreCompileInputs.cache
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.csproj.CopyComplete
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.exe
+D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\obj\Debug\MallInterface.pdb
