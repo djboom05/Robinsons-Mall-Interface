@@ -473,7 +473,10 @@ namespace TransightInterface
                     {
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
-                        
+                        EnableControls(true);
+                        DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+
+
                     }
                 }
                 else if (AppConfig._schedType == "HOURLY")
@@ -484,7 +487,10 @@ namespace TransightInterface
                     {
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
-                        
+                        EnableControls(true);
+                        DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+
+
                     }
                 }
                 else
@@ -493,7 +499,10 @@ namespace TransightInterface
                     {
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
-                        
+                        EnableControls(true);
+                        DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+
+
                     }
                 }
             }
@@ -503,6 +512,9 @@ namespace TransightInterface
                 {
                     Program.RunAutoMode();
                     Program.RunUnsendMode();
+                    EnableControls(true);
+                    DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+
                 }
             }
 
@@ -654,6 +666,11 @@ namespace TransightInterface
             
             EnableControls(!chkAutomode.Checked);
             timer1.Enabled = chkAutomode.Checked;
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -57,10 +57,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(614, 91);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Location = new System.Drawing.Point(409, 59);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(112, 35);
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Cl&ose";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -68,19 +67,17 @@
             // 
             // lblVersion
             // 
-            this.lblVersion.Location = new System.Drawing.Point(452, 26);
-            this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVersion.Location = new System.Drawing.Point(301, 17);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(150, 20);
+            this.lblVersion.Size = new System.Drawing.Size(100, 13);
             this.lblVersion.TabIndex = 1;
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnConfig
             // 
-            this.btnConfig.Location = new System.Drawing.Point(610, 18);
-            this.btnConfig.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnConfig.Location = new System.Drawing.Point(407, 12);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(112, 35);
+            this.btnConfig.Size = new System.Drawing.Size(75, 23);
             this.btnConfig.TabIndex = 2;
             this.btnConfig.TabStop = false;
             this.btnConfig.Text = "Con&fig";
@@ -90,10 +87,9 @@
             // lblBD
             // 
             this.lblBD.AutoSize = true;
-            this.lblBD.Location = new System.Drawing.Point(18, 55);
-            this.lblBD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBD.Location = new System.Drawing.Point(12, 36);
             this.lblBD.Name = "lblBD";
-            this.lblBD.Size = new System.Drawing.Size(117, 20);
+            this.lblBD.Size = new System.Drawing.Size(78, 13);
             this.lblBD.TabIndex = 12;
             this.lblBD.Text = "Business Date:";
             // 
@@ -101,20 +97,18 @@
             // 
             this.dtpStartDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartDate.Location = new System.Drawing.Point(144, 51);
-            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpStartDate.Location = new System.Drawing.Point(96, 33);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(156, 26);
+            this.dtpStartDate.Size = new System.Drawing.Size(105, 20);
             this.dtpStartDate.TabIndex = 2;
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // lblT
             // 
             this.lblT.AutoSize = true;
-            this.lblT.Location = new System.Drawing.Point(310, 55);
-            this.lblT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblT.Location = new System.Drawing.Point(207, 36);
             this.lblT.Name = "lblT";
-            this.lblT.Size = new System.Drawing.Size(23, 20);
+            this.lblT.Size = new System.Drawing.Size(16, 13);
             this.lblT.TabIndex = 17;
             this.lblT.Text = "to";
             // 
@@ -123,21 +117,20 @@
             this.dtpEndDate.Checked = false;
             this.dtpEndDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndDate.Location = new System.Drawing.Point(344, 51);
-            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpEndDate.Location = new System.Drawing.Point(229, 33);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.ShowCheckBox = true;
-            this.dtpEndDate.Size = new System.Drawing.Size(182, 26);
+            this.dtpEndDate.Size = new System.Drawing.Size(123, 20);
             this.dtpEndDate.TabIndex = 3;
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             this.dtpEndDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpEndDate_KeyDown);
             this.dtpEndDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpEndDate_MouseDown);
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(489, 91);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExport.Location = new System.Drawing.Point(326, 59);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(112, 35);
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 0;
             this.btnExport.Text = "&Export";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -148,18 +141,16 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblStatus.Location = new System.Drawing.Point(212, 98);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatus.Location = new System.Drawing.Point(141, 64);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 20);
+            this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 18;
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(24, 91);
-            this.btnView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnView.Location = new System.Drawing.Point(16, 59);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(176, 35);
+            this.btnView.Size = new System.Drawing.Size(117, 23);
             this.btnView.TabIndex = 19;
             this.btnView.Text = "&View Sent Files Folder";
             this.btnView.UseVisualStyleBackColor = true;
@@ -176,13 +167,13 @@
             this.businessdate,
             this.date_sent,
             this.SendCount});
-            this.dgvPOS.Location = new System.Drawing.Point(22, 189);
-            this.dgvPOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvPOS.Location = new System.Drawing.Point(15, 123);
             this.dgvPOS.Name = "dgvPOS";
             this.dgvPOS.ReadOnly = true;
+            this.dgvPOS.RowHeadersVisible = false;
             this.dgvPOS.RowHeadersWidth = 51;
             this.dgvPOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPOS.Size = new System.Drawing.Size(704, 272);
+            this.dgvPOS.Size = new System.Drawing.Size(469, 177);
             this.dgvPOS.TabIndex = 115;
             // 
             // filename
@@ -228,10 +219,9 @@
             // 
             // btnResend
             // 
-            this.btnResend.Location = new System.Drawing.Point(22, 471);
-            this.btnResend.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnResend.Location = new System.Drawing.Point(15, 306);
             this.btnResend.Name = "btnResend";
-            this.btnResend.Size = new System.Drawing.Size(157, 35);
+            this.btnResend.Size = new System.Drawing.Size(105, 23);
             this.btnResend.TabIndex = 116;
             this.btnResend.Text = "Re-send text file";
             this.btnResend.UseVisualStyleBackColor = true;
@@ -239,10 +229,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(569, 471);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDelete.Location = new System.Drawing.Point(379, 306);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(157, 35);
+            this.btnDelete.Size = new System.Drawing.Size(105, 23);
             this.btnDelete.TabIndex = 117;
             this.btnDelete.Text = "Delete logs data";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -266,10 +255,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(22, 144);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.progressBar1.Location = new System.Drawing.Point(15, 94);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(704, 35);
+            this.progressBar1.Size = new System.Drawing.Size(469, 23);
             this.progressBar1.TabIndex = 119;
             // 
             // chkAutomode
@@ -278,10 +266,9 @@
             this.chkAutomode.Checked = true;
             this.chkAutomode.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAutomode.ForeColor = System.Drawing.Color.SteelBlue;
-            this.chkAutomode.Location = new System.Drawing.Point(28, 17);
-            this.chkAutomode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkAutomode.Location = new System.Drawing.Point(19, 11);
             this.chkAutomode.Name = "chkAutomode";
-            this.chkAutomode.Size = new System.Drawing.Size(151, 24);
+            this.chkAutomode.Size = new System.Drawing.Size(103, 17);
             this.chkAutomode.TabIndex = 118;
             this.chkAutomode.Text = "Automatic Mode";
             this.chkAutomode.UseVisualStyleBackColor = true;
@@ -289,9 +276,9 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 524);
+            this.ClientSize = new System.Drawing.Size(494, 341);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.chkAutomode);
             this.Controls.Add(this.btnDelete);
@@ -309,7 +296,6 @@
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
