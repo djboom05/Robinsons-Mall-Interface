@@ -1,0 +1,3 @@
+2022-02-27 23:03:25 [AppConfig/Load] Error loading configs.
+2022-02-27 23:03:26 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187

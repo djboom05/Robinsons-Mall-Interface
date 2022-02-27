@@ -12,6 +12,7 @@ using Transight.Interface.Config;
 using System.Configuration;
 using System.IO;
 using WinSCP;
+using System.Net;
 
 
 namespace TransightInterface
@@ -139,7 +140,9 @@ namespace TransightInterface
 
             try
             {
-                DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+                //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+                ListDirectory();
+
 
             }
             catch (Exception ex)
@@ -149,6 +152,57 @@ namespace TransightInterface
             }
              
         }
+
+       
+
+        public string[] ListDirectory()
+        {
+            string salefilepath = Program.ExportFolder;
+            string subfolder = @"\";
+            string outputpath = salefilepath + subfolder;
+            string mfilepath = Program.SentFolder;
+            string outputMpath = mfilepath + subfolder;
+            string filename = string.Empty;
+
+
+            string path = string.Empty;
+            string sentfolder = string.Empty;
+
+            string sftpip = ConfigurationManager.AppSettings["06"];
+            string sftpusername = ConfigurationManager.AppSettings["07"];
+            string sftppwd = ConfigurationManager.AppSettings["08"];
+            var list = dgvFTP;
+
+            var request = createRequest(@"ftp://" + sftpip + @"/", WebRequestMethods.Ftp.ListDirectory);
+
+            using (var response = (FtpWebResponse)request.GetResponse())
+            {
+                using (var stream = response.GetResponseStream())
+                {
+                    using (var reader = new StreamReader(stream, true))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            list.Rows.Add(reader.ReadLine());
+                        }
+                    }
+                }
+            }
+            List<string> l = new List<string>();
+            return l.ToArray();
+        }
+
+        private FtpWebRequest createRequest(string uri, string method)
+        {
+
+            var r = (FtpWebRequest)WebRequest.Create(uri);
+
+            r.Credentials = new NetworkCredential(Program.FTPUserName, Program.FTPPassword);
+            r.Method = method;
+
+            return r;
+        }
+
 
         private bool IsValidTimeFormat(string timeString)
         {

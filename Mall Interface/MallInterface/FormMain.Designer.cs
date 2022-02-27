@@ -52,7 +52,10 @@
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.chkAutomode = new System.Windows.Forms.CheckBox();
+            this.dgvFTP = new System.Windows.Forms.DataGridView();
+            this.SentFiles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFTP)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -154,6 +157,7 @@
             this.btnView.TabIndex = 19;
             this.btnView.Text = "&View Sent Files Folder";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Visible = false;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // dgvPOS
@@ -167,7 +171,7 @@
             this.businessdate,
             this.date_sent,
             this.SendCount});
-            this.dgvPOS.Location = new System.Drawing.Point(15, 123);
+            this.dgvPOS.Location = new System.Drawing.Point(12, 525);
             this.dgvPOS.Name = "dgvPOS";
             this.dgvPOS.ReadOnly = true;
             this.dgvPOS.RowHeadersVisible = false;
@@ -225,6 +229,7 @@
             this.btnResend.TabIndex = 116;
             this.btnResend.Text = "Re-send text file";
             this.btnResend.UseVisualStyleBackColor = true;
+            this.btnResend.Visible = false;
             this.btnResend.Click += new System.EventHandler(this.btnResend_Click);
             // 
             // btnDelete
@@ -235,6 +240,7 @@
             this.btnDelete.TabIndex = 117;
             this.btnDelete.Text = "Delete logs data";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // timer1
@@ -259,6 +265,7 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(469, 23);
             this.progressBar1.TabIndex = 119;
+            this.progressBar1.Visible = false;
             // 
             // chkAutomode
             // 
@@ -274,11 +281,36 @@
             this.chkAutomode.UseVisualStyleBackColor = true;
             this.chkAutomode.CheckedChanged += new System.EventHandler(this.chkAutomode_CheckedChanged_1);
             // 
+            // dgvFTP
+            // 
+            this.dgvFTP.AllowUserToAddRows = false;
+            this.dgvFTP.AllowUserToResizeColumns = false;
+            this.dgvFTP.AllowUserToResizeRows = false;
+            this.dgvFTP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFTP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFTP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SentFiles});
+            this.dgvFTP.Location = new System.Drawing.Point(15, 123);
+            this.dgvFTP.Name = "dgvFTP";
+            this.dgvFTP.ReadOnly = true;
+            this.dgvFTP.RowHeadersVisible = false;
+            this.dgvFTP.RowHeadersWidth = 51;
+            this.dgvFTP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFTP.Size = new System.Drawing.Size(469, 177);
+            this.dgvFTP.TabIndex = 120;
+            // 
+            // SentFiles
+            // 
+            this.SentFiles.HeaderText = "Sent Files";
+            this.SentFiles.Name = "SentFiles";
+            this.SentFiles.ReadOnly = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 341);
+            this.ClientSize = new System.Drawing.Size(500, 339);
+            this.Controls.Add(this.dgvFTP);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.chkAutomode);
             this.Controls.Add(this.btnDelete);
@@ -303,6 +335,7 @@
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFTP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,6 +365,8 @@
         public System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.CheckBox chkAutomode;
+        internal System.Windows.Forms.DataGridView dgvFTP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SentFiles;
     }
 }
 
