@@ -140,10 +140,25 @@ namespace TransightInterface
 
             try
             {
+                string sftpip = ConfigurationManager.AppSettings["06"];
+                string sftpusername = ConfigurationManager.AppSettings["07"];
+                string sftppwd = ConfigurationManager.AppSettings["08"];
                 //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                ListDirectory();
+                if (isValidConnection(@"ftp://" + sftpip + @"/", sftpusername, sftppwd))
+                {
 
-
+                    //dgvFTP.Rows.Clear();
+                    ListDirectory();
+                    //MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //ListDirectory();
+                    //this.Show();
+                }
+                else
+                {
+                    //MessageBox.Show("Interface is not connected to RLC Server", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dgvFTP.Rows.Clear();
+                    dgvFTP.Refresh();
+                }
             }
             catch (Exception ex)
             {
@@ -157,40 +172,57 @@ namespace TransightInterface
 
         public string[] ListDirectory()
         {
-            string salefilepath = Program.ExportFolder;
-            string subfolder = @"\";
-            string outputpath = salefilepath + subfolder;
-            string mfilepath = Program.SentFolder;
-            string outputMpath = mfilepath + subfolder;
-            string filename = string.Empty;
+            //dgvFTP.Rows.Clear();
+            //string salefilepath = Program.ExportFolder;
+            //string subfolder = @"\";
+            //string outputpath = salefilepath + subfolder;
+            //string mfilepath = Program.SentFolder;
+            //string outputMpath = mfilepath + subfolder;
+            //string filename = string.Empty;
 
 
-            string path = string.Empty;
-            string sentfolder = string.Empty;
-
-            string sftpip = ConfigurationManager.AppSettings["06"];
-            string sftpusername = ConfigurationManager.AppSettings["07"];
-            string sftppwd = ConfigurationManager.AppSettings["08"];
-            var list = dgvFTP;
-
-            var request = createRequest(@"ftp://" + sftpip + @"/", WebRequestMethods.Ftp.ListDirectory);
-
-            using (var response = (FtpWebResponse)request.GetResponse())
+            //string path = string.Empty;
+            //string sentfolder = string.Empty;
+            try
             {
-                using (var stream = response.GetResponseStream())
+                string sftpip = ConfigurationManager.AppSettings["06"];
+                string sftpusername = ConfigurationManager.AppSettings["07"];
+                string sftppwd = ConfigurationManager.AppSettings["08"];
+                var list = dgvFTP;
+
+                var request = createRequest(@"ftp://" + sftpip + @"/", WebRequestMethods.Ftp.ListDirectory);
+                request.KeepAlive = false;
+                request.UsePassive = true;
+
+                using (var response = (FtpWebResponse)request.GetResponse())
                 {
-                    using (var reader = new StreamReader(stream, true))
+                    using (var stream = response.GetResponseStream())
                     {
-                        while (!reader.EndOfStream)
+                        using (var reader = new StreamReader(stream, true))
                         {
-                            list.Rows.Add(reader.ReadLine());
+                            while (!reader.EndOfStream)
+                            {
+                                list.Rows.Add(reader.ReadLine());
+                            
+                            }
+                            reader.Close();
                         }
+                        stream.Close();
                     }
+                    response.Close();
                 }
+                List<string> l = new List<string>();
+                
+                return l.ToArray();
             }
-            List<string> l = new List<string>();
-            return l.ToArray();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
         }
+
+     
 
         private FtpWebRequest createRequest(string uri, string method)
         {
@@ -203,6 +235,46 @@ namespace TransightInterface
             return r;
         }
 
+        private bool isValidConnection(string url, string user, string password)
+        {
+            try
+            {
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+                request.Method = WebRequestMethods.Ftp.ListDirectory;
+                request.Timeout = 1000;
+                request.Credentials = new NetworkCredential(user, password);
+                request.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void btnTestFTP_Click(object sender, EventArgs e)
+        {
+           
+                string sftpip = ConfigurationManager.AppSettings["06"];
+                string sftpusername = ConfigurationManager.AppSettings["07"];
+                string sftppwd = ConfigurationManager.AppSettings["08"];
+
+                if (isValidConnection(@"ftp://" + sftpip + @"/", sftpusername, sftppwd))
+                {
+                    MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Restart();
+                    //this.WindowState = FormWindowState.Normal;
+                    
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Interface is not connected to RLC Server", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dgvFTP.Rows.Clear();
+                    dgvFTP.Refresh();
+                }
+
+        }
 
         private bool IsValidTimeFormat(string timeString)
         {
@@ -282,13 +354,20 @@ namespace TransightInterface
                 string sResult = Business.ExportNew(Program.BusinessDateStart, Program.BusinessDateEnd, this);
 
                 if (sResult == string.Empty)
+                {
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    ListDirectory();
+                }
                 else if (sResult == "Export completed.")
+                {
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    ListDirectory();
+                }
                 else if (sResult == "Pending sent successfully.")
-                { 
+                {
                     MessageBox.Show("Trying to send unsent files…successful", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    ListDirectory();
                 }
                 else if (sResult == "Export folder not found.")
                     //custom error
@@ -297,7 +376,7 @@ namespace TransightInterface
                     MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 else //"ERR" == exception
                     MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-
+                    
                 SetStatus(string.Empty);
             }
             catch (Exception ex)
@@ -311,8 +390,9 @@ namespace TransightInterface
             finally
             {
                 EnableControls(true);
-                DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-
+                //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+                ListDirectory();
+                //Application.Restart();
             }
 
         }
@@ -525,11 +605,13 @@ namespace TransightInterface
                     currtime = Convert.ToDecimal(DateTime.Now.ToString("HH.mm"));
                     if (_SchedTime == currtime)
                     {
+                        Application.Restart();
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-                        DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-
+                        
+                        //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+                        //ListDirectory();
 
                     }
                 }
@@ -539,11 +621,13 @@ namespace TransightInterface
                     currtime = Convert.ToDecimal(DateTime.Now.ToString("mm"));
                     if (_SchedTime == currtime)
                     {
+                        Application.Restart();
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-                        DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-
+                        
+                        //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+                        //ListDirectory();
 
                     }
                 }
@@ -551,11 +635,14 @@ namespace TransightInterface
                 {
                     if (isAutoMode)
                     {
+
+                        Application.Restart();
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-                        DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-
+                        
+                        //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+                        //ListDirectory();
 
                     }
                 }
@@ -564,11 +651,13 @@ namespace TransightInterface
             {
                 if (isAutoMode)
                 {
+                    Application.Restart();
                     Program.RunAutoMode();
                     Program.RunUnsendMode();
                     EnableControls(true);
-                    DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-
+                    
+                    //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
+                    //ListDirectory();
                 }
             }
 
@@ -726,5 +815,6 @@ namespace TransightInterface
         {
 
         }
+
     }
 }

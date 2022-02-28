@@ -54,6 +54,7 @@
             this.chkAutomode = new System.Windows.Forms.CheckBox();
             this.dgvFTP = new System.Windows.Forms.DataGridView();
             this.SentFiles = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTestFTP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFTP)).BeginInit();
             this.SuspendLayout();
@@ -151,7 +152,7 @@
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(16, 59);
+            this.btnView.Location = new System.Drawing.Point(12, 708);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(117, 23);
             this.btnView.TabIndex = 19;
@@ -305,11 +306,22 @@
             this.SentFiles.Name = "SentFiles";
             this.SentFiles.ReadOnly = true;
             // 
+            // btnTestFTP
+            // 
+            this.btnTestFTP.Location = new System.Drawing.Point(15, 59);
+            this.btnTestFTP.Name = "btnTestFTP";
+            this.btnTestFTP.Size = new System.Drawing.Size(126, 23);
+            this.btnTestFTP.TabIndex = 121;
+            this.btnTestFTP.Text = "Test FTP Connection";
+            this.btnTestFTP.UseVisualStyleBackColor = true;
+            this.btnTestFTP.Click += new System.EventHandler(this.btnTestFTP_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 339);
+            this.ClientSize = new System.Drawing.Size(500, 337);
+            this.Controls.Add(this.btnTestFTP);
             this.Controls.Add(this.dgvFTP);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.chkAutomode);
@@ -367,6 +379,7 @@
         private System.Windows.Forms.CheckBox chkAutomode;
         internal System.Windows.Forms.DataGridView dgvFTP;
         private System.Windows.Forms.DataGridViewTextBoxColumn SentFiles;
+        private System.Windows.Forms.Button btnTestFTP;
     }
 }
 
