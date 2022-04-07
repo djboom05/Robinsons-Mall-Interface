@@ -26,30 +26,30 @@ namespace TransightInterface
         DataView DtView = new DataView();
         public FormMain(bool Initialize)
         {
-            
-                InitializeComponent();
 
-                //set title
-                try
+            InitializeComponent();
+
+            //set title
+            try
+            {
+                object[] assemblyAttributes = Assembly.GetExecutingAssembly().GetCustomAttributes(false);
+
+                for (int i = 0; i < assemblyAttributes.Length; i++)
                 {
-                    object[] assemblyAttributes = Assembly.GetExecutingAssembly().GetCustomAttributes(false);
-
-                    for (int i = 0; i < assemblyAttributes.Length; i++)
+                    if (assemblyAttributes[i].GetType() == typeof(AssemblyTitleAttribute))
                     {
-                        if (assemblyAttributes[i].GetType() == typeof(AssemblyTitleAttribute))
-                        {
-                            this.Text = ((AssemblyTitleAttribute)assemblyAttributes[i]).Title;
-                            break;
-                        }
+                        this.Text = ((AssemblyTitleAttribute)assemblyAttributes[i]).Title;
+                        break;
                     }
                 }
-                catch
-                {
-                    this.Text = string.Empty;
-                } 
+            }
+            catch
+            {
+                this.Text = string.Empty;
+            }
 
-                //set version
-                lblVersion.Text = "V " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            //set version
+            lblVersion.Text = "V " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
             //set controls
             dtpStartDate.Value = Data.GetLastResetDate();
@@ -60,7 +60,7 @@ namespace TransightInterface
 
             isAutoMode = Initialize;
         }
-        
+
         private void FormMain_Load(object sender, EventArgs e)
         {
 
@@ -165,10 +165,10 @@ namespace TransightInterface
                 MessageBox.Show("An error has occured:\r\n\r\n" + ex.Message + "\r\n\r\nInterface will now exit.", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 this.Close();
             }
-             
+
         }
 
-       
+
 
         public string[] ListDirectory()
         {
@@ -203,7 +203,7 @@ namespace TransightInterface
                             while (!reader.EndOfStream)
                             {
                                 list.Rows.Add(reader.ReadLine());
-                            
+
                             }
                             reader.Close();
                         }
@@ -212,7 +212,7 @@ namespace TransightInterface
                     response.Close();
                 }
                 List<string> l = new List<string>();
-                
+
                 return l.ToArray();
             }
             catch (Exception ex)
@@ -222,7 +222,7 @@ namespace TransightInterface
             }
         }
 
-     
+
 
         private FtpWebRequest createRequest(string uri, string method)
         {
@@ -254,25 +254,25 @@ namespace TransightInterface
 
         private void btnTestFTP_Click(object sender, EventArgs e)
         {
-           
-                string sftpip = ConfigurationManager.AppSettings["06"];
-                string sftpusername = ConfigurationManager.AppSettings["07"];
-                string sftppwd = ConfigurationManager.AppSettings["08"];
 
-                if (isValidConnection(@"ftp://" + sftpip + @"/", sftpusername, sftppwd))
-                {
-                    MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Application.Restart();
-                    //this.WindowState = FormWindowState.Normal;
-                    
-                   
-                }
-                else
-                {
-                    MessageBox.Show("Interface is not connected to RLC Server", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    dgvFTP.Rows.Clear();
-                    dgvFTP.Refresh();
-                }
+            string sftpip = ConfigurationManager.AppSettings["06"];
+            string sftpusername = ConfigurationManager.AppSettings["07"];
+            string sftppwd = ConfigurationManager.AppSettings["08"];
+
+            if (isValidConnection(@"ftp://" + sftpip + @"/", sftpusername, sftppwd))
+            {
+                MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Restart();
+                //this.WindowState = FormWindowState.Normal;
+
+
+            }
+            else
+            {
+                MessageBox.Show("Interface is not connected to RLC Server", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                dgvFTP.Rows.Clear();
+                dgvFTP.Refresh();
+            }
 
         }
 
@@ -376,7 +376,7 @@ namespace TransightInterface
                     MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 else //"ERR" == exception
                     MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                    
+
                 SetStatus(string.Empty);
             }
             catch (Exception ex)
@@ -424,7 +424,7 @@ namespace TransightInterface
             formConfig = null;
         }
 
-        public void SendSFTP(string url, string username, string password,int port,string fingerprint, string filepath, string destinatonpath)
+        public void SendSFTP(string url, string username, string password, int port, string fingerprint, string filepath, string destinatonpath)
         {
             SessionOptions sessionOptions = new SessionOptions();
             sessionOptions.Protocol = Protocol.Sftp;
@@ -514,15 +514,15 @@ namespace TransightInterface
                 System.IO.Directory.CreateDirectory(AppConfig.Sent_Logs);
                 System.Diagnostics.Process.Start(AppConfig.Sent_Logs);
             }
-            
+
         }
 
 
- 
+
         private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
 
-            
+
 
         }
 
@@ -609,7 +609,7 @@ namespace TransightInterface
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-                        
+
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListDirectory();
 
@@ -625,7 +625,7 @@ namespace TransightInterface
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-                        
+
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListDirectory();
 
@@ -640,7 +640,7 @@ namespace TransightInterface
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-                        
+
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListDirectory();
 
@@ -655,7 +655,7 @@ namespace TransightInterface
                     Program.RunAutoMode();
                     Program.RunUnsendMode();
                     EnableControls(true);
-                    
+
                     //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                     //ListDirectory();
                 }
@@ -682,7 +682,7 @@ namespace TransightInterface
         {
             EnableControls(false);
 
-            
+
 
             try
             {
@@ -699,7 +699,7 @@ namespace TransightInterface
                     prevdate = prevdate.AddDays(-1);
                 }
 
-                
+
                 if (dgvPOS.SelectedCells.Count > 0)
                 {
 
@@ -728,7 +728,7 @@ namespace TransightInterface
                 }
 
 
-                
+
             }
             catch (Exception ex)
             {
@@ -758,7 +758,7 @@ namespace TransightInterface
                     MessageBox.Show("Fail to open DB connection.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     return;
                 }
-               
+
 
                 if (dgvPOS.SelectedCells.Count > 0)
                 {
@@ -795,7 +795,7 @@ namespace TransightInterface
 
             }
         }
-       
+
 
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -806,7 +806,7 @@ namespace TransightInterface
         private void chkAutomode_CheckedChanged_1(object sender, EventArgs e)
         {
             isAutoMode = chkAutomode.Checked;
-            
+
             EnableControls(!chkAutomode.Checked);
             timer1.Enabled = chkAutomode.Checked;
         }
@@ -816,5 +816,110 @@ namespace TransightInterface
 
         }
 
+        private void dgvFTP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnTestSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string salefilepath = Program.ExportFolder;
+                string subfolder = @"\";
+                string outputpath = salefilepath + subfolder;
+                string mfilepath = Program.SentFolder;
+                string outputMpath = mfilepath + subfolder;
+                string filename = string.Empty;
+
+
+                string path = string.Empty;
+                string sentfolder = string.Empty;
+
+                string sftpip = ConfigurationManager.AppSettings["06"];
+                string sftpusername = ConfigurationManager.AppSettings["07"];
+                string sftppwd = ConfigurationManager.AppSettings["08"];
+                string sftpkey = ConfigurationManager.AppSettings["09"];
+                string sftpport = ConfigurationManager.AppSettings["10"];
+                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+
+
+                string winscpPath = "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe";
+                Boolean winSCPLog = true;
+                string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs";
+
+                //path = @"" + outputpath + fileName;
+
+                SessionOptions sessionOptions = new SessionOptions();
+                sessionOptions.Protocol = Protocol.Sftp;
+                sessionOptions.HostName = sftpip;
+                sessionOptions.UserName = sftpusername;
+                sessionOptions.Password = sftppwd;
+                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
+                sessionOptions.SshHostKeyFingerprint = sftpkey;
+                //sessionOptions.TimeoutInMilliseconds = 7000;
+                //Session session = new Session();
+                //session.Open(sessionOptions);
+
+                using (Session Session = new Session())
+                {
+                    // WinSCP .NET assembly must be in GAC to be used with SSIS,
+                    // set path to WinSCP.exe explicitly, if using non-default path.
+                    Session.ExecutablePath = winscpPath;
+                    Session.DisableVersionCheck = true;
+
+                    if (winSCPLog)
+                    {
+                        Session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
+                        Session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
+                    }
+
+                    // Connect
+                    Session.Timeout = new TimeSpan(0, 2, 0); // two minutes
+                    Session.Open(sessionOptions);
+
+                    TransferOptions transferOptions = new TransferOptions();
+                    transferOptions.TransferMode = TransferMode.Binary;
+                    TransferOperationResult transferResult;
+                    //This is for Getting/Downloading files from SFTP  
+                    //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
+
+                    //This is for Putting/Uploading file on SFTP  
+                    transferResult = Session.PutFiles("C:\\Interface\\45670301.016", SFTPDestination, false, transferOptions);
+                    transferResult.Check();
+
+                    //session.GetFiles(remoteFTPDirectory + "/" +
+                    // "test.txt", localPath, false, transferOptions);
+                }
+            }
+            catch (WebException ee)
+            {
+                Console.WriteLine(ee.Message.ToString());
+                String status = ((FtpWebResponse)ee.Response).StatusDescription;
+                //Console.WriteLine(status);
+                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface WebException", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                //Sales file is not sent to RLC server. Please contact your POS vendor
+                //Func.Log(path + " failed to upload to FTP. - " + status);
+                //SalesTXTFail = true;
+                ErrorTracking.Log("[Business/Export] WebException Error during export to FTP.");
+                ErrorTracking.Log(status);
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message.ToString());
+                //Func.Log(path + " failed to upload to FTP. - " + ex.Message.ToString());
+                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                //SalesTXTFail = true;
+                ErrorTracking.Log("[Business/Export] Error during export to FTP.");
+                ErrorTracking.Log(ex.Message.ToString());
+            }
+        }
     }
 }
