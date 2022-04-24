@@ -921,17 +921,47 @@ namespace TransightInterface
                             sessionOptions.PortNumber = Convert.ToInt32(sftpport);
                             sessionOptions.SshHostKeyFingerprint = sftpkey;
                             //sessionOptions.TimeoutInMilliseconds = 7000;
-                            Session session = new Session();
-                            session.Open(sessionOptions);
-                            TransferOptions transferOptions = new TransferOptions();
-                            transferOptions.TransferMode = TransferMode.Binary;
-                            TransferOperationResult transferResult;
-                            //This is for Getting/Downloading files from SFTP  
-                            //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
+                            string winscpPath = "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe";
+                            Boolean winSCPLog = true;
+                            string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs\\WinSCPLogs";
 
-                            //This is for Putting/Uploading file on SFTP  
-                            transferResult = session.PutFiles(path, SFTPDestination, false, transferOptions);
-                            transferResult.Check();
+                            //path = @"" + outputpath + fileName;
+
+                          
+                            //sessionOptions.TimeoutInMilliseconds = 7000;
+                            //Session session = new Session();
+                            //session.Open(sessionOptions);
+
+                            using (Session Session = new Session())
+                            {
+                                // WinSCP .NET assembly must be in GAC to be used with SSIS,
+                                // set path to WinSCP.exe explicitly, if using non-default path.
+                                Session.ExecutablePath = winscpPath;
+                                Session.DisableVersionCheck = true;
+
+                                if (winSCPLog)
+                                {
+                                    Session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
+                                    Session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
+                                }
+
+                                // Connect
+                                Session.Timeout = new TimeSpan(0, 2, 0); // two minutes
+                                Session.Open(sessionOptions);
+
+                                TransferOptions transferOptions = new TransferOptions();
+                                transferOptions.TransferMode = TransferMode.Binary;
+                                TransferOperationResult transferResult;
+                                //This is for Getting/Downloading files from SFTP  
+                                //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
+
+                                //This is for Putting/Uploading file on SFTP  
+                                transferResult = Session.PutFiles(path, SFTPDestination, false, transferOptions);
+                                transferResult.Check();
+
+                                //session.GetFiles(remoteFTPDirectory + "/" +
+                                // "test.txt", localPath, false, transferOptions);
+                            }
 
                             string line = "";
                             string busidate = "";

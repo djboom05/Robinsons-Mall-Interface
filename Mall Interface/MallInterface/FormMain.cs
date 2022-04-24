@@ -13,12 +13,16 @@ using System.Configuration;
 using System.IO;
 using WinSCP;
 using System.Net;
-
+using System.Linq;
+//using Renci.SshNet;
+//using Renci.SshNet.Sftp;
 
 namespace TransightInterface
 {
+    
     public partial class FormMain : Form
     {
+       
         public bool isAutoMode;
         public decimal _SchedTime;
 
@@ -148,9 +152,9 @@ namespace TransightInterface
                 {
 
                     //dgvFTP.Rows.Clear();
-                    ListDirectory();
+                    //ListFTPDirectory();
                     //MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //ListDirectory();
+                    //ListFTPDirectory();
                     //this.Show();
                 }
                 else
@@ -170,7 +174,7 @@ namespace TransightInterface
 
 
 
-        public string[] ListDirectory()
+        public string[] ListFTPDirectory()
         {
             //dgvFTP.Rows.Clear();
             //string salefilepath = Program.ExportFolder;
@@ -221,6 +225,9 @@ namespace TransightInterface
                 return null;
             }
         }
+
+    
+
 
 
 
@@ -356,18 +363,18 @@ namespace TransightInterface
                 if (sResult == string.Empty)
                 {
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    ListDirectory();
+                    ListFTPDirectory();
                 }
                 else if (sResult == "Export completed.")
                 {
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    ListDirectory();
+                    ListFTPDirectory();
                 }
                 else if (sResult == "Pending sent successfully.")
                 {
                     MessageBox.Show("Trying to send unsent files…successful", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    ListDirectory();
+                    ListFTPDirectory();
                 }
                 else if (sResult == "Export folder not found.")
                     //custom error
@@ -391,7 +398,7 @@ namespace TransightInterface
             {
                 EnableControls(true);
                 //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                ListDirectory();
+                ListFTPDirectory();
                 //Application.Restart();
             }
 
@@ -446,6 +453,110 @@ namespace TransightInterface
             transferResult.Check();
 
         }
+
+        public void SendSFTPNEW()
+        {
+
+            try
+            {
+                string salefilepath = Program.ExportFolder;
+                string subfolder = @"\";
+                string outputpath = salefilepath + subfolder;
+                string mfilepath = Program.SentFolder;
+                string outputMpath = mfilepath + subfolder;
+                string filename = string.Empty;
+
+
+                string path = string.Empty;
+                string sentfolder = string.Empty;
+
+                string sftpip = ConfigurationManager.AppSettings["06"];
+                string sftpusername = ConfigurationManager.AppSettings["07"];
+                string sftppwd = ConfigurationManager.AppSettings["08"];
+                string sftpkey = ConfigurationManager.AppSettings["09"];
+                string sftpport = ConfigurationManager.AppSettings["10"];
+                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+
+
+                string winscpPath = "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe";
+                Boolean winSCPLog = true;
+                string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs\\WinSCPLogs";
+
+                //path = @"" + outputpath + fileName;
+
+                SessionOptions sessionOptions = new SessionOptions();
+                sessionOptions.Protocol = Protocol.Sftp;
+                sessionOptions.HostName = sftpip;
+                sessionOptions.UserName = sftpusername;
+                sessionOptions.Password = sftppwd;
+                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
+                sessionOptions.SshHostKeyFingerprint = sftpkey;
+                //sessionOptions.TimeoutInMilliseconds = 7000;
+                //Session session = new Session();
+                //session.Open(sessionOptions);
+
+                using (Session Session = new Session())
+                {
+                    // WinSCP .NET assembly must be in GAC to be used with SSIS,
+                    // set path to WinSCP.exe explicitly, if using non-default path.
+                    Session.ExecutablePath = winscpPath;
+                    Session.DisableVersionCheck = true;
+
+                    if (winSCPLog)
+                    {
+                        Session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
+                        Session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
+                    }
+
+                    // Connect
+                    Session.Timeout = new TimeSpan(0, 2, 0); // two minutes
+                    Session.Open(sessionOptions);
+
+                    TransferOptions transferOptions = new TransferOptions();
+                    transferOptions.TransferMode = TransferMode.Binary;
+                    TransferOperationResult transferResult;
+                    //This is for Getting/Downloading files from SFTP  
+                    //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
+
+                    //This is for Putting/Uploading file on SFTP  
+                    transferResult = Session.PutFiles("C:\\Interface\\45670301.016", SFTPDestination, false, transferOptions);
+                    transferResult.Check();
+
+                    //session.GetFiles(remoteFTPDirectory + "/" +
+                    // "test.txt", localPath, false, transferOptions);
+                }
+            }
+            catch (WebException ee)
+            {
+                Console.WriteLine(ee.Message.ToString());
+                String status = ((FtpWebResponse)ee.Response).StatusDescription;
+                //Console.WriteLine(status);
+                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface WebException", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                //Sales file is not sent to RLC server. Please contact your POS vendor
+                //Func.Log(path + " failed to upload to FTP. - " + status);
+                //SalesTXTFail = true;
+                ErrorTracking.Log("[Business/Export] WebException Error during export to FTP.");
+                ErrorTracking.Log(status);
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message.ToString());
+                //Func.Log(path + " failed to upload to FTP. - " + ex.Message.ToString());
+                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                //SalesTXTFail = true;
+                ErrorTracking.Log("[Business/Export] Error during export to FTP.");
+                ErrorTracking.Log(ex.Message.ToString());
+            }
+        }
+
+       
 
         public void SetStatus(string s)
         {
@@ -611,7 +722,7 @@ namespace TransightInterface
                         EnableControls(true);
 
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                        //ListDirectory();
+                        //ListFTPDirectory();
 
                     }
                 }
@@ -627,7 +738,7 @@ namespace TransightInterface
                         EnableControls(true);
 
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                        //ListDirectory();
+                        //ListFTPDirectory();
 
                     }
                 }
@@ -642,7 +753,7 @@ namespace TransightInterface
                         EnableControls(true);
 
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                        //ListDirectory();
+                        //ListFTPDirectory();
 
                     }
                 }
@@ -657,7 +768,7 @@ namespace TransightInterface
                     EnableControls(true);
 
                     //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                    //ListDirectory();
+                    //ListFTPDirectory();
                 }
             }
 
@@ -821,6 +932,96 @@ namespace TransightInterface
 
         }
 
+   
+        //public string[] ListSFTPDirectory()
+        //{
+        //    try
+        //    {
+        //        string salefilepath = Program.ExportFolder;
+        //        string subfolder = @"\";
+        //        string outputpath = salefilepath + subfolder;
+        //        string mfilepath = Program.SentFolder;
+        //        string outputMpath = mfilepath + subfolder;
+        //        string filename = string.Empty;
+
+
+        //        string path = string.Empty;
+        //        string sentfolder = string.Empty;
+
+        //        string sftpip = ConfigurationManager.AppSettings["06"];
+        //        string sftpusername = ConfigurationManager.AppSettings["07"];
+        //        string sftppwd = ConfigurationManager.AppSettings["08"];
+        //        string sftpkey = ConfigurationManager.AppSettings["09"];
+        //        string sftpport = ConfigurationManager.AppSettings["10"];
+        //        string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+        //        string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+        //        string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+        //        string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+
+
+        //        string winscpPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCP.exe";
+        //        Boolean winSCPLog = true;
+        //        string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCPLogs\\WinSCPLogs";
+
+        //        //path = @"" + outputpath + fileName;
+
+        //        // Setup session options
+        //        SessionOptions sessionOptions = new SessionOptions();
+        //        sessionOptions.Protocol = Protocol.Sftp;
+        //        sessionOptions.HostName = sftpip;
+        //        sessionOptions.UserName = sftpusername;
+        //        sessionOptions.Password = sftppwd;
+        //        sessionOptions.PortNumber = Convert.ToInt32(sftpport);
+        //        sessionOptions.SshHostKeyFingerprint = sftpkey;
+                
+               
+
+        //        var list = dgvFTP;
+
+
+
+        //        using (Session session = new Session())
+        //        {
+        //            // Connect
+        //            session.ExecutablePath = winscpPath;
+        //            session.DisableVersionCheck = true;
+        //            session.Open(sessionOptions);
+
+        //            if (winSCPLog)
+        //            {
+        //                session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
+        //                session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
+        //            }
+                   
+                   
+
+        //            //RemoteDirectoryInfo directory =
+        //            //session.EnumerateRemoteFiles("/IT_Tenants",null, EnumerationOptions.None);
+        //            List<string> files =
+        //                session.EnumerateRemoteFiles("/", null, EnumerationOptions.AllDirectories)
+        //                .Select(fileInfo => fileInfo.FullName)
+        //                .ToList();
+        //            //list.Rows.Add(fileInfo.Name, fileInfo.Length, fileInfo.FilePermissions, fileInfo.LastWriteTime);
+        //            //list.Rows.Add(directory.ToString());
+                   
+        //            Func.Log($"Found {files.Count} files");
+        //            list.Rows.Add(files.Count);
+        //            return files.ToArray();
+        //        }
+
+               
+        //        //return l.ToArray();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ErrorTracking.Log("[Business/Export] Error during export to FTP.");        
+        //        ErrorTracking.Log(e.Message.ToString());
+        //        return null;
+
+        //    }
+
+        //}
+
         private void btnTestSend_Click(object sender, EventArgs e)
         {
             try
@@ -847,9 +1048,9 @@ namespace TransightInterface
                 string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
 
-                string winscpPath = "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe";
+                string winscpPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCP.exe";
                 Boolean winSCPLog = true;
-                string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs";
+                string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs\\WinSCPLogs";
 
                 //path = @"" + outputpath + fileName;
 
@@ -921,5 +1122,24 @@ namespace TransightInterface
                 ErrorTracking.Log(ex.Message.ToString());
             }
         }
+
+        private void btnLoadSFTP_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                dgvFTP.DataSource = Data.ListSFTPDirectory2();
+            }
+
+         
+
+            catch (Exception ex)
+            {
+                ErrorTracking.Log("[Business/Export] Error during export to FTP.");
+                ErrorTracking.Log(ex.Message.ToString());
+                
+
+            }
+        }
+        
     }
 }

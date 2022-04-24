@@ -56,6 +56,7 @@
             this.SentFiles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTestFTP = new System.Windows.Forms.Button();
             this.btnTestSend = new System.Windows.Forms.Button();
+            this.btnLoadSFTP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFTP)).BeginInit();
             this.SuspendLayout();
@@ -328,11 +329,22 @@
             this.btnTestSend.UseVisualStyleBackColor = true;
             this.btnTestSend.Click += new System.EventHandler(this.btnTestSend_Click);
             // 
+            // btnLoadSFTP
+            // 
+            this.btnLoadSFTP.Location = new System.Drawing.Point(190, 306);
+            this.btnLoadSFTP.Name = "btnLoadSFTP";
+            this.btnLoadSFTP.Size = new System.Drawing.Size(102, 23);
+            this.btnLoadSFTP.TabIndex = 123;
+            this.btnLoadSFTP.Text = "Load SFTP Files";
+            this.btnLoadSFTP.UseVisualStyleBackColor = true;
+            this.btnLoadSFTP.Click += new System.EventHandler(this.btnLoadSFTP_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 337);
+            this.Controls.Add(this.btnLoadSFTP);
             this.Controls.Add(this.btnTestSend);
             this.Controls.Add(this.btnTestFTP);
             this.Controls.Add(this.dgvFTP);
@@ -394,6 +406,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SentFiles;
         private System.Windows.Forms.Button btnTestFTP;
         private System.Windows.Forms.Button btnTestSend;
+        private System.Windows.Forms.Button btnLoadSFTP;
     }
 }
 
