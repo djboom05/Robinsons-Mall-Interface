@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Linq;
+using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 using Transight.Interface.Config;
 using Transight.Interface.Common;
+using Renci.SshNet;
+using System.IO;
+using System.Configuration;
 
 namespace TransightInterface
 {
@@ -220,8 +226,82 @@ namespace TransightInterface
                 Application.Run(new FormMain((AppConfig._autoTimer == "1") ? true : false));
             }
 
+        }
 
+        public static DataTable ShowSFTPFiles(string sftpServerName, string sftpDirectory, string userId, string password)
+        {
+            DataTable dt = new DataTable();
+            //client.Connect();
 
+            dt.Columns.Add("Sent Files");
+            using (var client = new SftpClient(sftpServerName, 22, userId, password))
+            {
+                client.Connect();
+                //int objects = client.ListDirectory(".").Count();
+                //MessageBox.Show("SFTP Dir Col Count: " + objects.ToString());
+                var stream = client.ListDirectory(".");
+                {
+                    
+                    //var paths = 
+                    foreach (var entry in stream)
+                    {
+                        //Console.WriteLine(entry.Name.ToString());
+                        dt.Rows.Add(entry.Name.ToString());
+                        //MessageBox.Show(entry.Name.ToString());
+                    }
+                }
+                client.Disconnect();
+            }
+            return dt;
+        }
+       
+
+        public static int IsValidSFTPConnection(string sftpServerName, string sftpDirectory, string userId, string password)
+        {
+            int status = 0;
+            try
+            {
+                if (string.IsNullOrEmpty(sftpServerName))
+                {
+                    return status = 1;
+                }
+                if ((string.IsNullOrEmpty(userId)) || (string.IsNullOrEmpty(password)))
+                {
+                    return status = 3;
+                }
+
+                using (var client = new SftpClient(sftpServerName, 22, userId, password))
+                {
+                    client.Connect();
+                    
+                    client.Disconnect();
+                }
+                 
+            }
+            catch (Exception ex)
+            {
+                //Log(ex.ToString(), 1, "FTP File Connection Not Successful.");
+                status = 4;
+                if (ex.Message.Contains("No such host is known"))
+                {
+                    status = 1;
+                }
+                if (ex.Message.Contains("Path not found") || ex.Message.Contains("No such file"))
+                {
+                    status = 2;
+                }
+                if (ex.Message.Contains("Permission denied (password)"))
+                {
+                    status = 3;
+                }
+                if (ex.Message.Contains("established connection failed because connected host has failed to respond"))
+                {
+                    status = 5;
+                }
+                return status;
+            }
+            return status;
+            
 
         }
 

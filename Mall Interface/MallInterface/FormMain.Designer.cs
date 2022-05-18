@@ -52,11 +52,10 @@
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.chkAutomode = new System.Windows.Forms.CheckBox();
-            this.dgvFTP = new System.Windows.Forms.DataGridView();
-            this.SentFiles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTestFTP = new System.Windows.Forms.Button();
             this.btnTestSend = new System.Windows.Forms.Button();
             this.btnLoadSFTP = new System.Windows.Forms.Button();
+            this.dgvFTP = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFTP)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +77,7 @@
             this.lblVersion.Size = new System.Drawing.Size(100, 13);
             this.lblVersion.TabIndex = 1;
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblVersion.Click += new System.EventHandler(this.lblVersion_Click);
             // 
             // btnConfig
             // 
@@ -284,31 +284,6 @@
             this.chkAutomode.UseVisualStyleBackColor = true;
             this.chkAutomode.CheckedChanged += new System.EventHandler(this.chkAutomode_CheckedChanged_1);
             // 
-            // dgvFTP
-            // 
-            this.dgvFTP.AllowUserToAddRows = false;
-            this.dgvFTP.AllowUserToResizeColumns = false;
-            this.dgvFTP.AllowUserToResizeRows = false;
-            this.dgvFTP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFTP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFTP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SentFiles});
-            this.dgvFTP.Location = new System.Drawing.Point(15, 123);
-            this.dgvFTP.Name = "dgvFTP";
-            this.dgvFTP.ReadOnly = true;
-            this.dgvFTP.RowHeadersVisible = false;
-            this.dgvFTP.RowHeadersWidth = 51;
-            this.dgvFTP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFTP.Size = new System.Drawing.Size(469, 177);
-            this.dgvFTP.TabIndex = 120;
-            this.dgvFTP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFTP_CellContentClick);
-            // 
-            // SentFiles
-            // 
-            this.SentFiles.HeaderText = "Sent Files";
-            this.SentFiles.Name = "SentFiles";
-            this.SentFiles.ReadOnly = true;
-            // 
             // btnTestFTP
             // 
             this.btnTestFTP.Location = new System.Drawing.Point(15, 59);
@@ -339,15 +314,25 @@
             this.btnLoadSFTP.UseVisualStyleBackColor = true;
             this.btnLoadSFTP.Click += new System.EventHandler(this.btnLoadSFTP_Click);
             // 
+            // dgvFTP
+            // 
+            this.dgvFTP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFTP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFTP.Location = new System.Drawing.Point(12, 123);
+            this.dgvFTP.Name = "dgvFTP";
+            this.dgvFTP.RowHeadersVisible = false;
+            this.dgvFTP.Size = new System.Drawing.Size(470, 168);
+            this.dgvFTP.TabIndex = 124;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 337);
+            this.Controls.Add(this.dgvFTP);
             this.Controls.Add(this.btnLoadSFTP);
             this.Controls.Add(this.btnTestSend);
             this.Controls.Add(this.btnTestFTP);
-            this.Controls.Add(this.dgvFTP);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.chkAutomode);
             this.Controls.Add(this.btnDelete);
@@ -402,11 +387,10 @@
         public System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.CheckBox chkAutomode;
-        internal System.Windows.Forms.DataGridView dgvFTP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SentFiles;
         private System.Windows.Forms.Button btnTestFTP;
         private System.Windows.Forms.Button btnTestSend;
         private System.Windows.Forms.Button btnLoadSFTP;
+        private System.Windows.Forms.DataGridView dgvFTP;
     }
 }
 

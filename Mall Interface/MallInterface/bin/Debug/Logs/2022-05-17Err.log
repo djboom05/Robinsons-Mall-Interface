@@ -1,0 +1,36 @@
+2022-05-17 11:43:01 [AppConfig/Load] Error loading configs.
+2022-05-17 11:43:01 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 11:44:40 [AppConfig/Load] Error loading configs.
+2022-05-17 11:44:40 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 11:44:52 [AppConfig/Load] Error loading configs.
+2022-05-17 11:44:52 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 11:46:20 [AppConfig/Load] Error loading configs.
+2022-05-17 11:46:20 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 12:34:57 [Business/Export] Error during export to FTP.
+2022-05-17 12:34:57 No such file
+2022-05-17 12:35:19 [Business/Export] Error during export to FTP.
+2022-05-17 12:35:19 No such file
+2022-05-17 12:50:55 [AppConfig/Load] Error loading configs.
+2022-05-17 12:50:55 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 12:51:39 [Business/Export] Error during export to FTP.
+2022-05-17 12:51:39 No such file
+2022-05-17 12:52:23 [AppConfig/Load] Error loading configs.
+2022-05-17 12:52:23 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 12:53:06 [Business/Export] Error during export to FTP.
+2022-05-17 12:53:06 Input array is longer than the number of columns in this table.
+2022-05-17 12:54:36 [AppConfig/Load] Error loading configs.
+2022-05-17 12:54:36 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 12:55:21 [Business/Export] Error during export to FTP.
+2022-05-17 12:55:21 Input array is longer than the number of columns in this table.
+2022-05-17 12:59:31 [AppConfig/Load] Error loading configs.
+2022-05-17 12:59:31 System.ApplicationException: Error getting Transight DB User Name
+   at Transight.Interface.Config.AppConfig.Load(Boolean ShowMessage) in D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\AppConfig.cs:line 187
+2022-05-17 13:00:06 [Business/Export] Error during export to FTP.
+2022-05-17 13:00:06 Input array is longer than the number of columns in this table.

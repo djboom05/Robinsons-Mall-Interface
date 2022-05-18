@@ -76,4 +76,3 @@ D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transig
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Common\obj\Debug\Transight.Interface.Common.csproj.CoreCompileInputs.cache
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Common\obj\Debug\Transight.Interface.Common.dll
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Common\obj\Debug\Transight.Interface.Common.pdb
-D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Common\obj\Debug\Transight.Interface.Common.csprojAssemblyReference.cache

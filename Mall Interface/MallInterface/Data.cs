@@ -117,6 +117,18 @@ namespace TransightInterface
             }
         }
 
+        public static DataTable GetSFTPFiles(SftpClient client, string serverFolder)
+        {
+            DataTable dt = new DataTable();
+
+            var paths = client.ListDirectory(serverFolder);
+            foreach(var path in paths)
+            {
+                dt.Rows.Add(path.IsDirectory ? "Directory: " + path.FullName : "File: " + path.FullName);
+            }
+            return dt;
+        }
+
         public static void PrepareTempTable()
         {
             try
@@ -569,6 +581,7 @@ namespace TransightInterface
 
                 if (entry.IsDirectory)
                 {
+                    client.ChangeDirectory("@" + dirName);
                     ListDirectory(client, entry.FullName, ref files);
                 }
                 else

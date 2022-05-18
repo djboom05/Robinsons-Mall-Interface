@@ -1126,11 +1126,56 @@ namespace TransightInterface
         private void btnLoadSFTP_Click(object sender, EventArgs e)
         {
             try
-            { 
-                dgvFTP.DataSource = Data.ListSFTPDirectory2();
+            {
+                List<string> dirNames = new List<string>();
+                string url = "112.199.91.14";
+                string usn = "accredit";
+                string pwd = "RLC@Partners";
+                string dir = "IT_Tenants/";
+                string sftpip = ConfigurationManager.AppSettings["06"];
+                string sftpusername = ConfigurationManager.AppSettings["07"];
+                string sftppwd = ConfigurationManager.AppSettings["08"];
+                string sftpkey = ConfigurationManager.AppSettings["09"];
+                string sftpport = ConfigurationManager.AppSettings["10"];
+                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+                int status = 0;
+                status = Program.IsValidSFTPConnection(url, dir, usn, pwd);
+                if (status > 0)
+                {
+                    //status == 1-- > Invalid Server / Host Name
+                    //status == 2-- > Invalid Directory Name
+                    //status == 3-- > user name password is wrong
+                    if (status == 1)
+                    {
+                        MessageBox.Show("Invalid Server/Host Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    if (status == 2)
+                    {
+                        MessageBox.Show("Invalid Directory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    if (status == 3)
+                    {
+                        MessageBox.Show("Username and/or Password is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                   
+                    MessageBox.Show("Successfully connected to RLC SFTP Server.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Console.ReadLine();
+                    dgvFTP.DataSource = Program.ShowSFTPFiles(url, dir, usn, pwd);
+
+                    //MessageBox.Show(string.Join(Environment.NewLine,
+                    //Program.ShowSFTPFiles(url, dir, usn, pwd).Rows.OfType<DataRow>().Select(x => string.Join(" ; ", x.ItemArray))),"output");
+                }
+                Console.ReadLine();
+                //dgvFTP.DataSource =
+                
             }
 
-         
 
             catch (Exception ex)
             {
@@ -1139,7 +1184,12 @@ namespace TransightInterface
                 
 
             }
+
         }
-        
+
+        private void lblVersion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
