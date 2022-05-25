@@ -144,25 +144,27 @@ namespace TransightInterface
 
             try
             {
-                string sftpip = ConfigurationManager.AppSettings["06"];
-                string sftpusername = ConfigurationManager.AppSettings["07"];
-                string sftppwd = ConfigurationManager.AppSettings["08"];
-                //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                if (isValidConnection(@"ftp://" + sftpip + @"/", sftpusername, sftppwd))
-                {
 
-                    //dgvFTP.Rows.Clear();
-                    //ListFTPDirectory();
-                    //MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //ListFTPDirectory();
-                    //this.Show();
-                }
-                else
+                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                string sftpkey = AppConfig.GetConfig("SSHKEY").ToString();
+                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+
+                if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "") 
                 {
-                    //MessageBox.Show("Interface is not connected to RLC Server", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    dgvFTP.Rows.Clear();
-                    dgvFTP.Refresh();
+                    dgvFTP.DataSource = Data.ListSFTPDirectory();
                 }
+                else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                {
+                    dgvFTP.Rows.Clear();
+                    //dgvFTP.DataSource = Program.ShowSFTPFiles(sftpip, SFTPDestination, sftpusername, sftppwd);
+                    //dgvFTP.DataSource = Data.ListSFTPDirectory();
+                    //MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListFTPDirectory();
+                    //this.Show();
+                  
+                }
+
             }
             catch (Exception ex)
             {
@@ -363,18 +365,18 @@ namespace TransightInterface
                 if (sResult == string.Empty)
                 {
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    ListFTPDirectory();
+                    //ListFTPDirectory();
                 }
                 else if (sResult == "Export completed.")
                 {
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    ListFTPDirectory();
+                    //ListFTPDirectory();
                 }
                 else if (sResult == "Pending sent successfully.")
                 {
                     MessageBox.Show("Trying to send unsent files…successful", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    ListFTPDirectory();
+                    //ListFTPDirectory();
                 }
                 else if (sResult == "Export folder not found.")
                     //custom error
@@ -398,7 +400,7 @@ namespace TransightInterface
             {
                 EnableControls(true);
                 //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
-                ListFTPDirectory();
+                //ListFTPDirectory();
                 //Application.Restart();
             }
 
@@ -454,107 +456,7 @@ namespace TransightInterface
 
         }
 
-        public void SendSFTPNEW()
-        {
-
-            try
-            {
-                string salefilepath = Program.ExportFolder;
-                string subfolder = @"\";
-                string outputpath = salefilepath + subfolder;
-                string mfilepath = Program.SentFolder;
-                string outputMpath = mfilepath + subfolder;
-                string filename = string.Empty;
-
-
-                string path = string.Empty;
-                string sentfolder = string.Empty;
-
-                string sftpip = ConfigurationManager.AppSettings["06"];
-                string sftpusername = ConfigurationManager.AppSettings["07"];
-                string sftppwd = ConfigurationManager.AppSettings["08"];
-                string sftpkey = ConfigurationManager.AppSettings["09"];
-                string sftpport = ConfigurationManager.AppSettings["10"];
-                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-                string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
-                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
-                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
-
-
-                string winscpPath = "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe";
-                Boolean winSCPLog = true;
-                string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs\\WinSCPLogs";
-
-                //path = @"" + outputpath + fileName;
-
-                SessionOptions sessionOptions = new SessionOptions();
-                sessionOptions.Protocol = Protocol.Sftp;
-                sessionOptions.HostName = sftpip;
-                sessionOptions.UserName = sftpusername;
-                sessionOptions.Password = sftppwd;
-                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-                sessionOptions.SshHostKeyFingerprint = sftpkey;
-                //sessionOptions.TimeoutInMilliseconds = 7000;
-                //Session session = new Session();
-                //session.Open(sessionOptions);
-
-                using (Session Session = new Session())
-                {
-                    // WinSCP .NET assembly must be in GAC to be used with SSIS,
-                    // set path to WinSCP.exe explicitly, if using non-default path.
-                    Session.ExecutablePath = winscpPath;
-                    Session.DisableVersionCheck = true;
-
-                    if (winSCPLog)
-                    {
-                        Session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
-                        Session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
-                    }
-
-                    // Connect
-                    Session.Timeout = new TimeSpan(0, 2, 0); // two minutes
-                    Session.Open(sessionOptions);
-
-                    TransferOptions transferOptions = new TransferOptions();
-                    transferOptions.TransferMode = TransferMode.Binary;
-                    TransferOperationResult transferResult;
-                    //This is for Getting/Downloading files from SFTP  
-                    //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
-
-                    //This is for Putting/Uploading file on SFTP  
-                    transferResult = Session.PutFiles("C:\\Interface\\45670301.016", SFTPDestination, false, transferOptions);
-                    transferResult.Check();
-
-                    //session.GetFiles(remoteFTPDirectory + "/" +
-                    // "test.txt", localPath, false, transferOptions);
-                }
-            }
-            catch (WebException ee)
-            {
-                Console.WriteLine(ee.Message.ToString());
-                String status = ((FtpWebResponse)ee.Response).StatusDescription;
-                //Console.WriteLine(status);
-                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface WebException", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-
-                //Sales file is not sent to RLC server. Please contact your POS vendor
-                //Func.Log(path + " failed to upload to FTP. - " + status);
-                //SalesTXTFail = true;
-                ErrorTracking.Log("[Business/Export] WebException Error during export to FTP.");
-                ErrorTracking.Log(status);
-
-
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(ex.Message.ToString());
-                //Func.Log(path + " failed to upload to FTP. - " + ex.Message.ToString());
-                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-
-                //SalesTXTFail = true;
-                ErrorTracking.Log("[Business/Export] Error during export to FTP.");
-                ErrorTracking.Log(ex.Message.ToString());
-            }
-        }
+      
 
        
 
@@ -716,7 +618,7 @@ namespace TransightInterface
                     currtime = Convert.ToDecimal(DateTime.Now.ToString("HH.mm"));
                     if (_SchedTime == currtime)
                     {
-                        Application.Restart();
+                        //Application.Restart();
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
@@ -732,7 +634,7 @@ namespace TransightInterface
                     currtime = Convert.ToDecimal(DateTime.Now.ToString("mm"));
                     if (_SchedTime == currtime)
                     {
-                        Application.Restart();
+                        //Application.Restart();
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
@@ -747,7 +649,7 @@ namespace TransightInterface
                     if (isAutoMode)
                     {
 
-                        Application.Restart();
+                        //Application.Restart();
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
@@ -762,7 +664,7 @@ namespace TransightInterface
             {
                 if (isAutoMode)
                 {
-                    Application.Restart();
+                    //Application.Restart();
                     Program.RunAutoMode();
                     Program.RunUnsendMode();
                     EnableControls(true);
@@ -932,95 +834,6 @@ namespace TransightInterface
 
         }
 
-   
-        //public string[] ListSFTPDirectory()
-        //{
-        //    try
-        //    {
-        //        string salefilepath = Program.ExportFolder;
-        //        string subfolder = @"\";
-        //        string outputpath = salefilepath + subfolder;
-        //        string mfilepath = Program.SentFolder;
-        //        string outputMpath = mfilepath + subfolder;
-        //        string filename = string.Empty;
-
-
-        //        string path = string.Empty;
-        //        string sentfolder = string.Empty;
-
-        //        string sftpip = ConfigurationManager.AppSettings["06"];
-        //        string sftpusername = ConfigurationManager.AppSettings["07"];
-        //        string sftppwd = ConfigurationManager.AppSettings["08"];
-        //        string sftpkey = ConfigurationManager.AppSettings["09"];
-        //        string sftpport = ConfigurationManager.AppSettings["10"];
-        //        string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-        //        string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
-        //        string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
-        //        string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
-
-
-        //        string winscpPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCP.exe";
-        //        Boolean winSCPLog = true;
-        //        string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCPLogs\\WinSCPLogs";
-
-        //        //path = @"" + outputpath + fileName;
-
-        //        // Setup session options
-        //        SessionOptions sessionOptions = new SessionOptions();
-        //        sessionOptions.Protocol = Protocol.Sftp;
-        //        sessionOptions.HostName = sftpip;
-        //        sessionOptions.UserName = sftpusername;
-        //        sessionOptions.Password = sftppwd;
-        //        sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-        //        sessionOptions.SshHostKeyFingerprint = sftpkey;
-                
-               
-
-        //        var list = dgvFTP;
-
-
-
-        //        using (Session session = new Session())
-        //        {
-        //            // Connect
-        //            session.ExecutablePath = winscpPath;
-        //            session.DisableVersionCheck = true;
-        //            session.Open(sessionOptions);
-
-        //            if (winSCPLog)
-        //            {
-        //                session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
-        //                session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
-        //            }
-                   
-                   
-
-        //            //RemoteDirectoryInfo directory =
-        //            //session.EnumerateRemoteFiles("/IT_Tenants",null, EnumerationOptions.None);
-        //            List<string> files =
-        //                session.EnumerateRemoteFiles("/", null, EnumerationOptions.AllDirectories)
-        //                .Select(fileInfo => fileInfo.FullName)
-        //                .ToList();
-        //            //list.Rows.Add(fileInfo.Name, fileInfo.Length, fileInfo.FilePermissions, fileInfo.LastWriteTime);
-        //            //list.Rows.Add(directory.ToString());
-                   
-        //            Func.Log($"Found {files.Count} files");
-        //            list.Rows.Add(files.Count);
-        //            return files.ToArray();
-        //        }
-
-               
-        //        //return l.ToArray();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        ErrorTracking.Log("[Business/Export] Error during export to FTP.");        
-        //        ErrorTracking.Log(e.Message.ToString());
-        //        return null;
-
-        //    }
-
-        //}
 
         private void btnTestSend_Click(object sender, EventArgs e)
         {
@@ -1041,60 +854,16 @@ namespace TransightInterface
                 string sftpusername = ConfigurationManager.AppSettings["07"];
                 string sftppwd = ConfigurationManager.AppSettings["08"];
                 string sftpkey = ConfigurationManager.AppSettings["09"];
-                string sftpport = ConfigurationManager.AppSettings["10"];
+                int sftpport = Convert.ToInt32(ConfigurationManager.AppSettings["10"]);
                 string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
                 string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
                 string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
                 string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
+                Business.SendSFTPNEW("C:\\Interface\\45670201.012", sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
 
-                string winscpPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCP.exe";
-                Boolean winSCPLog = true;
-                string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs\\WinSCPLogs";
 
-                //path = @"" + outputpath + fileName;
 
-                SessionOptions sessionOptions = new SessionOptions();
-                sessionOptions.Protocol = Protocol.Sftp;
-                sessionOptions.HostName = sftpip;
-                sessionOptions.UserName = sftpusername;
-                sessionOptions.Password = sftppwd;
-                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-                sessionOptions.SshHostKeyFingerprint = sftpkey;
-                //sessionOptions.TimeoutInMilliseconds = 7000;
-                //Session session = new Session();
-                //session.Open(sessionOptions);
-
-                using (Session Session = new Session())
-                {
-                    // WinSCP .NET assembly must be in GAC to be used with SSIS,
-                    // set path to WinSCP.exe explicitly, if using non-default path.
-                    Session.ExecutablePath = winscpPath;
-                    Session.DisableVersionCheck = true;
-
-                    if (winSCPLog)
-                    {
-                        Session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
-                        Session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
-                    }
-
-                    // Connect
-                    Session.Timeout = new TimeSpan(0, 2, 0); // two minutes
-                    Session.Open(sessionOptions);
-
-                    TransferOptions transferOptions = new TransferOptions();
-                    transferOptions.TransferMode = TransferMode.Binary;
-                    TransferOperationResult transferResult;
-                    //This is for Getting/Downloading files from SFTP  
-                    //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
-
-                    //This is for Putting/Uploading file on SFTP  
-                    transferResult = Session.PutFiles("C:\\Interface\\45670301.016", SFTPDestination, false, transferOptions);
-                    transferResult.Check();
-
-                    //session.GetFiles(remoteFTPDirectory + "/" +
-                    // "test.txt", localPath, false, transferOptions);
-                }
             }
             catch (WebException ee)
             {
@@ -1142,7 +911,7 @@ namespace TransightInterface
                 string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
                 string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
                 int status = 0;
-                status = Program.IsValidSFTPConnection(url, dir, usn, pwd);
+                status = Program.IsValidSFTPConnection(sftpip, SFTPDestination, sftpusername, sftppwd);
                 if (status > 0)
                 {
                     //status == 1-- > Invalid Server / Host Name
@@ -1163,17 +932,16 @@ namespace TransightInterface
                 }
                 else
                 {
-                   
-                    MessageBox.Show("Successfully connected to RLC SFTP Server.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Console.ReadLine();
-                    dgvFTP.DataSource = Program.ShowSFTPFiles(url, dir, usn, pwd);
 
-                    //MessageBox.Show(string.Join(Environment.NewLine,
-                    //Program.ShowSFTPFiles(url, dir, usn, pwd).Rows.OfType<DataRow>().Select(x => string.Join(" ; ", x.ItemArray))),"output");
+                    //MessageBox.Show("Successfully connected to RLC SFTP Server.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Console.ReadLine();
+                    dgvFTP.DataSource = Data.ListSFTPDirectory();
+                    //dgvFTP.DataSource = Program.ShowSFTPFiles(sftpip, SFTPDestination, sftpusername, sftppwd);
+
                 }
-                Console.ReadLine();
+                //Console.ReadLine();
                 //dgvFTP.DataSource =
-                
+
             }
 
 

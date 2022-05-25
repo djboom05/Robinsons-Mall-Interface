@@ -286,12 +286,13 @@
             // 
             // btnTestFTP
             // 
-            this.btnTestFTP.Location = new System.Drawing.Point(15, 59);
+            this.btnTestFTP.Location = new System.Drawing.Point(19, 59);
             this.btnTestFTP.Name = "btnTestFTP";
             this.btnTestFTP.Size = new System.Drawing.Size(126, 23);
             this.btnTestFTP.TabIndex = 121;
             this.btnTestFTP.Text = "Test Connection";
             this.btnTestFTP.UseVisualStyleBackColor = true;
+            this.btnTestFTP.Visible = false;
             this.btnTestFTP.Click += new System.EventHandler(this.btnTestFTP_Click);
             // 
             // btnTestSend
@@ -310,7 +311,7 @@
             this.btnLoadSFTP.Name = "btnLoadSFTP";
             this.btnLoadSFTP.Size = new System.Drawing.Size(102, 23);
             this.btnLoadSFTP.TabIndex = 123;
-            this.btnLoadSFTP.Text = "Load SFTP Files";
+            this.btnLoadSFTP.Text = "Refresh";
             this.btnLoadSFTP.UseVisualStyleBackColor = true;
             this.btnLoadSFTP.Click += new System.EventHandler(this.btnLoadSFTP_Click);
             // 

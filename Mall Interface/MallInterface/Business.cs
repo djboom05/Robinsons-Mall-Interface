@@ -828,7 +828,8 @@ namespace TransightInterface
                 string sftpusername = ConfigurationManager.AppSettings["07"];
                 string sftppwd = ConfigurationManager.AppSettings["08"];
                 string sftpkey = ConfigurationManager.AppSettings["09"];
-                string sftpport = ConfigurationManager.AppSettings["10"];
+                int sftpport = Convert.ToInt32(ConfigurationManager.AppSettings["10"]);
+                //string sftpport = ConfigurationManager.AppSettings["10"];
 
                 //checking for unsent files
                 #region check unsent files
@@ -844,7 +845,52 @@ namespace TransightInterface
                         string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
                         string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
-                        if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                        if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                        {
+
+                            path = @"" + outputpath + file.Name.ToString();
+                            MessageBox.Show("path: " + path);
+
+                            string fpath = path.Replace(@"\", @"\\");
+                            MessageBox.Show("fpath: " + fpath);
+                            SendSFTPNEW(fpath, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+
+                            string line = "";
+                            string busidate = "";
+                            DateTime unsentBusidate;
+                            using (StreamReader sr = new StreamReader(path))
+                            {
+                                while (!sr.EndOfStream)
+                                {
+                                    line = sr.ReadLine();
+                                    if (line.Contains("1800000"))
+                                    {
+                                        //business date inside file
+                                        busidate = line.Substring(line.Length - 10);
+                                    }
+
+                                }
+                                sr.Dispose();
+                            }
+                            unsentBusidate = DateTime.ParseExact(busidate, "MM/dd/yyyy",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+
+                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+
+                            us = "Send successfully.";
+                            if (!SalesTXTFail)
+                            {
+                                File.Copy(path, outputMpath + file.Name.ToString(), true);
+                                Func.Log("Copied file to " + Program.SentFolder);
+                                File.Delete(path);
+                                Func.Log("Deleting file " + path);
+                            }
+
+
+                        }
+
+                        else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                         {
                             FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
 
@@ -908,95 +954,7 @@ namespace TransightInterface
                             }
 
                         }
-                        else if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
-                        {
-
-                            path = @"" + outputpath + file.Name.ToString();
-
-                            SessionOptions sessionOptions = new SessionOptions();
-                            sessionOptions.Protocol = Protocol.Sftp;
-                            sessionOptions.HostName = sftpip;
-                            sessionOptions.UserName = sftpusername;
-                            sessionOptions.Password = sftppwd;
-                            sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-                            sessionOptions.SshHostKeyFingerprint = sftpkey;
-                            //sessionOptions.TimeoutInMilliseconds = 7000;
-                            string winscpPath = "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe";
-                            Boolean winSCPLog = true;
-                            string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs\\WinSCPLogs";
-
-                            //path = @"" + outputpath + fileName;
-
-                          
-                            //sessionOptions.TimeoutInMilliseconds = 7000;
-                            //Session session = new Session();
-                            //session.Open(sessionOptions);
-
-                            using (Session Session = new Session())
-                            {
-                                // WinSCP .NET assembly must be in GAC to be used with SSIS,
-                                // set path to WinSCP.exe explicitly, if using non-default path.
-                                Session.ExecutablePath = winscpPath;
-                                Session.DisableVersionCheck = true;
-
-                                if (winSCPLog)
-                                {
-                                    Session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
-                                    Session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
-                                }
-
-                                // Connect
-                                Session.Timeout = new TimeSpan(0, 2, 0); // two minutes
-                                Session.Open(sessionOptions);
-
-                                TransferOptions transferOptions = new TransferOptions();
-                                transferOptions.TransferMode = TransferMode.Binary;
-                                TransferOperationResult transferResult;
-                                //This is for Getting/Downloading files from SFTP  
-                                //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
-
-                                //This is for Putting/Uploading file on SFTP  
-                                transferResult = Session.PutFiles(path, SFTPDestination, false, transferOptions);
-                                transferResult.Check();
-
-                                //session.GetFiles(remoteFTPDirectory + "/" +
-                                // "test.txt", localPath, false, transferOptions);
-                            }
-
-                            string line = "";
-                            string busidate = "";
-                            DateTime unsentBusidate;
-                            using (StreamReader sr = new StreamReader(path))
-                            {
-                                while (!sr.EndOfStream)
-                                {
-                                    line = sr.ReadLine();
-                                    if (line.Contains("1800000"))
-                                    {
-                                        //business date inside file
-                                        busidate = line.Substring(line.Length - 10);
-                                    }
-
-                                }
-                                sr.Dispose();
-                            }
-                            unsentBusidate = DateTime.ParseExact(busidate, "MM/dd/yyyy",
-                                       System.Globalization.CultureInfo.InvariantCulture);
-
-
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
-                           
-                            us = "Send successfully.";
-                            if (!SalesTXTFail)
-                            {
-                                File.Copy(path, outputMpath + file.Name.ToString(), true);
-                                Func.Log("Copied file to " + Program.SentFolder);
-                                File.Delete(path);
-                                Func.Log("Deleting file " + path);
-                            }
-
-
-                        }
+                        
                         else
                         {
                             us = "FTP not activated.";
@@ -1210,8 +1168,33 @@ namespace TransightInterface
                             string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
                             string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
                             string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+                            if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                            {
 
-                            if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                                path = @"" + outputpath + fileName;
+                                MessageBox.Show("path: " + path);
+
+                                string fpath = path.Replace(@"\", @"\\");
+                                MessageBox.Show("fpath: " + fpath);
+                                SendSFTPNEW(fpath, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+
+
+
+                                Func.Log(path + "Upload succeeded. - ");
+                                //Data.InsertBatchLogs(fileName, businessDate);
+
+                                us = "Send successfully.";
+                                if (!SalesTXTFail)
+                                {
+                                    File.Copy(path, outputMpath + fileName, true);
+                                    Func.Log("Copied file to " + Program.SentFolder);
+                                    File.Delete(path);
+                                    Func.Log("Deleting file " + path);
+                                }
+
+
+                            }
+                            else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                             {
                                 FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
 
@@ -1254,47 +1237,7 @@ namespace TransightInterface
                                 }
 
                             }
-                            else if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
-                            {
-
-                                path = @"" + outputpath + fileName;
-
-                                SessionOptions sessionOptions = new SessionOptions();
-                                sessionOptions.Protocol = Protocol.Sftp;
-                                sessionOptions.HostName = sftpip;
-                                sessionOptions.UserName = sftpusername;
-                                sessionOptions.Password = sftppwd;
-                                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-                                sessionOptions.SshHostKeyFingerprint = sftpkey;
-                                //sessionOptions.TimeoutInMilliseconds = 7000;
-                                Session session = new Session();
-                                session.Open(sessionOptions);
-                                TransferOptions transferOptions = new TransferOptions();
-                                transferOptions.TransferMode = TransferMode.Binary;
-                                TransferOperationResult transferResult;
-                                //This is for Getting/Downloading files from SFTP  
-                                //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
-
-                                //This is for Putting/Uploading file on SFTP  
-                                transferResult = session.PutFiles(path, SFTPDestination, false, transferOptions);
-                                transferResult.Check();
-
-
-
-                                Func.Log(path + "Upload succeeded. - ");
-                                //Data.InsertBatchLogs(fileName, businessDate);
-
-                                us = "Send successfully.";
-                                if (!SalesTXTFail)
-                                {
-                                    File.Copy(path, outputMpath + fileName, true);
-                                    Func.Log("Copied file to " + Program.SentFolder);
-                                    File.Delete(path);
-                                    Func.Log("Deleting file " + path);
-                                }
-
-
-                            }
+                            
                             else
                             {
                                 us = "FTP not activated.";
@@ -1444,8 +1387,6 @@ namespace TransightInterface
                 string sftpkey = ConfigurationManager.AppSettings["09"];
                 string sftpport = ConfigurationManager.AppSettings["10"];
 
-               
-
                 //checking for unsent files
                 #region check unsent files
                 DirectoryInfo d = new DirectoryInfo(Program.ExportFolder);
@@ -1569,18 +1510,10 @@ namespace TransightInterface
 
                 Data.PrepareTempTable();
 
-
-
-
-                //string exportedFile = "";
-                //--
-
-
                 //get storenum
                 //SessionOptions sessionOptions;
                 storeNum = Program.StoreNo;
                 //machineId = Program.StoreNo;
-
 
                 //process each business date
                 while (businessDate <= EndDate)
@@ -1742,7 +1675,33 @@ namespace TransightInterface
                             string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
                             string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
-                            if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                            if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                            {
+
+                                path = @"" + outputpath + fileName;
+                                MessageBox.Show("path: " + path);
+
+                                string fpath = path.Replace(@"\", @"\\");
+                                MessageBox.Show("fpath: " + fpath);
+                                SendSFTPNEW(fpath, sftpip, sftpusername, sftppwd, Convert.ToInt32(sftpport), sftpkey, SFTPDestination);
+
+
+
+                                Func.Log(path + "Upload succeeded. - ");
+                                //Data.InsertBatchLogs(fileName, businessDate);
+
+                                us = "Send successfully.";
+                                if (!SalesTXTFail)
+                                {
+                                    File.Copy(path, outputMpath + fileName, true);
+                                    Func.Log("Copied file to " + Program.SentFolder);
+                                    File.Delete(path);
+                                    Func.Log("Deleting file " + path);
+                                }
+
+
+                            }
+                            else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                             {
                                 FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
 
@@ -1785,47 +1744,7 @@ namespace TransightInterface
                                 }
 
                             }
-                            else if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
-                            {
-
-                                path = @"" + outputpath + fileName;
-
-                                SessionOptions sessionOptions = new SessionOptions();
-                                sessionOptions.Protocol = Protocol.Sftp;
-                                sessionOptions.HostName = sftpip;
-                                sessionOptions.UserName = sftpusername;
-                                sessionOptions.Password = sftppwd;
-                                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-                                sessionOptions.SshHostKeyFingerprint = sftpkey;
-                                //sessionOptions.TimeoutInMilliseconds = 7000;
-                                Session session = new Session();
-                                session.Open(sessionOptions);
-                                TransferOptions transferOptions = new TransferOptions();
-                                transferOptions.TransferMode = TransferMode.Binary;
-                                TransferOperationResult transferResult;
-                                //This is for Getting/Downloading files from SFTP  
-                                //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
-
-                                //This is for Putting/Uploading file on SFTP  
-                                transferResult = session.PutFiles(path, SFTPDestination, false, transferOptions);
-                                transferResult.Check();
-
-
-
-                                Func.Log(path + "Upload succeeded. - ");
-                                //Data.InsertBatchLogs(fileName, businessDate);
-
-                                us = "Send successfully.";
-                                if (!SalesTXTFail)
-                                {
-                                    File.Copy(path, outputMpath + fileName, true);
-                                    Func.Log("Copied file to " + Program.SentFolder);
-                                    File.Delete(path);
-                                    Func.Log("Deleting file " + path);
-                                }
-
-
-                            }
+                           
                             else
                             {
                                 us = "FTP not activated.";
@@ -1916,6 +1835,100 @@ namespace TransightInterface
                 ErrorTracking.Log(ex);
                 Func.Log("Error during export.");
                 return "ERR";
+            }
+        }
+
+        public static void SendSFTPNEW(string filepath, string url, string username, string password, int port, string sshkey, string sftpdestination)
+        {
+
+            try
+            {
+
+
+                string sftpip = url;
+                string sftpusername = username;
+                string sftppwd = password;
+                string sftpkey = sshkey;
+                string sftpport = port.ToString();
+                //string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                //string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                //string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                string SFTPDestination = sftpdestination;
+                string path = filepath;
+
+
+                string winscpPath = "C:\\Program Files (x86)\\WinSCP\\WinSCP.exe";
+                Boolean winSCPLog = true;
+                string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCPLogs\\WinSCPLogs";
+
+                //path = @"" + outputpath + fileName;
+
+                SessionOptions sessionOptions = new SessionOptions();
+                sessionOptions.Protocol = Protocol.Sftp;
+                sessionOptions.HostName = sftpip;
+                sessionOptions.UserName = sftpusername;
+                sessionOptions.Password = sftppwd;
+                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
+                sessionOptions.SshHostKeyFingerprint = sftpkey;
+                //sessionOptions.TimeoutInMilliseconds = 7000;
+                //Session session = new Session();
+                //session.Open(sessionOptions);
+
+                using (Session Session = new Session())
+                {
+                    // WinSCP .NET assembly must be in GAC to be used with SSIS,
+                    // set path to WinSCP.exe explicitly, if using non-default path.
+                    Session.ExecutablePath = winscpPath;
+                    Session.DisableVersionCheck = true;
+
+                    if (winSCPLog)
+                    {
+                        Session.SessionLogPath = @winSCPLogPath + @"ftplog.txt";
+                        Session.DebugLogPath = @winSCPLogPath + @"debuglog.txt";
+                    }
+
+                    // Connect
+                    Session.Timeout = new TimeSpan(0, 2, 0); // two minutes
+                    Session.Open(sessionOptions);
+
+                    TransferOptions transferOptions = new TransferOptions();
+                    transferOptions.TransferMode = TransferMode.Binary;
+                    TransferOperationResult transferResult;
+                    //This is for Getting/Downloading files from SFTP  
+                    //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
+
+                    //This is for Putting/Uploading file on SFTP  
+                    transferResult = Session.PutFiles(path, sftpdestination, false, transferOptions);
+                    transferResult.Check();
+
+                    //session.GetFiles(remoteFTPDirectory + "/" +
+                    // "test.txt", localPath, false, transferOptions);
+                }
+            }
+            catch (WebException ee)
+            {
+                Console.WriteLine(ee.Message.ToString());
+                String status = ((FtpWebResponse)ee.Response).StatusDescription;
+                //Console.WriteLine(status);
+                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface WebException", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                //Sales file is not sent to RLC server. Please contact your POS vendor
+                //Func.Log(path + " failed to upload to FTP. - " + status);
+                //SalesTXTFail = true;
+                ErrorTracking.Log("[Business/Export] WebException Error during export to FTP.");
+                ErrorTracking.Log(status);
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message.ToString());
+                //Func.Log(path + " failed to upload to FTP. - " + ex.Message.ToString());
+                //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                //SalesTXTFail = true;
+                ErrorTracking.Log("[Business/Export] Error during export to FTP.");
+                ErrorTracking.Log(ex.Message.ToString());
             }
         }
 
@@ -2228,7 +2241,8 @@ namespace TransightInterface
                 string sftpusername = ConfigurationManager.AppSettings["07"];
                 string sftppwd = ConfigurationManager.AppSettings["08"];
                 string sftpkey = ConfigurationManager.AppSettings["09"];
-                string sftpport = ConfigurationManager.AppSettings["10"];
+                int sftpport = Convert.ToInt32(ConfigurationManager.AppSettings["10"]);
+                //string sftpport = ConfigurationManager.AppSettings["10"];
 
 
 
@@ -2522,8 +2536,33 @@ namespace TransightInterface
                             string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
                             string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
                             string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+                            
+                             if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                             {
 
-                            if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                                path = @"" + outputpath + fileName;
+                                MessageBox.Show("path: " + path);
+
+                                string fpath = path.Replace(@"\", @"\\");
+                                MessageBox.Show("fpath: " + fpath);
+                                SendSFTPNEW(@""+fpath, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+
+
+
+                                Func.Log(path + "Upload succeeded. - ");
+                                //Data.InsertBatchLogs(fileName, businessDate);
+
+                                us = "Send successfully.";
+                                if (!SalesTXTFail)
+                                {
+                                    File.Copy(path, outputMpath + fileName, true);
+                                    Func.Log("Copied file to " + Program.SentFolder);
+                                    File.Delete(path);
+                                    Func.Log("Deleting file " + path);
+                                }
+                                
+                             }
+                            else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                             {
                                 FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
 
@@ -2566,50 +2605,13 @@ namespace TransightInterface
                                 }
 
                             }
-                            else if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
-                            {
-
-                                path = @"" + outputpath + fileName;
-
-                                SessionOptions sessionOptions = new SessionOptions();
-                                sessionOptions.Protocol = Protocol.Sftp;
-                                sessionOptions.HostName = sftpip;
-                                sessionOptions.UserName = sftpusername;
-                                sessionOptions.Password = sftppwd;
-                                sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-                                sessionOptions.SshHostKeyFingerprint = sftpkey;
-                                //sessionOptions.TimeoutInMilliseconds = 7000;
-                                Session session = new Session();
-                                session.Open(sessionOptions);
-                                TransferOptions transferOptions = new TransferOptions();
-                                transferOptions.TransferMode = TransferMode.Binary;
-                                TransferOperationResult transferResult;
-                                //This is for Getting/Downloading files from SFTP  
-                                //transferResult = session.GetFiles(filepath, destinatonpath, false, transferOptions);
-
-                                //This is for Putting/Uploading file on SFTP  
-                                transferResult = session.PutFiles(path, SFTPDestination, false, transferOptions);
-                                transferResult.Check();
+                           
 
 
-
-                                Func.Log(path + "Upload succeeded. - ");
-                                //Data.InsertBatchLogs(fileName, businessDate);
-
-                                us = "Send successfully.";
-                                if (!SalesTXTFail)
-                                {
-                                    File.Copy(path, outputMpath + fileName, true);
-                                    Func.Log("Copied file to " + Program.SentFolder);
-                                    File.Delete(path);
-                                    Func.Log("Deleting file " + path);
-                                }
-
-
-                            }
+                           
                             else
                             {
-                                us = "FTP not activated.";
+                                us = "SFTP not activated.";
                                 s = "FTP not activated.";
                             }
                         }

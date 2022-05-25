@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using Transight.Interface.Common;
 using Transight.Interface.Config;
 using System.Configuration;
@@ -505,7 +506,7 @@ namespace TransightInterface
                 cmd = null;
             }
         }
-        public static DataTable ListSFTPDirectory2()
+        public static DataTable ListSFTPDirectory()
         {
 
             string salefilepath = Program.ExportFolder;
@@ -530,46 +531,63 @@ namespace TransightInterface
             string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
             string remoteDirectory = SFTPDestination;
+            //DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             Func.Log("Create client Object");
 
-            using (var client = new SftpClient(sftpip, sftpusername, sftppwd))
+            try
             {
-                var files = new List<String>();
-                client.Connect();
-                ListDirectory(client, ".", ref files);
-                Func.Log(client.ReadAllText("."));
-                dt.Rows.Add(client.ReadAllLines("."));
-                client.Disconnect();
-                
-            }
-
-            using (SftpClient sftp = new SftpClient(sftpip, sftpusername, sftppwd))
-            {
-
-                try
+                List<string> dirNames = new List<string>();
+               
+                int status = 0;
+                status = Program.IsValidSFTPConnection(sftpip, remoteDirectory, sftpusername, sftppwd);
+                if (status > 0)
                 {
-                    Func.Log("Connect to server");
-                    sftp.Connect();
-                    Func.Log("Creating FileStream object to stream a file");
-                    sftp.ChangeDirectory(".");
-                    
-                    var files = sftp.ListDirectory(sftp.WorkingDirectory + remoteDirectory);
-                    Func.Log(files.ToString());
-                    foreach (var file in files)
+                    //status == 1-- > Invalid Server / Host Name
+                    //status == 2-- > Invalid Directory Name
+                    //status == 3-- > user name password is wrong
+                    if (status == 1)
                     {
-                        Func.Log(file.FullName);
-                        dt.Rows.Add(file.FullName);
+                        MessageBox.Show("Invalid Server/Host Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                       
                     }
-
-                    sftp.Disconnect();
-                    return dt;
-                }
-                catch (Exception e)
-                {
-                    ErrorTracking.Log("An exception has been caught " + e.ToString());
+                    if (status == 2)
+                    {
+                        MessageBox.Show("Invalid Directory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                       
+                    }
+                    if (status == 3)
+                    {
+                        MessageBox.Show("Username and/or Password is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                       
+                    }
                     return null;
                 }
+                else
+                {
+
+                    MessageBox.Show("Successfully connected to RLC SFTP Server.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Console.ReadLine();
+
+                    dt = Program.ShowSFTPFiles(sftpip, remoteDirectory, sftpusername, sftppwd).Copy();
+                    //ds.Tables.Add(dt);
+                    return dt;
+
+                    //MessageBox.Show(string.Join(Environment.NewLine,
+                    //Program.ShowSFTPFiles(url, dir, usn, pwd).Rows.OfType<DataRow>().Select(x => string.Join(" ; ", x.ItemArray))),"output");
+                }
+                
+                //dgvFTP.DataSource =
+
+            }
+
+
+            catch (Exception ex)
+            {
+                ErrorTracking.Log("[Business/Export] Error during export to SFTP.");
+                ErrorTracking.Log(ex.Message.ToString());
+                return null;
+
             }
 
         }
@@ -591,79 +609,6 @@ namespace TransightInterface
             }
         }
 
-        public static DataTable ListSFTPDirectory()
-            {
-           
-                string salefilepath = Program.ExportFolder;
-                string stringsubfolder = @"\";
-                string outputpath = salefilepath + stringsubfolder;
-                string mfilepath = Program.SentFolder;
-                string outputMpath = mfilepath + stringsubfolder;
-                string filename = string.Empty;
-
-
-                string path = string.Empty;
-                string sentfolder = string.Empty;
-
-                string sftpip = ConfigurationManager.AppSettings["06"];
-                string sftpusername = ConfigurationManager.AppSettings["07"];
-                string sftppwd = ConfigurationManager.AppSettings["08"];
-                string sftpkey = ConfigurationManager.AppSettings["09"];
-                string sftpport = ConfigurationManager.AppSettings["10"];
-                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-                string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
-                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
-                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
-
-
-            //string winscpPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCP.exe";
-            //Boolean winSCPLog = true;
-            //string winSCPLogPath = "C:\\DTSPOS\\MallInterface\\WinSCP\\WinSCPLogs\\WinSCPLogs";
-
-            //path = @"" + outputpath;
-
-            // Setup session options
-            //SessionOptions sessionOptions = new SessionOptions();
-            //sessionOptions.Protocol = Protocol.Sftp;
-            //sessionOptions.HostName = sftpip;
-            //sessionOptions.UserName = sftpusername;
-            //sessionOptions.Password = sftppwd;
-            //sessionOptions.PortNumber = Convert.ToInt32(sftpport);
-            //sessionOptions.SshHostKeyFingerprint = sftpkey;
-
-
-
-
-                Func.Log("Create client Object");
-                SftpClient client = new SftpClient(sftpip, Int32.Parse(sftpport), sftpusername);
-                string remotePath = stringsubfolder + client.WorkingDirectory.ToString();
-                //FileStream fs = new FileStream(remotePath, FileMode.Open);
-                //Stream fs = client.OpenRead(path);
-                //Stream strm = fs;
-                DataTable dt = new DataTable();
-            //var list = new DataSet;
-            //Stream fs = sftpClient.OpenRead(path);
-                Func.Log("Connect to server");
-                client.Connect();
-                Func.Log("Creating FileStream object to stream a file");
-
-                using (Stream fs = client.OpenRead(remotePath))
-                {
-                    byte[] b = new byte[1024];
-                    UTF8Encoding temp = new UTF8Encoding(true);
-                    while (fs.Read(b, 0, b.Length) > 0)
-                    {
-                        dt.Rows.Add(temp.GetString(b));
-
-                    }
-                    client.BufferSize = 1024;
-                    //client.UploadFile(fs, Path.GetFileName("filePath"));
-                }
-                client.Dispose();
-
-           return dt;
-
-        }
         public static ConnectionInfo getSftpConnection(string host, string username, int port, string publicKeyPath)
         {
             return new ConnectionInfo(host, port, username, privateKeyObject(username, publicKeyPath));
