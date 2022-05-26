@@ -595,6 +595,9 @@ namespace TransightInterface
                 string sftpip = ConfigurationManager.AppSettings["06"];
                 string sftpusername = ConfigurationManager.AppSettings["07"];
                 string sftppwd = ConfigurationManager.AppSettings["08"];
+                string sftpkey = ConfigurationManager.AppSettings["09"];
+                int sftpport = Convert.ToInt32(ConfigurationManager.AppSettings["10"]);
+
 
                 //checking for unsent files
                 #region check unsent files
@@ -606,9 +609,57 @@ namespace TransightInterface
                     {
                         //string fileName = file.Name.ToString();
                         string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-                        string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                        string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                        string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+                       
 
-                        if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                        if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                        {
+
+                            path = @"" + outputpath + file.Name.ToString();
+                            //MessageBox.Show("path: " + path);
+
+                            path = path.Replace(@"\", @"\\");
+                            //MessageBox.Show("path: " + path);
+                            SendSFTPNEW(path, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+
+                            string line = "";
+                            string busidate = "";
+                            DateTime unsentBusidate;
+                            using (StreamReader sr = new StreamReader(path))
+                            {
+                                while (!sr.EndOfStream)
+                                {
+                                    line = sr.ReadLine();
+                                    if (line.Contains("1800000"))
+                                    {
+                                        //business date inside file
+                                        busidate = line.Substring(line.Length - 10);
+                                    }
+
+                                }
+                                sr.Dispose();
+                            }
+                            unsentBusidate = DateTime.ParseExact(busidate, "MM/dd/yyyy",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+
+                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+
+                            us = "Send successfully.";
+                            if (!SalesTXTFail)
+                            {
+                                File.Copy(path, outputMpath + file.Name.ToString(), true);
+                                Func.Log("Copied file to " + Program.SentFolder);
+                                File.Delete(path);
+                                Func.Log("Deleting file " + path);
+                            }
+                            break;
+                            
+
+                        }
+
+                        else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                         {
                             FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
 
@@ -822,6 +873,7 @@ namespace TransightInterface
 
 
                 string path = string.Empty;
+                string fpath = string.Empty;
                 string sentfolder = string.Empty;
 
                 string sftpip = ConfigurationManager.AppSettings["06"];
@@ -842,18 +894,18 @@ namespace TransightInterface
                         //string fileName = file.Name.ToString();
                         string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
                         string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
-                        string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                        //string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
                         string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
                         if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                         {
 
                             path = @"" + outputpath + file.Name.ToString();
-                            MessageBox.Show("path: " + path);
+                            //MessageBox.Show("path: " + path);
 
-                            string fpath = path.Replace(@"\", @"\\");
-                            MessageBox.Show("fpath: " + fpath);
-                            SendSFTPNEW(fpath, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+                            path = path.Replace(@"\", @"\\");
+                            //MessageBox.Show("fpath: " + fpath);
+                            SendSFTPNEW(path, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
 
                             string line = "";
                             string busidate = "";
@@ -886,7 +938,7 @@ namespace TransightInterface
                                 File.Delete(path);
                                 Func.Log("Deleting file " + path);
                             }
-
+                            break;
 
                         }
 
@@ -1174,9 +1226,9 @@ namespace TransightInterface
                                 path = @"" + outputpath + fileName;
                                 MessageBox.Show("path: " + path);
 
-                                string fpath = path.Replace(@"\", @"\\");
-                                MessageBox.Show("fpath: " + fpath);
-                                SendSFTPNEW(fpath, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+                                path = path.Replace(@"\", @"\\");
+                                //MessageBox.Show("fpath: " + fpath);
+                                SendSFTPNEW(path, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
 
 
 
@@ -1191,7 +1243,7 @@ namespace TransightInterface
                                     File.Delete(path);
                                     Func.Log("Deleting file " + path);
                                 }
-
+                                break;
 
                             }
                             else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
@@ -1379,13 +1431,14 @@ namespace TransightInterface
 
 
                 string path = string.Empty;
+                string fpath = string.Empty;
                 string sentfolder = string.Empty;
 
                 string sftpip = ConfigurationManager.AppSettings["06"];
                 string sftpusername = ConfigurationManager.AppSettings["07"];
                 string sftppwd = ConfigurationManager.AppSettings["08"];
                 string sftpkey = ConfigurationManager.AppSettings["09"];
-                string sftpport = ConfigurationManager.AppSettings["10"];
+                int sftpport = Convert.ToInt32(ConfigurationManager.AppSettings["10"]);
 
                 //checking for unsent files
                 #region check unsent files
@@ -1397,9 +1450,56 @@ namespace TransightInterface
                     {
                         //string fileName = file.Name.ToString();
                         string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-                        string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                        //string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                        string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                        string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
-                        if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                        if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                        {
+
+                            path = @"" + outputpath + file.Name.ToString();
+                            //MessageBox.Show("path: " + path);
+
+                            path = path.Replace(@"\", @"\\");
+                            //MessageBox.Show("fpath: " + fpath);
+                            SendSFTPNEW(path, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+
+                            string line = "";
+                            string busidate = "";
+                            DateTime unsentBusidate;
+                            using (StreamReader sr = new StreamReader(path))
+                            {
+                                while (!sr.EndOfStream)
+                                {
+                                    line = sr.ReadLine();
+                                    if (line.Contains("1800000"))
+                                    {
+                                        //business date inside file
+                                        busidate = line.Substring(line.Length - 10);
+                                    }
+
+                                }
+                                sr.Dispose();
+                            }
+                            unsentBusidate = DateTime.ParseExact(busidate, "MM/dd/yyyy",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+
+                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+
+                            us = "Send successfully.";
+                            if (!SalesTXTFail)
+                            {
+                                File.Copy(path, outputMpath + file.Name.ToString(), true);
+                                Func.Log("Copied file to " + Program.SentFolder);
+                                File.Delete(path);
+                                Func.Log("Deleting file " + path);
+                            }
+                            break;
+
+                        }
+
+                        else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                         {
                             FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
 
@@ -1679,11 +1779,11 @@ namespace TransightInterface
                             {
 
                                 path = @"" + outputpath + fileName;
-                                MessageBox.Show("path: " + path);
+                                //MessageBox.Show("path: " + path);
 
-                                string fpath = path.Replace(@"\", @"\\");
-                                MessageBox.Show("fpath: " + fpath);
-                                SendSFTPNEW(fpath, sftpip, sftpusername, sftppwd, Convert.ToInt32(sftpport), sftpkey, SFTPDestination);
+                                path = path.Replace(@"\", @"\\");
+                                //MessageBox.Show("fpath: " + fpath);
+                                SendSFTPNEW(path, sftpip, sftpusername, sftppwd, Convert.ToInt32(sftpport), sftpkey, SFTPDestination);
 
 
 
@@ -1698,7 +1798,7 @@ namespace TransightInterface
                                     File.Delete(path);
                                     Func.Log("Deleting file " + path);
                                 }
-
+                                break;
 
                             }
                             else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
@@ -2235,6 +2335,7 @@ namespace TransightInterface
 
 
                 string path = string.Empty;
+                string fpath = string.Empty;
                 string sentfolder = string.Empty;
 
                 string sftpip = ConfigurationManager.AppSettings["06"];
@@ -2256,9 +2357,56 @@ namespace TransightInterface
                     {
                         //string fileName = file.Name.ToString();
                         string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-                        string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                        //string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                        string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                        string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
-                        if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                        if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
+                        {
+
+                            path = @"" + outputpath + file.Name.ToString();
+                            //MessageBox.Show("path: " + path);
+
+                            path = path.Replace(@"\", @"\\");
+                            //MessageBox.Show("fpath: " + fpath);
+                            SendSFTPNEW(path, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+
+                            string line = "";
+                            string busidate = "";
+                            DateTime unsentBusidate;
+                            using (StreamReader sr = new StreamReader(path))
+                            {
+                                while (!sr.EndOfStream)
+                                {
+                                    line = sr.ReadLine();
+                                    if (line.Contains("1800000"))
+                                    {
+                                        //business date inside file
+                                        busidate = line.Substring(line.Length - 10);
+                                    }
+
+                                }
+                                sr.Dispose();
+                            }
+                            unsentBusidate = DateTime.ParseExact(busidate, "MM/dd/yyyy",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+
+                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+
+                            us = "Send successfully.";
+                            if (!SalesTXTFail)
+                            {
+                                File.Copy(path, outputMpath + file.Name.ToString(), true);
+                                Func.Log("Copied file to " + Program.SentFolder);
+                                File.Delete(path);
+                                Func.Log("Deleting file " + path);
+                            }
+                            break;
+
+                        }
+
+                        else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                         {
                             FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);
 
@@ -2541,11 +2689,11 @@ namespace TransightInterface
                              {
 
                                 path = @"" + outputpath + fileName;
-                                MessageBox.Show("path: " + path);
+                                //MessageBox.Show("path: " + path);
 
-                                string fpath = path.Replace(@"\", @"\\");
-                                MessageBox.Show("fpath: " + fpath);
-                                SendSFTPNEW(@""+fpath, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+                                path = path.Replace(@"\", @"\\");
+                                //MessageBox.Show("fpath: " + fpath);
+                                SendSFTPNEW(path, sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
 
 
 
@@ -2560,8 +2708,8 @@ namespace TransightInterface
                                     File.Delete(path);
                                     Func.Log("Deleting file " + path);
                                 }
-                                
-                             }
+                                break;
+                            }
                             else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                             {
                                 FTP.SetDetails(@"ftp://" + Program.FTPIP, Program.FTPUserName, Program.FTPPassword);

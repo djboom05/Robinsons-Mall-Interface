@@ -170,3 +170,7 @@ D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInt
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\WinSCP.exe
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Renci.SshNet.dll
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Renci.SshNet.xml
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\WinSCP.exe
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Renci.SshNet.dll
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\WinSCPnet.dll
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\MallInterface\bin\Debug\Renci.SshNet.xml

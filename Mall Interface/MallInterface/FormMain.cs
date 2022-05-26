@@ -153,6 +153,7 @@ namespace TransightInterface
                 if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "") 
                 {
                     dgvFTP.DataSource = Data.ListSFTPDirectory();
+                    
                 }
                 else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                 {
