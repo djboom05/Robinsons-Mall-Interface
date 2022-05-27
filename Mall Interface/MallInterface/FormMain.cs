@@ -56,10 +56,22 @@ namespace TransightInterface
             lblVersion.Text = "V " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
             //set controls
-            dtpStartDate.Value = Data.GetLastResetDate();
-            dtpStartDate.MaxDate = Data.GetLastResetDate();
-            dtpEndDate.Value = Data.GetLastResetDate();
-            dtpEndDate.MaxDate = Data.GetLastResetDate();
+            if (Data.GetBatchCount() == 0)
+            {
+                dtpStartDate.Value = Data.GetBusinessDate();
+                dtpStartDate.MaxDate = Data.GetBusinessDate();
+                dtpEndDate.Value = Data.GetBusinessDate();
+                dtpEndDate.MaxDate = Data.GetBusinessDate();
+                //Data.GetBusinessDate();
+            }
+            else
+            {
+                dtpStartDate.Value = Data.GetLastResetDate();
+                dtpStartDate.MaxDate = Data.GetLastResetDate();
+                dtpEndDate.Value = Data.GetLastResetDate();
+                dtpEndDate.MaxDate = Data.GetLastResetDate();
+            }
+          
 
 
             isAutoMode = Initialize;

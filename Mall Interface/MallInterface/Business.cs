@@ -17,7 +17,7 @@ namespace TransightInterface
     
     public static class Business
     {
-        
+        public static bool SalesTXTFail;
 
         public static string Export(DateTime StartDate, DateTime EndDate)
         {
@@ -430,7 +430,7 @@ namespace TransightInterface
                         #region upload file to FTP
 
 
-                        Boolean SalesTXTFail = false;
+                        SalesTXTFail = false;
                         try
                         {
                             string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
@@ -565,7 +565,7 @@ namespace TransightInterface
 
                 string s = string.Empty;
                 string us = string.Empty; //unsent tag
-                Boolean SalesTXTFail = false;
+                SalesTXTFail = false;
                 #region check export folder
                 if (Program.ExportFolder == string.Empty || !Directory.Exists(Program.ExportFolder))
                 {
@@ -615,7 +615,7 @@ namespace TransightInterface
 
                         if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                         {
-
+                            FTPOption = "N";
                             path = @"" + outputpath + file.Name.ToString();
                             //MessageBox.Show("path: " + path);
 
@@ -654,7 +654,7 @@ namespace TransightInterface
                                 File.Delete(path);
                                 Func.Log("Deleting file " + path);
                             }
-                            break;
+                            //break;
                             
 
                         }
@@ -845,7 +845,7 @@ namespace TransightInterface
 
                 string s = string.Empty;
                 string us = string.Empty; //unsent tag
-                Boolean SalesTXTFail = false;
+                SalesTXTFail = false;
                 #region check export folder
                 if (Program.ExportFolder == string.Empty || !Directory.Exists(Program.ExportFolder))
                 {
@@ -899,7 +899,7 @@ namespace TransightInterface
 
                         if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                         {
-
+                            FTPOption = "N";
                             path = @"" + outputpath + file.Name.ToString();
                             //MessageBox.Show("path: " + path);
 
@@ -938,7 +938,7 @@ namespace TransightInterface
                                 File.Delete(path);
                                 Func.Log("Deleting file " + path);
                             }
-                            break;
+                            //break;
 
                         }
 
@@ -1222,9 +1222,9 @@ namespace TransightInterface
                             string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
                             if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                             {
-
+                                FTPOption = "N";
                                 path = @"" + outputpath + fileName;
-                                MessageBox.Show("path: " + path);
+                                //MessageBox.Show("path: " + path);
 
                                 path = path.Replace(@"\", @"\\");
                                 //MessageBox.Show("fpath: " + fpath);
@@ -1243,7 +1243,7 @@ namespace TransightInterface
                                     File.Delete(path);
                                     Func.Log("Deleting file " + path);
                                 }
-                                break;
+                                //break;
 
                             }
                             else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
@@ -1403,7 +1403,7 @@ namespace TransightInterface
 
                 string s = string.Empty;
                 string us = string.Empty; //unsent tag
-                Boolean SalesTXTFail = false;
+                SalesTXTFail = false;
                 #region check export folder
                 if (Program.ExportFolder == string.Empty || !Directory.Exists(Program.ExportFolder))
                 {
@@ -1456,7 +1456,7 @@ namespace TransightInterface
 
                         if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                         {
-
+                            FTPOption = "N";
                             path = @"" + outputpath + file.Name.ToString();
                             //MessageBox.Show("path: " + path);
 
@@ -1495,7 +1495,7 @@ namespace TransightInterface
                                 File.Delete(path);
                                 Func.Log("Deleting file " + path);
                             }
-                            break;
+                            //break;
 
                         }
 
@@ -1777,7 +1777,7 @@ namespace TransightInterface
 
                             if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                             {
-
+                                FTPOption = "N";
                                 path = @"" + outputpath + fileName;
                                 //MessageBox.Show("path: " + path);
 
@@ -1798,7 +1798,7 @@ namespace TransightInterface
                                     File.Delete(path);
                                     Func.Log("Deleting file " + path);
                                 }
-                                break;
+                                //break;
 
                             }
                             else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
@@ -2014,7 +2014,7 @@ namespace TransightInterface
 
                 //Sales file is not sent to RLC server. Please contact your POS vendor
                 //Func.Log(path + " failed to upload to FTP. - " + status);
-                //SalesTXTFail = true;
+                SalesTXTFail = true;
                 ErrorTracking.Log("[Business/Export] WebException Error during export to FTP.");
                 ErrorTracking.Log(status);
 
@@ -2026,7 +2026,7 @@ namespace TransightInterface
                 //Func.Log(path + " failed to upload to FTP. - " + ex.Message.ToString());
                 //System.Windows.Forms.MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Transight Interface System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
 
-                //SalesTXTFail = true;
+                SalesTXTFail = true;
                 ErrorTracking.Log("[Business/Export] Error during export to FTP.");
                 ErrorTracking.Log(ex.Message.ToString());
             }
@@ -2307,7 +2307,7 @@ namespace TransightInterface
 
                 string s = string.Empty;
                 string us = string.Empty; //unsent tag
-                Boolean SalesTXTFail = false;
+                SalesTXTFail = false;
                 #region check export folder
                 if (Program.ExportFolder == string.Empty || !Directory.Exists(Program.ExportFolder))
                 {
@@ -2363,7 +2363,7 @@ namespace TransightInterface
 
                         if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                         {
-
+                            FTPOption = "N";
                             path = @"" + outputpath + file.Name.ToString();
                             //MessageBox.Show("path: " + path);
 
@@ -2402,7 +2402,7 @@ namespace TransightInterface
                                 File.Delete(path);
                                 Func.Log("Deleting file " + path);
                             }
-                            break;
+                            //break;
 
                         }
 
@@ -2687,7 +2687,7 @@ namespace TransightInterface
                             
                              if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "")
                              {
-
+                                FTPOption = "N";
                                 path = @"" + outputpath + fileName;
                                 //MessageBox.Show("path: " + path);
 
@@ -2708,7 +2708,7 @@ namespace TransightInterface
                                     File.Delete(path);
                                     Func.Log("Deleting file " + path);
                                 }
-                                break;
+                                //break;
                             }
                             else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
                             {

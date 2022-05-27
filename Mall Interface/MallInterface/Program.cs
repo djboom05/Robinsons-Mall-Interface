@@ -315,16 +315,18 @@ namespace TransightInterface
 
             try
             {
+                //set process date
                 if (Data.GetBatchCount() == 0)
                 {
-
+                    //Program.BusinessDateStart = Data.GetBusinessDate();
+                    //Program.BusinessDateEnd = Program.BusinessDateStart;
                 }
                 else
                 {
-                    //set process date
                     Program.BusinessDateStart = Data.GetBusinessDate().AddDays(AppConfig.BusinessDateOffset);
                     Program.BusinessDateEnd = Program.BusinessDateStart;
-                    string sResult = Business.ExportX(Program.BusinessDateStart, Program.BusinessDateEnd);
+                
+                string sResult = Business.ExportX(Program.BusinessDateStart, Program.BusinessDateEnd);
 
                     if (sResult == string.Empty)
                         MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
@@ -347,8 +349,8 @@ namespace TransightInterface
                         MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     else //"ERR" == exception
                         MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                }
 
+                }
 
             }
             catch (Exception ex)
@@ -372,8 +374,8 @@ namespace TransightInterface
                 //Program.BusinessDateStart = Data.GetBusinessDate().AddDays(AppConfig.BusinessDateOffset);
                 //Program.BusinessDateEnd = Program.BusinessDateStart;
                 Program.BusinessDateStart = Data.GetLastResetDate().AddDays(1);
+                //Program.BusinessDateEnd = Program.BusinessDateStart;
                 Program.BusinessDateEnd = Data.GetBusinessDate().AddDays(AppConfig.BusinessDateOffset);
-
 
 
                 string sResult = Business.ExportE(Program.BusinessDateStart, Program.BusinessDateEnd);

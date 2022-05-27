@@ -303,6 +303,7 @@
             this.btnTestSend.TabIndex = 122;
             this.btnTestSend.Text = "Test SFTP SEND";
             this.btnTestSend.UseVisualStyleBackColor = true;
+            this.btnTestSend.Visible = false;
             this.btnTestSend.Click += new System.EventHandler(this.btnTestSend_Click);
             // 
             // btnLoadSFTP
