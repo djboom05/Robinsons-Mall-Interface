@@ -388,6 +388,7 @@ namespace TransightInterface
                 {
                     MessageBox.Show("Trying to send unsent files…successful", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     MessageBox.Show("Sales file successfully sent to RLC server.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    
                 }
                 else if (sResult == "Export folder not found.")
                     //custom error

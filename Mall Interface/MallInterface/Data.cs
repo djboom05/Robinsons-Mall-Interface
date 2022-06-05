@@ -319,6 +319,75 @@ namespace TransightInterface
             }
         }
 
+        public static void SaveGrandTotal(DateTime BusinessDate, string ngt)
+        {
+            try
+            {
+                //int ctr = 0;
+                //conn = new SqlConnection(Program.ConnString);
+                //conn.Open();
+
+                //query = "SELECT count(*) FROM MALLINTERFACE_NGT WHERE businessdate = @BusinessDate";
+                //cmd = new SqlCommand(query, conn);
+                //prmtr = new SqlParameter("@BusinessDate", SqlDbType.DateTime);
+                //prmtr.Value = BusinessDate;
+                //cmd.Parameters.Add(prmtr);
+                //cmd.ExecuteNonQuery();
+
+                //ctr = Convert.ToInt32(cmd.ExecuteScalar());
+
+                //if (ctr == 0)
+                //{
+                    conn = new SqlConnection(Program.ConnString);
+                    conn.Open();
+                    query = "INSERT INTO MALLINTERFACE_NGT(BusinessDate,ngt,date_sent) VALUES (@BusinessDate,@ngt,getdate())";
+                    cmd = new SqlCommand(query, conn);
+                    prmtr = new SqlParameter("@BusinessDate", SqlDbType.DateTime);
+                    prmtr.Value = BusinessDate;
+                    cmd.Parameters.Add(prmtr);
+                    prmtr = new SqlParameter("@ngt", SqlDbType.NVarChar);
+                    prmtr.Value = ngt;
+                    cmd.Parameters.Add(prmtr);
+                    cmd.ExecuteNonQuery();
+                    //conn.Close();
+                //}
+                //else
+                //{
+                    //conn = new SqlConnection(Program.ConnString);
+                    //conn.Open();
+                    //query = "UPDATE MALLINTERFACE_NGT set ngt=@ngt, where BusinessDate=@BusinessDate"; //"INSERT INTO MALLINTERFACE_NGT(BusinessDate,ngt,date_sent) VALUES (@BusinessDate,@ngt,getdate())";
+                    //cmd = new SqlCommand(query, conn);
+                    //prmtr = new SqlParameter("@BusinessDate", SqlDbType.DateTime);
+                    //prmtr.Value = BusinessDate;
+                    //cmd.Parameters.Add(prmtr);
+                    //prmtr = new SqlParameter("@ngt", SqlDbType.NVarChar);
+                    //prmtr.Value = ngt;
+                    //cmd.Parameters.Add(prmtr);
+                    //cmd.ExecuteNonQuery();
+                    //conn.Close();
+                //}
+
+                conn.Close();
+
+            }
+
+            catch (SqlException sex)
+            {
+                ErrorTracking.Log("[Data/INSERTBatchLogs] Error saving grand total Insert[" + query + "].");
+                ErrorTracking.Log(sex);
+                throw new ApplicationException("Error saving SaveGrandTotal");
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open) conn.Close();
+                conn.Dispose();
+                conn = null;
+
+                cmd.Dispose();
+                cmd = null;
+            }
+        }
+
         public static int GetBatchNumber(DateTime BusinessDate)
         {
             try

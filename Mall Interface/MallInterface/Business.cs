@@ -829,6 +829,7 @@ namespace TransightInterface
 
 
         private static string terminalno;
+        private static string ngt;
 
         #region Export  
         public static string ExportNew(DateTime StartDate, DateTime EndDate, FormMain FrmMain)
@@ -1052,12 +1053,6 @@ namespace TransightInterface
 
                 Data.PrepareTempTable();
 
-
-
-
-                //string exportedFile = "";
-                //--
-
                 
                 //get storenum
                 //SessionOptions sessionOptions;
@@ -1100,6 +1095,7 @@ namespace TransightInterface
                         string PrevGT = SL.getPrevGT.PadLeft(16, '0');
                         string NewZCnt = SL.getNewZCnt.PadLeft(16, '0');
                         string NewGT = SL.getNewGT.PadLeft(16, '0');
+                        ngt = SL.getNewGT.PadLeft(16, '0');
                         string BizDate = SL.getBizDate.PadLeft(16, '0');
                         string Novelty = SL.getNovelty.PadLeft(16, '0');
                         string Misc = SL.getMisc.PadLeft(16, '0');
@@ -1208,7 +1204,7 @@ namespace TransightInterface
                         //    Func.Log(s);
                         //}
                         #endregion write file
-                        //Data.InsertBatchLogs(fileName, businessDate);
+                        Data.SaveGrandTotal(businessDate,ngt);
                         //#TCS 2019-10-01
                         #region upload file to FTP
 
@@ -1650,6 +1646,7 @@ namespace TransightInterface
                         string PrevGT = SL.getPrevGT.PadLeft(16, '0');
                         string NewZCnt = SL.getNewZCnt.PadLeft(16, '0');
                         string NewGT = SL.getNewGT.PadLeft(16, '0');
+                        ngt = SL.getNewGT.PadLeft(16, '0');
                         string BizDate = SL.getBizDate.PadLeft(16, '0');
                         string Novelty = SL.getNovelty.PadLeft(16, '0');
                         string Misc = SL.getMisc.PadLeft(16, '0');
@@ -1762,7 +1759,7 @@ namespace TransightInterface
                         //    Func.Log(s);
                        // }
                         #endregion write file
-                       // Data.InsertBatchLogs(fileName, businessDate);
+                       Data.SaveGrandTotal(businessDate, ngt);
                         //#TCS 2019-10-01
                         #region upload file to FTP
 
@@ -2564,6 +2561,7 @@ namespace TransightInterface
                         string PrevGT = SL.getPrevGT.PadLeft(16, '0');
                         string NewZCnt = SL.getNewZCnt.PadLeft(16, '0');
                         string NewGT = SL.getNewGT.PadLeft(16, '0');
+                        ngt = SL.getNewGT.PadLeft(16, '0');
                         string BizDate = SL.getBizDate.PadLeft(16, '0');
                         string Novelty = SL.getNovelty.PadLeft(16, '0');
                         string Misc = SL.getMisc.PadLeft(16, '0');
@@ -2672,7 +2670,7 @@ namespace TransightInterface
                         //    Func.Log(s);
                         // }
                         #endregion write file
-                        // Data.InsertBatchLogs(fileName, businessDate);
+                        Data.SaveGrandTotal(businessDate,ngt);
                         //#TCS 2019-10-01
                         #region upload file to FTP
 

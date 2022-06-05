@@ -1,0 +1,34 @@
+INSTALLATION NOTES
+
+Prerequisite		: -
+
+Release Version	: ver 1.0.0.1
+
+Patch Instructions
+1.	Unzip "ReleaseFile RobinsonMall V1.0.0.0" to POS machine 
+2.	Make a backup of the existing "MallInterface" files (if any).
+3.	Copy entire folder "MallInterface" to C:\DTSPOS\
+
+4.	Copy folder Interface to C:\ 
+5. 	refer installsql folder
+   	Check setting in .bat files example:
+   	osql -S(local) -dPOS -Udatascan -PDTSbsd7188228
+   	p/s:Change (local) to actual database server name 
+	Run installsql.bat 
+
+6.  Run the program to ensure that the mall interface configuration settings are correctly set.
+a.  DB server
+b.  DB Name
+c.  Store No
+d.  FTP settings
+	- FTP Address:  
+	- FTP Username:  
+	- FTP Password: 
+	- SFTP SSHKEY 
+	- SFTP Destionation
+e.  Tick "Upload to FTP or SFTP" check box
+
+7. Added automatic feature that can be set on a daily, hourly or minute interval.
+	- generate EOD textfiles for the day
+	- check for unsend EOD textfiles and resend.
+	- SFTP sending
