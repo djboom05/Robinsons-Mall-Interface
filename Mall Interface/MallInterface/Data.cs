@@ -694,7 +694,14 @@ namespace TransightInterface
              };
         }
 
-        public static List<posmasterSH> GetStoreList(DateTime BusinessDate)
+        public static List<String> GetSentFiles(String directory)
+        {
+            return Directory.GetFiles(directory, "*", SearchOption.AllDirectories).ToList();
+        }
+
+      
+
+            public static List<posmasterSH> GetStoreList(DateTime BusinessDate)
         {
             DataTable dtTbl = new DataTable();
 

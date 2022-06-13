@@ -56,6 +56,7 @@
             this.btnTestSend = new System.Windows.Forms.Button();
             this.btnLoadSFTP = new System.Windows.Forms.Button();
             this.dgvFTP = new System.Windows.Forms.DataGridView();
+            this.sentfiles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFTP)).BeginInit();
             this.SuspendLayout();
@@ -320,11 +321,18 @@
             // 
             this.dgvFTP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFTP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFTP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sentfiles});
             this.dgvFTP.Location = new System.Drawing.Point(12, 123);
             this.dgvFTP.Name = "dgvFTP";
             this.dgvFTP.RowHeadersVisible = false;
             this.dgvFTP.Size = new System.Drawing.Size(470, 168);
             this.dgvFTP.TabIndex = 124;
+            // 
+            // sentfiles
+            // 
+            this.sentfiles.HeaderText = "SentFiles";
+            this.sentfiles.Name = "sentfiles";
             // 
             // FormMain
             // 
@@ -393,6 +401,7 @@
         private System.Windows.Forms.Button btnTestSend;
         private System.Windows.Forms.Button btnLoadSFTP;
         private System.Windows.Forms.DataGridView dgvFTP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sentfiles;
     }
 }
 

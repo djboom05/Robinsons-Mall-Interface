@@ -157,26 +157,34 @@ namespace TransightInterface
             try
             {
 
-                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-                string sftpkey = AppConfig.GetConfig("SSHKEY").ToString();
-                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
-                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
-                if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "") 
+                DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                foreach (FileInfo file in d.GetFiles())
                 {
-                    dgvFTP.DataSource = Data.ListSFTPDirectory();
-                    
+
+                    dgvFTP.Rows.Add(file.Name.ToString());
+
+
                 }
-                else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
-                {
-                    dgvFTP.Rows.Clear();
-                    //dgvFTP.DataSource = Program.ShowSFTPFiles(sftpip, SFTPDestination, sftpusername, sftppwd);
-                    //dgvFTP.DataSource = Data.ListSFTPDirectory();
-                    //MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ListFTPDirectory();
-                    //this.Show();
-                  
-                }
+
+                //string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                //string sftpkey = AppConfig.GetConfig("SSHKEY").ToString();
+                //string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                //string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+
+                //if ((SFTPOption.ToUpper().Trim() == "TRUE" || SFTPOption.ToUpper().Trim() == "Y") && sftpkey.Trim() != "") 
+                //{
+                //    dgvFTP.DataSource = Data.ListSFTPDirectory();
+
+                //}
+                //else if (FTPOption.ToUpper().Trim() == "TRUE" || FTPOption.ToUpper().Trim() == "Y")
+                //{
+                //    dgvFTP.Rows.Clear();
+                //    //dgvFTP.DataSource = Program.ShowSFTPFiles(sftpip, SFTPDestination, sftpusername, sftppwd);
+                //    //dgvFTP.DataSource = Data.ListSFTPDirectory();
+                //    //MessageBox.Show("Connection Successful", "Transight Interface", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    ListFTPDirectory();
+                //    //this.Show();
 
             }
             catch (Exception ex)
@@ -945,10 +953,17 @@ namespace TransightInterface
                 }
                 else
                 {
+                    DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                    foreach (FileInfo file in d.GetFiles())
+                    {
 
+                        dgvFTP.Rows.Add(file.Name.ToString());
+
+
+                    }
                     //MessageBox.Show("Successfully connected to RLC SFTP Server.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //Console.ReadLine();
-                    dgvFTP.DataSource = Data.ListSFTPDirectory();
+                    //dgvFTP.DataSource = Data.ListSFTPDirectory();
                     //dgvFTP.DataSource = Program.ShowSFTPFiles(sftpip, SFTPDestination, sftpusername, sftppwd);
 
                 }
