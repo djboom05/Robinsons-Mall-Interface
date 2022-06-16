@@ -134,18 +134,6 @@ C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.C
 C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
 C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb
 C:\Git\GitLab\MallInterface\MI-RobinsonMall\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csprojAssemblyReference.cache
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.dll
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.pdb
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.dll
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.pdb
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csprojAssemblyReference.cache
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.FormConfig.resources
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.UserControlConfig.resources
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.GenerateResource.cache
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CoreCompileInputs.cache
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CopyComplete
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
-D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.dll
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.pdb
 H:\PROJECTS\ROBINSONS Mall Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.dll
@@ -170,3 +158,15 @@ D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transig
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CopyComplete
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
 D:\Backup Files\KUSPAKI\PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.dll
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Config.pdb
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.dll
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\bin\Debug\Transight.Interface.Common.pdb
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csprojAssemblyReference.cache
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.FormConfig.resources
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.UserControlConfig.resources
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.GenerateResource.cache
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CoreCompileInputs.cache
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.csproj.CopyComplete
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.dll
+D:\CUSCAPIPH PROJECTS\Robinsons-Mall-Interface\Mall Interface\Transight.Interface.Config\obj\Debug\Transight.Interface.Config.pdb

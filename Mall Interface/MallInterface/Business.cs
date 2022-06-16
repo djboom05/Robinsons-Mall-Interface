@@ -640,11 +640,12 @@ namespace TransightInterface
                                 }
                                 sr.Dispose();
                             }
+
                             unsentBusidate = DateTime.ParseExact(busidate, "MM/dd/yyyy",
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            //Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
 
                             us = "Send successfully.";
                             if (!SalesTXTFail)
@@ -711,7 +712,7 @@ namespace TransightInterface
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                           // Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
                             response.Close();
                             us = "Send successfully.";
                             if (!SalesTXTFail)
@@ -929,7 +930,7 @@ namespace TransightInterface
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            //Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
 
                             us = "Send successfully.";
                             if (!SalesTXTFail)
@@ -995,7 +996,7 @@ namespace TransightInterface
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            //Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
                             response.Close();
                             us = "Send successfully.";
                             if (!SalesTXTFail)
@@ -1481,7 +1482,7 @@ namespace TransightInterface
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            //Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
 
                             us = "Send successfully.";
                             if (!SalesTXTFail)
@@ -1547,7 +1548,7 @@ namespace TransightInterface
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            //Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
                             response.Close();
                             us = "Send successfully.";
                             if (!SalesTXTFail)
@@ -2389,7 +2390,7 @@ namespace TransightInterface
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            //Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
 
                             us = "Send successfully.";
                             if (!SalesTXTFail)
@@ -2455,7 +2456,7 @@ namespace TransightInterface
                                        System.Globalization.CultureInfo.InvariantCulture);
 
 
-                            Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
+                            //Data.InsertBatchLogs(file.Name.ToString(), unsentBusidate);
                             response.Close();
                             us = "Send successfully.";
                             if (!SalesTXTFail)

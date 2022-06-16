@@ -432,16 +432,24 @@ namespace TransightInterface
                 if (sResult == string.Empty)
                     MessageBox.Show("Trying to send unsent files…successful.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                 else if (sResult == "No unsend file")
+                {
+                    Process[] pname = Process.GetProcessesByName("MallInterface");
+                    if (pname.Length > 1)
+                    {
+                        pname.Where(p => p.Id != Process.GetCurrentProcess().Id).First().Kill();
+                    }
+                    //Application.ExitThread();
                     return;
+                }
                 //custom error
                 //MessageBox.Show("FTP sending to server not configured. Please update config. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 else if (sResult == "FTP not activated")
                 { }
-                    //custom error
-                    //MessageBox.Show("FTP sending to server not configured. Please update config. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    
-            
-                
+                //custom error
+                //MessageBox.Show("FTP sending to server not configured. Please update config. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+
+
+
                 else if (sResult.Substring(0, 3) != "ERR")
                     MessageBox.Show("Sales file is not sent to RLC server. Please contact your POS vendor. " + sResult, "Export", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 else //"ERR" == exception

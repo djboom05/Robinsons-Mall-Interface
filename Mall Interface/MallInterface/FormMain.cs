@@ -14,6 +14,7 @@ using System.IO;
 using WinSCP;
 using System.Net;
 using System.Linq;
+using System.Diagnostics;
 //using Renci.SshNet;
 //using Renci.SshNet.Sftp;
 
@@ -76,6 +77,8 @@ namespace TransightInterface
 
             isAutoMode = Initialize;
         }
+
+       
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -153,6 +156,7 @@ namespace TransightInterface
 
             EnableControls(!isAutoMode);
             this.Show();
+            
 
             try
             {
@@ -164,8 +168,7 @@ namespace TransightInterface
 
                     dgvFTP.Rows.Add(file.Name.ToString());
 
-
-                }
+                 }
 
                 //string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
                 //string sftpkey = AppConfig.GetConfig("SSHKEY").ToString();
@@ -375,9 +378,6 @@ namespace TransightInterface
                     Program.BusinessDateStart = dtpStartDate.Value.AddDays(-1);
                     Program.BusinessDateEnd = Program.BusinessDateStart;
                 }
-
-
-
 
 
 
@@ -643,7 +643,7 @@ namespace TransightInterface
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-
+                        notifyIcon1.Visible = false;
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -659,7 +659,7 @@ namespace TransightInterface
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-
+                        notifyIcon1.Visible = false;
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -671,10 +671,11 @@ namespace TransightInterface
                     {
 
                         //Application.Restart();
+
                         Program.RunUnsendMode();
                         Program.RunAutoMode();
                         EnableControls(true);
-                        
+                        notifyIcon1.Visible = false;
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -686,10 +687,11 @@ namespace TransightInterface
                 if (isAutoMode)
                 {
                     //Application.Restart();
-                    Program.RunAutoMode();
-                    Program.RunUnsendMode();
-                    EnableControls(true);
 
+                    Program.RunUnsendMode();
+                    Program.RunAutoMode();
+                    EnableControls(true);
+                    notifyIcon1.Visible = false;
                     //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                     //ListFTPDirectory();
                 }
@@ -703,20 +705,25 @@ namespace TransightInterface
             {
                 Func.Log("Running EOD Process...");
                 btnExport_Click(null, null);
+                this.Close();
             }
 
             if (isAutoMode)
             {
                 this.Hide();
+                Process[] pname = Process.GetProcessesByName("MallInterface");
+                if (pname.Length > 1)
+                {
+                    pname.Where(p => p.Id != Process.GetCurrentProcess().Id).First().Kill();
+                }
                 this.WindowState = FormWindowState.Minimized;
+                //this.Close();
             }
         }
 
         private void btnResend_Click(object sender, EventArgs e)
         {
             EnableControls(false);
-
-
 
             try
             {
@@ -881,7 +888,7 @@ namespace TransightInterface
                 string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
                 string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
 
-                Business.SendSFTPNEW("C:\\Interface\\45670201.012", sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
+                Business.SendSFTPNEW(".", sftpip, sftpusername, sftppwd, sftpport, sftpkey, SFTPDestination);
 
 
 
