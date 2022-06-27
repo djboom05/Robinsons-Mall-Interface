@@ -640,10 +640,19 @@ namespace TransightInterface
                     if (_SchedTime == currtime)
                     {
                         //Application.Restart();
-                        Program.RunUnsendMode();
-                        Program.RunAutoMode();
-                        EnableControls(true);
-                        notifyIcon1.Visible = false;
+                        if (Directory.GetFiles(Program.ExportFolder).Length == 0)
+                        {
+                            Program.RunAutoMode();
+                            EnableControls(true);
+                            notifyIcon1.Visible = false;
+                        }
+                        else
+                        {
+                            Program.RunUnsendMode();
+                            Program.RunAutoMode();
+                            EnableControls(true);
+                            notifyIcon1.Visible = false;
+                        }
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -656,10 +665,19 @@ namespace TransightInterface
                     if (_SchedTime == currtime)
                     {
                         //Application.Restart();
-                        Program.RunUnsendMode();
-                        Program.RunAutoMode();
-                        EnableControls(true);
-                        notifyIcon1.Visible = false;
+                        if (Directory.GetFiles(Program.ExportFolder).Length == 0)
+                        {
+                            Program.RunAutoMode();
+                            EnableControls(true);
+                            notifyIcon1.Visible = false;
+                        }
+                        else
+                        {
+                            Program.RunUnsendMode();
+                            Program.RunAutoMode();
+                            EnableControls(true);
+                            notifyIcon1.Visible = false;
+                        }
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -671,11 +689,20 @@ namespace TransightInterface
                     {
 
                         //Application.Restart();
-
-                        Program.RunUnsendMode();
-                        Program.RunAutoMode();
-                        EnableControls(true);
-                        notifyIcon1.Visible = false;
+                        if (Directory.GetFiles(Program.ExportFolder).Length == 0)
+                        {
+                            Program.RunAutoMode();
+                            EnableControls(true);
+                            notifyIcon1.Visible = false;
+                        }
+                        else
+                        {
+                            Program.RunUnsendMode();
+                            Program.RunAutoMode();
+                            EnableControls(true);
+                            notifyIcon1.Visible = false;
+                        }
+                       
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -688,10 +715,19 @@ namespace TransightInterface
                 {
                     //Application.Restart();
 
-                    Program.RunUnsendMode();
-                    Program.RunAutoMode();
-                    EnableControls(true);
-                    notifyIcon1.Visible = false;
+                    if (Directory.GetFiles(Program.ExportFolder).Length == 0)
+                    {
+                        Program.RunAutoMode();
+                        EnableControls(true);
+                        notifyIcon1.Visible = false;
+                    }
+                    else
+                    {
+                        Program.RunUnsendMode();
+                        Program.RunAutoMode();
+                        EnableControls(true);
+                        notifyIcon1.Visible = false;
+                    }
                     //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                     //ListFTPDirectory();
                 }
@@ -711,11 +747,11 @@ namespace TransightInterface
             if (isAutoMode)
             {
                 this.Hide();
-                Process[] pname = Process.GetProcessesByName("MallInterface");
-                if (pname.Length > 1)
-                {
-                    pname.Where(p => p.Id != Process.GetCurrentProcess().Id).First().Kill();
-                }
+                //Process[] pname = Process.GetProcessesByName("MallInterface");
+                //if (pname.Length > 1)
+                //{
+                //    pname.Where(p => p.Id != Process.GetCurrentProcess().Id).First().Kill();
+                //}
                 this.WindowState = FormWindowState.Minimized;
                 //this.Close();
             }
@@ -924,43 +960,43 @@ namespace TransightInterface
         {
             try
             {
-                List<string> dirNames = new List<string>();
-                string url = "112.199.91.14";
-                string usn = "accredit";
-                string pwd = "RLC@Partners";
-                string dir = "IT_Tenants/";
-                string sftpip = ConfigurationManager.AppSettings["06"];
-                string sftpusername = ConfigurationManager.AppSettings["07"];
-                string sftppwd = ConfigurationManager.AppSettings["08"];
-                string sftpkey = ConfigurationManager.AppSettings["09"];
-                string sftpport = ConfigurationManager.AppSettings["10"];
-                string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
-                string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
-                string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
-                string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
-                int status = 0;
-                status = Program.IsValidSFTPConnection(sftpip, SFTPDestination, sftpusername, sftppwd);
-                if (status > 0)
-                {
-                    //status == 1-- > Invalid Server / Host Name
-                    //status == 2-- > Invalid Directory Name
-                    //status == 3-- > user name password is wrong
-                    if (status == 1)
-                    {
-                        MessageBox.Show("Invalid Server/Host Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    if (status == 2)
-                    {
-                        MessageBox.Show("Invalid Directory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    if (status == 3)
-                    {
-                        MessageBox.Show("Username and/or Password is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-                else
-                {
-                    DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                //    List<string> dirNames = new List<string>();
+                //    string url = "112.199.91.14";
+                //    string usn = "accredit";
+                //    string pwd = "RLC@Partners";
+                //    string dir = "IT_Tenants/";
+                //    string sftpip = ConfigurationManager.AppSettings["06"];
+                //    string sftpusername = ConfigurationManager.AppSettings["07"];
+                //    string sftppwd = ConfigurationManager.AppSettings["08"];
+                //    string sftpkey = ConfigurationManager.AppSettings["09"];
+                //    string sftpport = ConfigurationManager.AppSettings["10"];
+                //    string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
+                //    string sshkey = AppConfig.GetConfig("SSHKEY").ToString();
+                //    string SFTPOption = AppConfig.GetConfig("SFTPOption").ToString();
+                //    string SFTPDestination = AppConfig.GetConfig("SFTPDestination").ToString();
+                //    int status = 0;
+                //    status = Program.IsValidSFTPConnection(sftpip, SFTPDestination, sftpusername, sftppwd);
+                //    if (status > 0)
+                //    {
+                //        //status == 1-- > Invalid Server / Host Name
+                //        //status == 2-- > Invalid Directory Name
+                //        //status == 3-- > user name password is wrong
+                //        if (status == 1)
+                //        {
+                //            MessageBox.Show("Invalid Server/Host Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //        }
+                //        if (status == 2)
+                //        {
+                //            MessageBox.Show("Invalid Directory Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //        }
+                //        if (status == 3)
+                //        {
+                //            MessageBox.Show("Username and/or Password is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //        }
+                //    }
+                //    else
+                //    {
+                DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
                     foreach (FileInfo file in d.GetFiles())
                     {
 
@@ -973,7 +1009,7 @@ namespace TransightInterface
                     //dgvFTP.DataSource = Data.ListSFTPDirectory();
                     //dgvFTP.DataSource = Program.ShowSFTPFiles(sftpip, SFTPDestination, sftpusername, sftppwd);
 
-                }
+                //}
                 //Console.ReadLine();
                 //dgvFTP.DataSource =
 
@@ -982,7 +1018,7 @@ namespace TransightInterface
 
             catch (Exception ex)
             {
-                ErrorTracking.Log("[Business/Export] Error during export to FTP.");
+                //ErrorTracking.Log("[Business/Export] Error during export to FTP.");
                 ErrorTracking.Log(ex.Message.ToString());
                 
 

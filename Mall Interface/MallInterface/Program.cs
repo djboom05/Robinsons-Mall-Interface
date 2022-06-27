@@ -433,11 +433,11 @@ namespace TransightInterface
                     MessageBox.Show("Trying to send unsent files…successful.", "Export", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                 else if (sResult == "No unsend file")
                 {
-                    Process[] pname = Process.GetProcessesByName("MallInterface");
-                    if (pname.Length > 1)
-                    {
-                        pname.Where(p => p.Id != Process.GetCurrentProcess().Id).First().Kill();
-                    }
+                    //Process[] pname = Process.GetProcessesByName("MallInterface");
+                    //if (pname.Length > 1)
+                    //{
+                    //    pname.Where(p => p.Id != Process.GetCurrentProcess().Id).First().Kill();
+                    //}
                     //Application.ExitThread();
                     return;
                 }
