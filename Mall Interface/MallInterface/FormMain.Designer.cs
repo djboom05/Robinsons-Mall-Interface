@@ -328,6 +328,7 @@
             this.dgvFTP.RowHeadersVisible = false;
             this.dgvFTP.Size = new System.Drawing.Size(470, 168);
             this.dgvFTP.TabIndex = 124;
+            this.dgvFTP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFTP_CellContentClick_1);
             // 
             // sentfiles
             // 

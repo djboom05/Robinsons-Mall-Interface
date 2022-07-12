@@ -163,12 +163,13 @@ namespace TransightInterface
 
 
                 DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
-                foreach (FileInfo file in d.GetFiles())
-                {
+                dgvFTP.Rows.Clear();
+                    foreach (FileInfo file in d.GetFiles())
+                    {
+                    
+                        dgvFTP.Rows.Add(file.Name.ToString());
 
-                    dgvFTP.Rows.Add(file.Name.ToString());
-
-                 }
+                    }
 
                 //string FTPOption = AppConfig.GetConfig("FTPOption").ToString();
                 //string sftpkey = AppConfig.GetConfig("SSHKEY").ToString();
@@ -423,6 +424,14 @@ namespace TransightInterface
                 //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                 //ListFTPDirectory();
                 //Application.Restart();
+                DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                dgvFTP.Rows.Clear();
+                foreach (FileInfo file in d.GetFiles())
+                {
+                    
+                    dgvFTP.Rows.Add(file.Name.ToString());
+
+                }
             }
 
         }
@@ -653,6 +662,15 @@ namespace TransightInterface
                             EnableControls(true);
                             notifyIcon1.Visible = false;
                         }
+
+                        DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                        dgvFTP.Rows.Clear();
+                        foreach (FileInfo file in d.GetFiles())
+                        {
+                           
+                            dgvFTP.Rows.Add(file.Name.ToString());
+
+                        }
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -678,6 +696,15 @@ namespace TransightInterface
                             EnableControls(true);
                             notifyIcon1.Visible = false;
                         }
+
+                        DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                        dgvFTP.Rows.Clear();
+                        foreach (FileInfo file in d.GetFiles())
+                        {
+                            
+                            dgvFTP.Rows.Add(file.Name.ToString());
+
+                        }
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -702,7 +729,15 @@ namespace TransightInterface
                             EnableControls(true);
                             notifyIcon1.Visible = false;
                         }
-                       
+
+                        DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                        dgvFTP.Rows.Clear();
+                        foreach (FileInfo file in d.GetFiles())
+                        {
+                            
+                            dgvFTP.Rows.Add(file.Name.ToString());
+
+                        }
                         //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                         //ListFTPDirectory();
 
@@ -727,6 +762,15 @@ namespace TransightInterface
                         Program.RunAutoMode();
                         EnableControls(true);
                         notifyIcon1.Visible = false;
+                    }
+
+                    DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                    dgvFTP.Rows.Clear();
+                    foreach (FileInfo file in d.GetFiles())
+                    {
+                        
+                        dgvFTP.Rows.Add(file.Name.ToString());
+
                     }
                     //DataFunctions.LoadDataToGrid(DtLibConfig, dgvPOS, DtView, "select max([filename]) as filename,businessdate, max(date_sent) as LastSent, count(businessdate) as SendCount from mallinterface_Batchlogs group by businessdate");
                     //ListFTPDirectory();
@@ -997,9 +1041,10 @@ namespace TransightInterface
                 //    else
                 //    {
                 DirectoryInfo d = new DirectoryInfo(Program.SentFolder);
+                dgvFTP.Rows.Clear();
                     foreach (FileInfo file in d.GetFiles())
                     {
-
+                        
                         dgvFTP.Rows.Add(file.Name.ToString());
 
 
@@ -1027,6 +1072,11 @@ namespace TransightInterface
         }
 
         private void lblVersion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvFTP_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
